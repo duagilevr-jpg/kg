@@ -1,0 +1,3591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>King’s Garden Collection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Forum&family=Manrope:wght@400;500;600;700&family=Noto+Serif+Georgian:wght@400;500&family=Noto+Sans+Georgian:wght@400;500;600&display=swap">
+<style>
+:root{color-scheme:light;--ivory:#f3efe6;--white:#f9f9f9;--forest:#1f2b23;--fern:#4f7a45;--leaf:#86a862;--sage:#6b7a61;--spring:#afc38e;--pist:#d6e2bc;--clay:#8a5847;--stone:#c7bcaa;--line:rgba(31,43,35,.16);--lineL:rgba(214,226,188,.22);--disp:'Marcellus','Forum','Noto Serif Georgian',Georgia,serif;--text:'Manrope','Noto Sans Georgian',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1);--io:cubic-bezier(.76,0,.24,1);--pad:clamp(16px,2.4vw,44px);--gut:clamp(16px,2.2vw,40px);--max:1760px;--sec:140px;--r:15px}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:84px;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{margin:0;background:var(--ivory);color:var(--forest);font:16px/1.5 var(--text);overflow-x:clip}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input,textarea{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--disp);font-weight:400;margin:0;letter-spacing:0}
+h1{font-size:clamp(34px,4vw,76px);line-height:.98;white-space:pre}
+h2{font-size:clamp(34px,4vw,62px);line-height:1;text-wrap:balance}
+h3{font-size:clamp(24px,2.2vw,32px);line-height:1.08}
+.pl{white-space:pre-line;text-wrap:initial}
+p{margin:0;max-width:60ch}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:var(--gut);row-gap:28px}
+.c2{grid-column:2}
+.sec{padding-block:var(--sec)}
+.label{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--fern)}
+.label svg{width:22px;height:14px}
+.lead{font-size:clamp(17px,1.3vw,20px);line-height:1.45;color:#3a463d}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 26px;border-radius:var(--r);border:1px solid var(--forest);background:var(--forest);color:var(--ivory);text-decoration:none;font-weight:600;font-size:15px;white-space:nowrap;cursor:pointer;transition:background .5s var(--ease),color .5s var(--ease),border-color .5s}
+.btn:hover{background:var(--fern);border-color:var(--fern)}
+.btn.ghost{background:transparent;color:var(--forest)}
+.btn.ghost:hover{background:var(--forest);color:var(--ivory)}
+.btn.light{background:var(--ivory);color:var(--forest);border-color:var(--ivory)}
+.btn.light:hover{background:var(--leaf);border-color:var(--leaf)}
+.btn.line{background:transparent;color:var(--ivory);border-color:rgba(243,239,230,.5)}
+.btn.line:hover{background:var(--ivory);color:var(--forest)}
+.btn .ar{width:18px;height:18px;transition:transform .5s var(--ease)}
+.btn:hover .ar{transform:translateX(4px)}
+:focus-visible{outline:2px solid var(--leaf);outline-offset:3px}
+.pre{position:fixed;inset:0;z-index:100;background:var(--forest);color:var(--ivory);display:grid;place-items:center;clip-path:inset(0 0 0 0);transition:clip-path 1.5s var(--io) .5s;animation:fail 0s 7s forwards}
+.pre .mk{width:120px;clip-path:inset(100% 0 0 0);transition:clip-path 1.8s var(--io),opacity .7s}
+.pre.go .mk{clip-path:inset(0 0 0 0)}
+.pre .ct{position:absolute;bottom:28px;right:var(--pad);font-family:var(--disp);font-size:clamp(48px,8vw,110px);line-height:1;color:var(--spring);font-variant-numeric:tabular-nums;transition:opacity .7s}
+.pre .tg{position:absolute;bottom:36px;left:var(--pad);font-size:14px;color:var(--spring);transition:opacity .7s}
+.pre .ln{position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--leaf);transform-origin:left;transform:scaleX(var(--p,0))}
+.pre.done{clip-path:inset(0 0 100% 0)}
+.pre.done .mk,.pre.done .ct,.pre.done .tg{opacity:0}
+@keyframes fail{to{visibility:hidden}}
+.hd{position:fixed;inset:0 0 auto;z-index:50;border-bottom:1px solid transparent;transition:background .6s var(--ease),border-color .6s,transform .7s var(--ease),color .6s}
+.hd.solid{background:rgba(243,239,230,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-color:var(--line)}
+.hd.hide{transform:translateY(-100%)}
+.hd .row{display:flex;align-items:center;gap:28px;height:80px;max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
+.hd .logo{width:200px;color:var(--forest);flex:none;transition:color .6s}
+.hd .logo svg{width:100%;height:auto;display:block}
+.nav{display:flex;gap:28px;margin-inline:auto}
+.nav a{text-decoration:none;font-size:15px;font-weight:500;position:relative;padding:6px 0;white-space:nowrap}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .6s var(--ease)}
+.nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:var(--r);padding:3px}
+.langs button{border:0;background:none;min-width:40px;height:34px;border-radius:var(--r);font-size:13px;font-weight:600;cursor:pointer;color:var(--sage);transition:background .4s,color .4s}
+.langs button[aria-pressed=true]{background:var(--forest);color:var(--ivory)}
+.hd .btn{min-height:44px;padding:0 20px;font-size:14px}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:none;cursor:pointer;place-items:center}
+.burger span{display:block;width:18px;height:1.5px;background:currentColor;box-shadow:0 6px 0 currentColor,0 -6px 0 currentColor}
+.hb .hd:not(.solid){color:var(--ivory)}
+.hb .hd:not(.solid) .logo{color:var(--ivory)}
+.hb .hd:not(.solid) .langs,.hb .hd:not(.solid) .burger{border-color:rgba(243,239,230,.35)}
+.hb .hd:not(.solid) .langs button{color:var(--pist)}
+.hb .hd:not(.solid) .langs button[aria-pressed=true]{background:var(--ivory);color:var(--forest)}
+.hb .hd:not(.solid) .btn{background:var(--ivory);color:var(--forest);border-color:var(--ivory)}
+.menu{position:fixed;inset:0;z-index:60;background:var(--forest);color:var(--ivory);display:flex;flex-direction:column;padding:18px var(--pad) 32px;clip-path:inset(0 0 100% 0);transition:clip-path 1s var(--io),visibility 0s 1s;visibility:hidden}
+.menu.open{clip-path:inset(0 0 0 0);visibility:visible;transition:clip-path 1s var(--io)}
+.menu .top{display:flex;justify-content:space-between;align-items:center;height:60px}
+.menu .close{width:44px;height:44px;border-radius:50%;border:1px solid rgba(243,239,230,.3);background:none;color:var(--ivory);font-size:22px;cursor:pointer}
+.menu nav{display:flex;flex-direction:column;gap:4px;margin-top:auto}
+.menu nav a{font-family:var(--disp);font-size:clamp(34px,9vw,52px);text-decoration:none;line-height:1.1}
+.menu .langs{border-color:rgba(243,239,230,.3);align-self:flex-start;margin-top:32px}
+.menu .langs button{color:var(--spring)}
+.menu .langs button[aria-pressed=true]{background:var(--ivory);color:var(--forest)}
+.menu .ph{margin-top:24px;color:var(--spring);font-size:15px}
+.hero{min-height:min(100svh,1000px);align-items:end;padding-top:120px;padding-bottom:clamp(28px,4vw,56px)}
+.hero .copy{display:flex;flex-direction:column;gap:26px;padding-bottom:6px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.wins{display:flex;align-items:flex-end;gap:clamp(8px,1vw,16px);height:min(72svh,720px)}
+.win{flex:1;position:relative;overflow:hidden;height:100%}
+.win.s{height:64%}
+.win img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover;transform:translateY(var(--py,0))}
+.gl{clip-path:url(#gL)}.gr{clip-path:url(#gR)}.gls{clip-path:url(#gLs)}.grs{clip-path:url(#gRs)}
+.js .win{transform:translateY(105%);transition:transform 1.9s var(--ease)}
+.js .loaded .win{transform:none}
+.js .loaded .win:nth-child(2){transition-delay:.14s}
+.js .loaded .win:nth-child(3){transition-delay:.28s}
+.js .loaded .win:nth-child(4){transition-delay:.42s}
+.js .hero .copy>*,.js .hb-in .copy>*,.js .hb-in .side>*{opacity:0;transform:translateY(28px);transition:opacity 1.4s var(--ease),transform 1.6s var(--ease)}
+.js .loaded .copy>*,.js .loaded .side>*{opacity:1;transform:none}
+.js .loaded .copy>*:nth-child(2),.js .loaded .side>*:nth-child(1){transition-delay:.18s}
+.js .loaded .copy>*:nth-child(3),.js .loaded .side>*:nth-child(2){transition-delay:.36s}
+.js .loaded .copy>*:nth-child(4){transition-delay:.54s}
+.hb-s{position:relative;height:100svh;min-height:620px;color:var(--ivory);overflow:hidden}
+.hb-bg{position:absolute;inset:0;overflow:hidden}
+.hb-bg img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;transform:translateY(var(--py,0)) scale(var(--sc,1));transition:transform 2.6s var(--ease)}
+.hb-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(16,24,18,.82) 0%,rgba(16,24,18,.38) 45%,rgba(16,24,18,.28) 75%,rgba(16,24,18,.55) 100%)}
+.js .hb-bg{clip-path:inset(18% 36% 18% 36% round 8px);transition:clip-path 2.2s var(--io)}
+.js .hb-bg img{--sc:1.3}
+.js .loaded .hb-bg{clip-path:inset(0 0 0 0 round 0)}
+.js .loaded .hb-bg img{--sc:1}
+.hb-in{position:absolute;inset:auto 0 0 0;padding-bottom:clamp(28px,4vw,56px);align-items:end}
+.hb-in .copy{display:flex;flex-direction:column;gap:22px}
+.hb-in .label{color:var(--spring)}
+.hb-in .side{display:flex;flex-direction:column;gap:24px;align-items:flex-start;padding-bottom:6px}
+.hb-in .lead{color:#e6eadb;max-width:46ch}
+.marq{overflow:hidden;border-bottom:1px solid var(--line);padding:22px 0;white-space:nowrap}
+.marq .tr{display:inline-flex;gap:48px;animation:mq 52s linear infinite;font-family:var(--disp);font-size:clamp(22px,2.3vw,34px)}
+.marq .tr span{display:inline-flex;align-items:center;gap:48px}
+.marq svg{width:30px;height:20px;color:var(--leaf);flex:none}
+@keyframes mq{to{transform:translateX(-50%)}}
+.intro h2{margin-top:18px}
+.stmt{font-family:var(--disp);font-size:clamp(26px,2.8vw,44px);line-height:1.16;max-width:none}
+.stmt .w{opacity:.16;transition:opacity .5s}
+.stmt .w.on{opacity:1}
+.intro .lead{margin-top:36px;max-width:56ch}
+.scale{height:260vh;position:relative}
+.scale .stk{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center}
+.scale .im{position:absolute;inset:0;clip-path:inset(calc(var(--k,1)*16%) calc(var(--k,1)*30%) calc(var(--k,1)*16%) calc(var(--k,1)*30%) round calc(var(--k,1)*24px));will-change:clip-path}
+.scale .im img{width:100%;height:100%;object-fit:cover;transform:scale(calc(1 + var(--k,1)*.25))}
+.scale .im::after{content:"";position:absolute;inset:0;background:rgba(16,24,18,.42)}
+.scale .cap{position:relative;z-index:2;color:var(--ivory);text-align:center;padding:0 var(--pad);opacity:var(--o,0);transform:translateY(calc((1 - var(--o,0))*30px))}
+.scale .cap h2{font-size:clamp(36px,6vw,96px);white-space:pre-line}
+.neigh .top{align-items:start;margin-bottom:clamp(40px,6vw,80px)}
+.neigh .top .txt{display:flex;flex-direction:column;gap:16px}
+.places{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.places li{border-bottom:1px solid var(--line)}
+.places a{position:relative;align-items:center;padding:clamp(18px,2.2vw,32px) 0;text-decoration:none}
+.places h3{font-size:clamp(28px,3.4vw,54px);transition:transform .8s var(--ease)}
+.places p{color:var(--sage);font-size:16px;padding-right:72px}
+.places .ic{position:absolute;right:0;top:50%;margin-top:-22px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:background .5s,color .5s,transform .7s var(--ease)}
+.places .ic svg{width:16px;height:16px}
+.places a:hover h3{transform:translateX(18px)}
+.places a:hover .ic{background:var(--forest);color:var(--ivory);transform:rotate(-45deg)}
+.places .th{display:none}
+.float{border-radius:var(--r);overflow:hidden;clip-path:none!important;position:fixed;left:0;top:0;width:280px;height:340px;pointer-events:none;z-index:40;opacity:0;transform:translate(-50%,-50%) scale(.85);transition:opacity .5s,transform .7s var(--ease)}
+.float.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.float img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+.float img.on{opacity:1}
+.neigh .cta{margin-top:40px}
+.res{background:var(--white);overflow:hidden}
+.res .top{margin-bottom:clamp(40px,5vw,72px)}
+.res .top h2{font-size:clamp(34px,4.4vw,72px)}
+.res .top .txt{display:flex;flex-direction:column;gap:24px;align-items:flex-start;margin-top:28px}
+.rs{align-items:start}
+.panel{display:flex;flex-direction:column;gap:clamp(20px,2.4vw,32px);height:100%}
+.tabs{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.tab{display:flex;align-items:baseline;justify-content:space-between;gap:16px;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:clamp(16px,1.8vw,24px) 0;cursor:pointer;font-family:var(--disp);font-size:clamp(26px,2.5vw,38px);line-height:1.05;color:rgba(31,43,35,.32);transition:color .6s var(--ease)}
+.tab small{font-family:var(--text);font-size:14px;font-weight:600;color:var(--sage);opacity:0;transform:translateX(-10px);transition:opacity .6s,transform .7s var(--ease)}
+.tab:hover{color:rgba(31,43,35,.6)}
+.tab[aria-selected=true]{color:var(--forest)}
+.tab[aria-selected=true] small{opacity:1;transform:none}
+.desc{display:grid}
+.desc>div{grid-area:1/1;display:flex;flex-direction:column;gap:18px;opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .9s var(--ease);pointer-events:none}
+.desc>div.on{opacity:1;transform:none;pointer-events:auto;transition-delay:.3s}
+.desc p{color:#3a463d}
+.desc ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.desc li{border:1px solid var(--line);border-radius:var(--r);padding:8px 14px;font-size:14px}
+.panel .btn{margin-top:auto;align-self:flex-start}
+.stage img{-webkit-user-drag:none;user-select:none;pointer-events:none}
+.stage{position:relative;aspect-ratio:16/11;overflow:hidden;background:var(--stone);cursor:grab;touch-action:pan-y}
+.slide{position:absolute;inset:0;clip-path:inset(0 0 0 100%);transition:clip-path 1.5s var(--io);z-index:1}
+.slide.on{clip-path:inset(0 0 0 0);z-index:2}
+.slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.14);transition:transform 2.4s var(--ease)}
+.slide.on img{transform:scale(1)}
+.stage .cnt{position:absolute;left:clamp(14px,1.6vw,24px);bottom:clamp(14px,1.6vw,24px);z-index:3;display:flex;align-items:center;gap:14px;background:var(--white);border-radius:var(--r);padding:6px 6px 6px 20px;font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}
+.stage .cnt button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--white);display:grid;place-items:center;cursor:pointer;transition:background .4s,color .4s}
+.stage .cnt button:hover{background:var(--forest);color:var(--ivory)}
+.stage .cnt svg{width:16px;height:16px}
+.stage .cnt .pv svg{transform:scaleX(-1)}
+.stage .bar{width:64px;height:1px;background:var(--line);position:relative}
+.stage .bar i{position:absolute;inset:0;background:var(--forest);transform-origin:left;transform:scaleX(var(--p,.5));transition:transform 1.2s var(--ease)}
+.dark{background:var(--forest);color:var(--ivory)}
+.dark .label{color:var(--spring)}
+.dark .lead,.dark p{color:#d9dccf}
+.center .split{align-items:center}
+.center .txt{display:flex;flex-direction:column;gap:22px}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.tags span{border:1px solid var(--line);border-radius:var(--r);padding:10px 18px;font-size:14px}
+.pair{position:relative;height:clamp(420px,46vw,760px)}
+.pair .a,.pair .b{position:absolute;overflow:hidden}
+.pair .a{left:0;top:0;width:68%;height:84%}
+.pair .b{right:0;bottom:0;width:44%;height:56%;outline:clamp(8px,1vw,14px) solid var(--ivory)}
+.pair img{width:100%;height:118%;object-fit:cover;transform:translateY(var(--py,0))}
+.well .top{align-items:end;margin-bottom:clamp(36px,5vw,64px)}
+.well .top .txt{display:flex;flex-direction:column;gap:16px}
+.xp{display:flex;gap:10px;height:clamp(440px,66vh,700px)}
+.xp .p{position:relative;flex:1;overflow:hidden;cursor:pointer;transition:flex 1.2s var(--io);color:var(--ivory);border:0;padding:0;background:var(--forest);text-align:left}
+.xp .p.on{flex:3.4}
+.xp .p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 1.6s var(--ease)}
+.xp .p.on img{transform:scale(1)}
+.xp .p::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(16,24,18,.78),rgba(16,24,18,.12) 60%);transition:background .8s}
+.xp .p:not(.on)::after{background:rgba(16,24,18,.5)}
+.xp .in{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:clamp(18px,2vw,32px);display:flex;flex-direction:column;gap:10px}
+.xp .in h3{white-space:nowrap;transition:font-size .8s var(--ease)}
+.xp .p:not(.on) h3{font-size:clamp(18px,1.4vw,22px)}
+.xp .no{transition:opacity .5s}
+.xp .p:not(.on) .no{opacity:0}
+.xp .in p{color:#e3e7d8;max-width:34ch;opacity:0;transform:translateY(12px);transition:opacity .6s,transform .8s var(--ease)}
+.xp .p.on .in p{opacity:1;transform:none;transition-delay:.45s}
+.xp .no{position:absolute;top:clamp(18px,2vw,32px);left:clamp(18px,2vw,32px);z-index:2;width:40px;height:26px;color:var(--spring)}
+.note{margin-top:24px;font-size:14px;color:var(--sage)}
+.arch{background:var(--pist)}
+.arch .split{align-items:center}
+.arch .ph{aspect-ratio:16/12;position:relative;overflow:hidden}
+.arch .ph img{position:absolute;inset:0;width:100%;height:118%;object-fit:cover;transform:translateY(var(--py,0))}
+.arch .txt{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.arch .sub{font-family:var(--disp);font-size:clamp(20px,1.8vw,26px);color:var(--fern)}
+.loc{position:relative;overflow:hidden}
+.loc .pano{position:relative;height:clamp(340px,38vw,620px);overflow:hidden;color:var(--ivory)}
+.loc .pano img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover;transform:translateY(var(--py,0))}
+.loc .pano::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(16,24,18,.8),rgba(16,24,18,.2) 60%,rgba(16,24,18,.15))}
+.loc .ttl{position:absolute;inset:auto 0 0 0;z-index:2;padding-bottom:clamp(24px,4vw,56px);align-items:end}
+.loc .ttl h2{font-size:clamp(40px,6vw,104px)}
+.loc .ttl .side{display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.loc .ttl p{color:#e3e7d8;max-width:48ch}
+.loc .body{padding-block:clamp(48px,6vw,96px);position:relative;z-index:2}
+.pts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gut)}
+.pts div{display:flex;flex-direction:column;gap:8px}
+.pts h3{font-size:clamp(21px,1.7vw,26px);white-space:pre-line}
+.pts p{max-width:30ch}
+.pts p{font-size:15px;color:var(--sage)}
+.loc .txt{display:flex;flex-direction:column;gap:16px}
+.contour{position:absolute;inset:auto 0 0 0;height:45%;pointer-events:none;color:var(--spring);opacity:.5}
+.vp{position:relative;min-height:max(110svh,820px);color:var(--ivory);overflow:hidden;display:flex;flex-direction:column}
+.vp>img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover;transform:translateY(var(--py,0)) scale(1.04)}
+.vp::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,24,18,.72) 0%,rgba(16,24,18,.3) 38%,rgba(16,24,18,.35) 62%,rgba(16,24,18,.8) 100%);z-index:1}
+.vp .wrap{position:relative;z-index:2;width:100%;flex:1;display:flex;flex-direction:column;padding-block:var(--sec) clamp(32px,4vw,64px)}
+.vp .lab{display:flex;justify-content:space-between;gap:20px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--spring)}
+.vp .lead2{margin:clamp(12px,1.6vw,28px) 0 clamp(120px,14vw,260px);max-width:none;font-family:var(--disp);font-size:clamp(48px,8.4vw,168px);line-height:.92;white-space:pre-line;text-align:center}
+.vp .lead2 .l2{display:block}
+.js .vp .lead2 .l2{opacity:0;transform:translateY(40px);transition:opacity 1.6s var(--ease),transform 1.8s var(--ease)}
+.vp .lead2 .l2:nth-child(2){transition-delay:.18s;color:var(--pist)}
+.vp.in .lead2 .l2{opacity:1;transform:none}
+.vp .two{margin-top:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gut)}
+.vp .v{display:flex;flex-direction:column;gap:16px;padding:clamp(24px,2.6vw,40px);border-radius:var(--r);background:rgba(20,28,22,.42);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.vp .v p{color:#e3e7d8;max-width:52ch}
+.vp .v span{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--spring)}
+.vp .vk{display:none}
+.vp .v h3{white-space:pre-line;font-size:clamp(26px,2.3vw,38px)}
+.close .split{align-items:stretch}
+.close .txt{display:flex;flex-direction:column;gap:22px}
+.close .line{white-space:pre-line;font-family:var(--disp);font-size:clamp(20px,1.8vw,26px);line-height:1.25;color:var(--spring)}
+.close .call{margin-top:auto;padding-top:24px;border-top:1px solid var(--lineL);display:flex;flex-direction:column;gap:6px}
+.close .call b{font-family:var(--disp);font-weight:400;font-size:clamp(26px,2.6vw,38px);color:var(--ivory)}
+.fm{position:relative;border:1px solid var(--lineL);padding:clamp(24px,3.4vw,56px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px var(--gut);overflow:hidden}
+.fm::before{content:"";position:absolute;right:-50px;bottom:-30px;width:300px;height:180px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 66 40'%3E%3Cg fill='none' stroke='%23afc38e' stroke-width='.5' stroke-linejoin='round'%3E%3Cpath d='M2 18 L13 24 V38 H2 Z'/%3E%3Cpath d='M18 3 L30 12 V38 H18 Z'/%3E%3Cpath d='M48 3 L36 12 V38 H48 Z'/%3E%3Cpath d='M64 18 L53 24 V38 H64 Z'/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;opacity:.3;pointer-events:none}
+.fm .hdr{grid-column:1/-1;display:flex;flex-direction:column;gap:6px}
+.fm .hdr b{font-family:var(--disp);font-weight:400;font-size:clamp(26px,2.4vw,34px);line-height:1.05;color:var(--ivory)}
+.fm .hdr span{font-size:14px;color:var(--spring)}
+.f{position:relative;display:flex;flex-direction:column}
+.f.full,.ch{grid-column:1/-1}
+.f input,.f textarea{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(214,226,188,.35);color:var(--ivory);padding:26px 0 10px;font-size:17px;border-radius:0}
+.f textarea{min-height:92px;resize:vertical;line-height:1.4}
+.f label{position:absolute;left:0;top:26px;font-size:16px;color:rgba(243,239,230,.62);pointer-events:none;transform-origin:left top;transition:transform .5s var(--ease),color .3s}
+.f input:focus+label,.f input:not(:placeholder-shown)+label,.f textarea:focus+label,.f textarea:not(:placeholder-shown)+label{transform:translateY(-24px) scale(.82);color:var(--spring)}
+.f::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--leaf);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.f:focus-within::after{transform:scaleX(1)}
+.f input:focus,.f textarea:focus{outline:none}
+.f.bad input{border-bottom-color:#d79b86}
+.f.bad label{color:#e7b3a0}
+.req{color:var(--leaf)}
+.ch{border:0;margin:0;padding:0;min-width:0}
+.ch legend{font-size:14px;color:var(--spring);padding:0;margin-bottom:12px}
+.ch .opts{display:flex;flex-wrap:wrap;gap:8px}
+.ch label{position:relative;cursor:pointer}
+.ch input{position:absolute;opacity:0;width:1px;height:1px}
+.ch label span{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:var(--r);border:1px solid rgba(214,226,188,.3);font-size:14px;font-weight:500;color:var(--ivory);transition:background .4s,color .4s,border-color .4s}
+.ch label span::before{display:none}
+.ch label:hover span{border-color:var(--spring)}
+.ch input:checked+span{background:var(--ivory);color:var(--forest);border-color:var(--ivory)}
+.ch input:focus-visible+span{outline:2px solid var(--leaf);outline-offset:3px}
+.fm .btn{grid-column:1/-1;justify-content:space-between;min-height:62px;padding:0 10px 0 28px;background:var(--leaf);border-color:var(--leaf);color:var(--forest);font-size:16px}
+.fm .btn .ar{width:44px;height:44px;padding:13px;border-radius:50%;background:var(--forest);color:var(--ivory)}
+.fm .btn:hover{background:var(--ivory);border-color:var(--ivory)}
+.fm .fine{grid-column:1/-1;font-size:13px;color:rgba(243,239,230,.5);margin-top:-12px}
+.thanks{display:none;grid-column:1/-1;flex-direction:column;align-items:flex-start;gap:16px;padding:40px 0}
+.thanks svg{width:66px;height:40px;color:var(--leaf)}
+.thanks b{font-family:var(--disp);font-weight:400;font-size:clamp(28px,3vw,40px);color:var(--ivory);line-height:1.05}
+.thanks span{color:var(--spring)}
+.fm.sent>*:not(.thanks){display:none}
+.fm.sent .thanks{display:flex;animation:thx 1.2s var(--ease)}
+@keyframes thx{from{opacity:0;transform:translateY(20px)}}
+.ft{background:#18221b;color:#d9dccf;padding-block:clamp(56px,7vw,100px) 28px}
+.ft .lg{width:min(300px,80%);color:var(--ivory)}
+.ft .lg svg{width:100%;height:auto;display:block}
+.ft .tag{margin-top:22px;font-family:var(--disp);font-size:20px;color:var(--spring)}
+.ft .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gut)}
+.ft ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.ft a{text-decoration:none}
+.ft a:hover{color:var(--spring)}
+.ft h4{margin:0 0 16px;font-size:14px;font-weight:600;color:var(--leaf)}
+.ft .bt{margin-top:56px;border-top:1px solid rgba(214,226,188,.18);padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#9ca594}
+.wa{position:fixed;right:clamp(16px,2vw,28px);bottom:clamp(16px,2vw,28px);z-index:45;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:var(--fern);color:var(--ivory);transition:background .4s,transform .6s var(--ease)}
+.wa:hover{background:var(--forest);transform:scale(1.06)}
+.wa svg{width:28px;height:28px}
+.mp{position:relative;background:#0f1411;color:var(--ivory);overflow:hidden}
+.map{position:relative;height:1080px;border-top:1px solid #0f1411}
+.mwrap{position:absolute;inset:0}
+.mwrap>svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.map text{font-family:var(--text)}
+.mh{padding-top:var(--sec);padding-bottom:clamp(36px,4vw,56px);align-items:end}
+.mh .lead{color:#cfd5c4}
+.mh .label{color:var(--spring)}
+.zp em{display:none}
+.mn{position:absolute;left:var(--pad);bottom:56px;line-height:1.5;z-index:2;font-size:13px;color:rgba(243,239,230,.5);max-width:420px}
+.zp{position:absolute;right:var(--pad);bottom:56px;z-index:3;width:auto;min-width:min(440px,30vw);background:rgba(34,38,35,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:28px 30px 32px;border-radius:6px}
+.zp>span{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.zp ul{list-style:none;margin:56px 0 0;padding:0;display:flex;flex-direction:column;gap:2px}
+.zp button{display:block;white-space:nowrap;background:none;border:0;padding:3px 0;text-align:left;cursor:pointer;font-family:var(--text);font-weight:400;text-transform:uppercase;font-size:clamp(18px,1.5vw,28px);line-height:1.2;color:rgba(255,255,255,.4);transition:color .5s var(--ease),transform .6s var(--ease)}
+.zp button:hover{color:rgba(243,239,230,.7)}
+.zp button.on{color:#fff}
+.mline{fill:none;stroke:#ffffff;stroke-opacity:.22;stroke-width:1}
+.mroad{fill:none;stroke:#f3efe6;stroke-opacity:.42;stroke-width:2}
+.mblk{fill:#1f2622}
+.msite{fill:#141a16;stroke:#ffffff;stroke-opacity:.35;stroke-width:1.2}
+.mz{fill:#232b26;stroke:#ffffff;stroke-opacity:.18;stroke-width:1;cursor:pointer;transition:fill .6s,stroke-opacity .6s}
+.mz:hover{fill:#2d3731}
+.mz.on{fill:#3d4a42;stroke:#ffffff;stroke-opacity:.9}
+.mpin{cursor:pointer}
+.mpin circle{fill:#0f1411;stroke:#f3efe6;stroke-opacity:.6;stroke-width:1.2;transition:fill .5s,stroke-opacity .5s}
+.mpin path{fill:none;stroke:#f3efe6;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;transition:stroke .5s}
+.mpin text{fill:#ffffff;fill-opacity:.6;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:fill-opacity .5s}
+.mpin.on circle{fill:#f3efe6;stroke-opacity:1}
+.mpin.on path{stroke:#1f2b23}
+.mpin.on text{fill-opacity:1}
+.mlab{fill:#f3efe6;fill-opacity:.42;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.route{fill:none;stroke:#ffffff;stroke-width:2;stroke-dasharray:2 6;stroke-linecap:round;animation:ants 1.2s linear infinite}
+@keyframes ants{to{stroke-dashoffset:-16}}
+.hub rect{fill:#0f1411;stroke:#ffffff;stroke-width:1.5}
+.hub text{fill:#ffffff;font-family:var(--text)!important;font-size:34px;font-weight:400}
+.mcard{position:absolute;left:0;top:0;z-index:3;width:340px;min-height:250px;background:#fff;color:#111;padding:28px 30px;display:flex;flex-direction:column;gap:14px;opacity:0;transform:translateY(14px);transition:opacity .5s,transform .7s var(--ease),left .8s var(--ease),top .8s var(--ease);pointer-events:none}
+.mcard.on{opacity:1;transform:none}
+.mcard .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.mcard b{font-family:var(--text);font-weight:300;font-size:84px;line-height:.85;letter-spacing:-.02em}
+.mcard .top span{font-size:13px;font-weight:600;color:#8a8a8a;letter-spacing:.04em;text-transform:uppercase}
+.mcard h4{margin:auto 0 0;font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;line-height:1.35}
+.mcard p{font-size:14px;color:#555}
+.js .map .draw{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 3s var(--io)}
+.js .map.in .draw{stroke-dashoffset:0}
+.js .map .fz{opacity:0;transition:opacity 1.4s var(--ease) .6s}
+.js .map.in .fz{opacity:1}
+.views{position:relative}
+.vs{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center}
+.vt{display:flex;gap:var(--gut);padding-inline:var(--pad);will-change:transform;align-items:flex-end}
+.vhm{display:none}
+.vt .vh{flex:none;width:min(440px,80vw);display:flex;flex-direction:column;gap:20px;align-self:center}
+.vi{flex:none;width:min(58vw,1000px);display:flex;flex-direction:column;gap:14px}
+.vi .ph{height:min(66svh,680px);overflow:hidden;position:relative}
+.vi .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.12) translateX(var(--vx,0));transition:transform .2s linear}
+.vi .cap{display:flex;justify-content:space-between;gap:16px;padding-top:4px;font-size:15px}
+.vi .cap b{font-family:var(--disp);font-weight:400;font-size:clamp(20px,1.7vw,26px)}
+.vi .cap span{color:var(--sage)}
+.vi:nth-child(odd) .ph{height:min(56svh,580px)}
+.vision .split{align-items:start}
+.vision .l{position:sticky;top:110px;display:flex;flex-direction:column;gap:20px}
+.pills{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:12px}
+.pills li{font-family:var(--disp);font-size:clamp(20px,2vw,30px);line-height:1.1;border:1px solid var(--line);border-radius:var(--r);padding:16px 26px;display:inline-flex;gap:14px;align-items:center;transition:background .6s var(--ease),color .6s,border-color .6s}
+.pills li svg{width:26px;height:16px;color:var(--leaf);flex:none}
+.pills li:hover{background:var(--forest);color:var(--ivory);border-color:var(--forest)}
+.steps{background:var(--white)}
+.steps .top{align-items:end;margin-bottom:clamp(40px,5vw,72px)}
+.steps .top .txt{display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.row4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gut)}
+.st{position:relative;border-top:.5px solid rgba(31,43,35,.12);padding-top:26px;display:flex;flex-direction:column;gap:12px}
+.st::after{content:"";position:absolute;left:0;right:0;top:-.5px;height:.5px;background:var(--fern);transform:scaleX(0);transform-origin:left;transition:transform 1.6s var(--io) .3s}
+.st.in::after{transform:scaleX(1)}
+.st .n{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--disp);font-size:20px;margin-bottom:18px}
+.st p{color:var(--sage);font-size:15px}
+.jr .top{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(36px,5vw,64px)}
+.jr .top>div{display:flex;flex-direction:column;gap:18px}
+.jl{display:flex;flex-direction:column;gap:var(--gut)}
+.jc{display:flex;flex-direction:column;gap:14px;text-decoration:none}
+.jc .ph{aspect-ratio:16/10;overflow:hidden;position:relative}
+.jc.big .ph{aspect-ratio:16/11.2}
+.jc .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease)}
+.jc:hover .ph img{transform:scale(1.06)}
+.jc .cat{font-size:13px;font-weight:600;color:var(--fern)}
+.jc p{color:var(--sage);font-size:15px}
+.jc .more{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600}
+.jc .more svg{width:16px;height:16px;transition:transform .5s var(--ease)}
+.jc:hover .more svg{transform:translateX(4px)}
+.jc.big h3{font-size:clamp(28px,2.8vw,42px)}
+.faq{background:var(--white)}
+.faq .l{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;cursor:pointer;font-family:var(--disp);font-size:clamp(20px,1.8vw,27px);line-height:1.15}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);position:relative;transition:background .5s,transform .7s var(--ease)}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:1.5px;background:currentColor;transform:translate(-50%,-50%)}
+.faq summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .6s var(--ease)}
+.faq details[open] summary i{background:var(--forest);color:var(--ivory)}
+.faq details[open] summary i::after{transform:translate(-50%,-50%) rotate(0)}
+.faq details p{padding:0 56px 24px 0;color:#3a463d;animation:thx .9s var(--ease)}
+.stage,.pair .a,.pair .b,.xp .p,.vi .ph,.jc .ph,.mcard,.zp,.fm,.ag .th,.in2 .pic,.hv-ph,.scale .im img{border-radius:var(--r)}
+.stage,.pair .a,.pair .b,.xp .p,.vi .ph,.jc .ph,.ag .th,.in2 .pic,.hv-ph{overflow:hidden;isolation:isolate}
+.jc .more{align-self:flex-start;border-bottom:1px solid currentColor;padding-bottom:6px}
+.intro .ia{align-items:start}
+.intro .ib{margin-top:clamp(56px,7vw,120px);align-items:end}
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gut)}
+.nums div{display:flex;flex-direction:column;gap:10px}
+.nums b{font-family:var(--disp);font-weight:400;font-size:clamp(56px,6vw,104px);line-height:.9;font-variant-numeric:tabular-nums}
+.nums span{font-size:14px;color:var(--sage);max-width:18ch}
+.in2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--gut);align-items:start}
+.in2 .pic{aspect-ratio:4/5;position:relative}
+.in2 .pic img{position:absolute;inset:0;width:100%;height:118%;object-fit:cover;transform:translateY(var(--py,0))}
+.in2 .tx{display:flex;flex-direction:column;gap:16px}
+.in2 .tx p{font-size:15px;color:#3a463d}
+.in2 .tx small{margin-top:auto;font-size:12px;font-weight:600;color:var(--sage);letter-spacing:.06em;text-transform:uppercase}
+.nb{position:relative;min-height:max(100svh,820px);background:#141c16;color:var(--ivory);overflow:hidden;display:flex;flex-direction:column}
+.nb .bgi{position:absolute;inset:0}
+.nb .bgi img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity 1.2s var(--ease),transform 2.4s var(--ease)}
+.nb .bgi img.on{opacity:.42;transform:scale(1)}
+.nb .bgi::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,28,22,.55),rgba(20,28,22,.25) 45%,rgba(20,28,22,.7))}
+.nb .wrap{position:relative;z-index:2;width:100%;flex:1;display:flex;flex-direction:column;padding-block:var(--sec) clamp(36px,4vw,64px)}
+.nb .label{color:var(--spring)}
+.nb .lead{color:#dfe3d6}
+.nb p{color:#cfd5c4}
+.nl{list-style:none;margin:clamp(48px,6vw,96px) 0;padding:0;display:flex;flex-direction:column;gap:4px}
+.nl button{display:flex;align-items:baseline;gap:clamp(12px,1.4vw,22px);background:none;border:0;padding:0;cursor:pointer;color:rgba(243,239,230,.3);font-family:var(--disp);font-size:clamp(38px,5.4vw,96px);line-height:1.08;text-align:left;transition:color .6s var(--ease),transform .9s var(--ease)}
+.nl button small{font-family:var(--text);font-size:clamp(14px,1.1vw,18px);font-weight:500;transform:translateY(-.2em)}
+.nl button .b{opacity:0;transition:opacity .5s}
+.nl button.on{color:var(--ivory)}
+.nl button.on .b{opacity:.5}
+.nl li:nth-child(1){padding-left:8%}.nl li:nth-child(2){padding-left:22%}.nl li:nth-child(3){padding-left:4%}.nl li:nth-child(4){padding-left:16%}
+.nb .bot{margin-top:auto;align-items:end}
+.nb .bot .cur{display:flex;flex-direction:column;gap:8px;max-width:420px}
+.nb .bot .cur small{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--spring)}
+.nb .bot .r{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.nb .bot .r p{max-width:40ch;font-size:15px}
+.ag .a1{align-items:start}
+.ag h2.two{font-size:clamp(40px,4.6vw,80px);line-height:1.02}
+.ag h2.two .m{color:#9aa58f}
+.ag .sub{display:block;margin-top:22px;font-family:var(--disp);font-size:clamp(20px,1.8vw,26px);color:var(--fern)}
+.ag .a2{margin-top:clamp(64px,8vw,140px);align-items:end}
+.ag .ths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ag .th{aspect-ratio:4/3;position:relative}
+.ag .th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.ag .th:hover img{transform:scale(1.06)}
+.ag .ths small{grid-column:1/-1;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--sage)}
+.ag .tx{display:flex;flex-direction:column;gap:18px;align-items:flex-start;max-width:56ch}
+.ag .tx p{color:#3a463d}
+.qa{border-bottom:1px solid var(--line)}
+.qa:first-child{border-top:1px solid var(--line)}
+.qh{display:flex;justify-content:space-between;align-items:center;gap:20px;width:100%;background:none;border:0;padding:24px 0;cursor:pointer;text-align:left;font-family:var(--disp);font-size:clamp(20px,1.8vw,27px);line-height:1.15;color:var(--forest)}
+.qh i{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);position:relative;transition:background .6s var(--ease),color .6s}
+.qh i::before,.qh i::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:1.5px;background:currentColor;transform:translate(-50%,-50%)}
+.qh i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .8s var(--ease)}
+.qa.open .qh i{background:var(--forest);color:var(--ivory)}
+.qa.open .qh i::after{transform:translate(-50%,-50%) rotate(0)}
+.qb{display:grid;grid-template-rows:0fr;transition:grid-template-rows .9s var(--io)}
+.qa.open .qb{grid-template-rows:1fr}
+.qb>div{overflow:hidden}
+.qb p{padding:0 56px 26px 0;color:#3a463d;opacity:0;transform:translateY(-8px);transition:opacity .5s,transform .8s var(--ease)}
+.qa.open .qb p{opacity:1;transform:none;transition-delay:.25s}
+.hv{padding-top:96px;padding-bottom:clamp(28px,3vw,48px)}
+.hv-ph{position:relative;height:calc(100svh - 96px - clamp(200px,17vw,300px) - clamp(28px,3vw,48px));min-height:320px}
+.hv-ph img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;transform:translateY(var(--py,0)) scale(var(--sc,1));transition:transform 2.4s var(--ease)}
+.js .hv-ph{clip-path:inset(0 0 100% 0 round var(--r));transition:clip-path 1.8s var(--io)}
+.js .hv-ph img{--sc:1.2}
+.js .loaded .hv-ph{clip-path:inset(0 0 0 0 round var(--r))}
+.js .loaded .hv-ph img{--sc:1}
+.hv-b{margin-top:clamp(22px,2.2vw,36px);align-items:start;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)}
+.hv-b .copy{display:flex;flex-direction:column;gap:14px}
+.hv-b h1{font-size:clamp(36px,4.9vw,94px);line-height:.98}
+.hv-b .side{display:flex;flex-direction:column;gap:24px;align-items:flex-start;padding-top:clamp(34px,3vw,52px)}
+.hv-b .side p{max-width:62ch;font-size:clamp(15px,.95vw,18px);line-height:1.5}
+.blinks{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.blink{font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;display:inline-flex;gap:6px}
+.blink::before{content:"["}.blink::after{content:"]"}
+.blink span{position:relative}
+.blink span::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .6s var(--ease)}
+.blink:hover span::after{transform:scaleX(1);transform-origin:left}
+.js .hv-b .copy>*,.js .hv-b .side>*{opacity:0;transform:translateY(28px);transition:opacity 1.4s var(--ease),transform 1.6s var(--ease)}
+.js .loaded .hv-b .copy>*,.js .loaded .hv-b .side>*{opacity:1;transform:none;transition-delay:.6s}
+@media(max-width:900px){.intro .ib .nums{order:2}.in2{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.nl li{padding-left:0!important}.nb .bot .r{justify-content:flex-start}}
+@media(max-width:600px){.nl button{font-size:30px}.nums b{font-size:52px}.in2{grid-template-columns:minmax(0,1fr)}.ag .h{display:none}.hv-ph{height:46vh;min-height:280px}.qb p{padding-right:0}}
+.js .rv{opacity:0;transform:translateY(32px);transition:opacity 1.4s var(--ease),transform 1.7s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.14s}
+.js .rv.d2{transition-delay:.28s}
+.js .rv.d3{transition-delay:.42s}
+.js .ph.rv{opacity:1;transform:none;clip-path:inset(100% 0 0 0);transition:clip-path 1.8s var(--io)}
+.js .ph.rv.in{clip-path:inset(0 0 0 0)}
+.js .ph.gr.rv,.js .ph.gr.rv.in{clip-path:url(#gR)}
+.js .ph.gr.rv{opacity:0;transform:translateY(60px);transition:opacity 1.5s var(--ease),transform 1.8s var(--ease)}
+.js .ph.gr.rv.in{opacity:1;transform:none}
+:lang(ka) h1{font-size:clamp(30px,3.6vw,64px);line-height:1.1;white-space:pre-line}
+:lang(ka) h2{line-height:1.12}
+:lang(ka) .stmt{line-height:1.32}
+:lang(ka) .nav{gap:18px}
+:lang(ka) .nav a{font-size:14px}
+@media(max-width:1360px){:lang(ka) .hd .btn{display:none}}
+@media(max-width:1100px){.nav,.hd .btn{display:none}.hd .langs{margin-left:auto}.burger{display:grid}}
+@media(max-width:900px){.split{grid-template-columns:minmax(0,1fr)}.c2{grid-column:auto}.hero{align-items:start;padding-top:108px}.wins{height:min(64vw,540px)}.xp{height:auto;flex-direction:column}.xp .p{flex:none;height:110px;transition:height 1.1s var(--io)}.xp .p.on{height:380px;flex:none}.vp .two{grid-template-columns:minmax(0,1fr)}.ft .cols{grid-template-columns:repeat(2,minmax(0,1fr))}.panel{height:auto}.rs .stage{order:-1}}
+@media(max-width:600px){.hd .row{height:66px;gap:12px}.hd .logo{width:148px}.hd .langs button{min-width:34px;height:32px;font-size:12px}.hero{padding-top:92px;gap:28px}.wins{height:80vw}.ctas .btn{flex:1 1 100%;justify-content:center}.places{border-top:0;display:flex;flex-direction:column;gap:12px}.places li{border-bottom:0}.places a{display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:6px;height:236px;padding:22px;border-radius:var(--r);overflow:hidden;isolation:isolate;color:var(--ivory)}.places .th{display:block;position:absolute;inset:0;z-index:-1}.places .th img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}.places .th::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(16,24,18,.82),rgba(16,24,18,.1) 65%)}.places h3{font-size:30px}.places a:hover h3{transform:none}.places p{font-size:14px;padding-right:0;color:#e3e7d8;max-width:30ch}.places .ic{display:grid;top:18px;right:18px;margin:0;border-color:rgba(243,239,230,.45);color:var(--ivory);background:rgba(16,24,18,.25);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}.places .ic svg{transform:rotate(-45deg)}.neigh .top{margin-bottom:32px}.stage{aspect-ratio:4/4.4}.pair{height:110vw}.pts{grid-template-columns:minmax(0,1fr)}.fm{grid-template-columns:minmax(0,1fr);gap:26px}.fm::before{display:none}.ft .cols{grid-template-columns:minmax(0,1fr)}.scale{height:200vh}.scale .im{clip-path:inset(calc(var(--k,1)*22%) calc(var(--k,1)*14%) calc(var(--k,1)*22%) calc(var(--k,1)*14%) round calc(var(--k,1)*18px))}.hb-in .side .btn{flex:1 1 100%;justify-content:center}.hb-in .ctas{width:100%}.wa{width:54px;height:54px}.xp .p.on{height:340px}}
+@media(max-width:600px){.hb-bg::after{background:linear-gradient(to top,rgba(16,24,18,.88) 0%,rgba(16,24,18,.6) 55%,rgba(16,24,18,.4) 100%)}}
+@media(max-width:900px){.views{height:auto!important}.views{height:812px!important;max-height:none}.vs{position:static;height:100%;display:flex;flex-direction:column;align-items:stretch;padding-block:64px 40px;box-sizing:border-box}.vt{flex:1;min-height:0;align-items:stretch}.vi{height:100%}.vt{transform:none!important;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}.vt .vh{display:none}.vhm{display:flex!important;flex-direction:column;gap:14px;margin:0 0 28px;width:100%;max-width:none}.vt{scroll-padding-inline:var(--pad)}.vi{width:84vw;scroll-snap-align:start}.vi .ph,.vi:nth-child(odd) .ph{height:auto;aspect-ratio:auto;flex:1;min-height:0}.vi .ph img{transform:none!important}.vision .l{position:static}.row4{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}}
+@media(max-width:600px){.row4{grid-template-columns:minmax(0,1fr)}.pills li{padding:12px 18px}.faq details p{padding-right:0}.zl small{display:none}}
+@media(max-width:900px){:root{--sec:96px}}
+@media(max-width:600px){:root{--sec:72px}}
+@media(max-width:900px){.map{height:812px;display:flex;flex-direction:column}.mwrap{position:relative;inset:auto;flex:1;min-height:0;height:auto}.mcard{display:none}.zp{position:absolute;left:0;right:0;bottom:20px;min-width:0;margin-top:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0;border-radius:0}.zp>span{display:none}.zp ul{flex-direction:row;overflow-x:auto;gap:12px;margin:0;padding:0 var(--pad) 4px;scroll-snap-type:x mandatory;scrollbar-width:none}.zp li{flex:none;width:72vw;scroll-snap-align:center}.zp button{width:100%;height:180px;display:flex;flex-direction:column;justify-content:space-between;white-space:normal;padding:20px 22px;border-radius:var(--r);background:rgba(34,38,35,.94);font-size:15px;font-weight:600;color:rgba(255,255,255,.6)}.zp button.on{background:#2b312d;color:#fff}.zp em{display:block;font-style:normal;font-weight:300;font-size:56px;line-height:1;color:#fff}.mn{position:static;padding:18px var(--pad) 28px;max-width:none}}
+@media(max-width:600px){.vp{min-height:0;height:812px;background:#1f2b23}.vp>img{inset:-15% 0;height:130%}.vp .wrap{padding-block:56px 20px}.vp .lab{display:none}.vp .lead2{margin:0;font-size:44px;line-height:.95;text-align:left}.vp .two{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(-1*var(--pad));padding-inline:var(--pad);scroll-padding-inline:var(--pad);scrollbar-width:none}.vp .two::-webkit-scrollbar{display:none}.vp .v{flex:none;width:84vw;scroll-snap-align:start;padding:22px;gap:10px;background:rgba(20,28,22,.55)}.vp .vk{display:block}.vp .v h3{white-space:pre-line;font-size:26px}.vp .v p{font-size:14px;line-height:1.5}.js .vp .v.rv{opacity:1;transform:none}.intro .ib{row-gap:56px}.in2{gap:28px}.in2 .tx{gap:20px}.nums{row-gap:36px}.ft .cols{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:36px}.ft .cols>div:last-child{grid-column:1/-1}.pts{gap:0}.pts div{padding-block:22px;border-top:1px solid var(--line)}.pts div:first-child{border-top:0;padding-top:0}.pts h3{white-space:normal}.vp .v h3{white-space:normal}}
+.vt{touch-action:pan-x pan-y;cursor:grab}
+@media(max-width:900px){.loc .pano{height:812px}}
+@media(hover:none){.float{display:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;transition-delay:0s!important}.marq .tr{animation:none}.scale{height:auto}.scale .stk{position:relative}.scale .im{--k:0!important}.scale .cap{--o:1!important}}
+</style>
+<style>.pre{display:none!important}.stmt .w{opacity:1!important}.scale{height:auto!important}.scale .stk{position:relative!important}.scale .im{--k:0!important;position:relative!important;height:100svh}.scale .cap{--o:1!important;position:absolute;inset:0;display:grid;place-items:center}@media(min-width:901px){.views{height:auto!important}.vs{position:static!important;height:auto!important;padding-block:var(--sec)}.vt{transform:none!important;flex-wrap:wrap;row-gap:40px}}.hd{position:absolute!important;transform:none!important}.wa{position:absolute!important}.float{display:none!important}@media(min-width:901px){.vt .vh{width:100%}.vi{width:calc(50% - var(--gut)/2)!important}.vi .ph{height:520px!important}}</style></head>
+<body class="">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<clipPath id="gL" clipPathUnits="objectBoundingBox"><path d="M0,.03 Q0,0 .04,.007 L.95,.105 Q.99,.11 1,.135 L1,.982 Q1,1 .965,1 L.035,1 Q0,1 0,.982 Z"/></clipPath>
+<clipPath id="gR" clipPathUnits="objectBoundingBox"><path d="M1,.03 Q1,0 .96,.007 L.05,.105 Q.01,.11 0,.135 L0,.982 Q0,1 .035,1 L.965,1 Q1,1 1,.982 Z"/></clipPath>
+<clipPath id="gLs" clipPathUnits="objectBoundingBox"><path d="M0,.05 Q0,0 .04,.012 L.95,.17 Q.99,.178 1,.215 L1,.972 Q1,1 .965,1 L.035,1 Q0,1 0,.972 Z"/></clipPath>
+<clipPath id="gRs" clipPathUnits="objectBoundingBox"><path d="M1,.05 Q1,0 .96,.012 L.05,.17 Q.01,.178 0,.215 L0,.972 Q0,1 .035,1 L.965,1 Q1,1 1,.972 Z"/></clipPath>
+<symbol id="mini" viewBox="0 0 66 40"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M2 18 L13 24 V38 H2 Z"/><path d="M18 3 L30 12 V38 H18 Z"/><path d="M48 3 L36 12 V38 H48 Z"/><path d="M64 18 L53 24 V38 H64 Z"/></g></symbol>
+<symbol id="thin" viewBox="0 0 66 40"><g fill="none" stroke="currentColor" stroke-width=".25" stroke-linejoin="round"><path d="M2 18 L13 24 V38 H2 Z"/><path d="M18 3 L30 12 V38 H18 Z"/><path d="M48 3 L36 12 V38 H48 Z"/><path d="M64 18 L53 24 V38 H64 Z"/></g></symbol>
+<symbol id="arr" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs>
+</svg>
+
+<div class="pre" id="pre" aria-hidden="true">
+<div class="mk"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="1455 845 225 140" aria-hidden="true">
+<defs>
+<filter id="lm-filter-remove-color" x="0%" y="0%" width="100%" height="100%">
+<feColorMatrix color-interpolation-filters="sRGB" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"></feColorMatrix>
+</filter>
+<g>
+<g id="lm-glyph-0-0">
+</g>
+<g id="lm-glyph-0-1">
+</g>
+<g id="lm-glyph-0-2">
+</g>
+<g id="lm-glyph-0-3">
+</g>
+<g id="lm-glyph-0-4">
+</g>
+<g id="lm-glyph-0-5">
+</g>
+<g id="lm-glyph-0-6">
+</g>
+<g id="lm-glyph-0-7">
+</g>
+<g id="lm-glyph-0-8">
+</g>
+<g id="lm-glyph-0-9">
+</g>
+<g id="lm-glyph-1-0">
+</g>
+<g id="lm-glyph-1-1">
+</g>
+<g id="lm-glyph-1-2">
+</g>
+<g id="lm-glyph-1-3">
+</g>
+<g id="lm-glyph-1-4">
+</g>
+<g id="lm-glyph-1-5">
+</g>
+<g id="lm-glyph-1-6">
+</g>
+<g id="lm-glyph-1-7">
+</g>
+<g id="lm-glyph-1-8">
+</g>
+<g id="lm-glyph-1-9">
+</g>
+<g id="lm-glyph-1-10">
+</g>
+<g id="lm-glyph-1-11">
+</g>
+<g id="lm-glyph-1-12">
+</g>
+<g id="lm-glyph-1-13">
+</g>
+<g id="lm-glyph-1-14">
+</g>
+<g id="lm-glyph-1-15">
+</g>
+<g id="lm-glyph-1-16">
+</g>
+<g id="lm-glyph-1-17">
+</g>
+<g id="lm-glyph-1-18">
+</g>
+<g id="lm-glyph-1-19">
+</g>
+<g id="lm-glyph-1-20">
+</g>
+<g id="lm-glyph-1-21">
+</g>
+<g id="lm-glyph-1-22">
+</g>
+<g id="lm-glyph-1-23">
+</g>
+<g id="lm-glyph-1-24">
+</g>
+<g id="lm-glyph-1-25">
+</g>
+<g id="lm-glyph-1-26">
+</g>
+<g id="lm-glyph-1-27">
+</g>
+<g id="lm-glyph-1-28">
+</g>
+<g id="lm-glyph-1-29">
+</g>
+<g id="lm-glyph-1-30">
+</g>
+<g id="lm-glyph-1-31">
+</g>
+<g id="lm-glyph-1-32">
+</g>
+<g id="lm-glyph-1-33">
+</g>
+<g id="lm-glyph-2-0">
+</g>
+<g id="lm-glyph-2-1">
+</g>
+<g id="lm-glyph-2-2">
+</g>
+<g id="lm-glyph-2-3">
+</g>
+<g id="lm-glyph-2-4">
+</g>
+<g id="lm-glyph-2-5">
+</g>
+<g id="lm-glyph-2-6">
+</g>
+<g id="lm-glyph-2-7">
+</g>
+<g id="lm-glyph-2-8">
+</g>
+<g id="lm-glyph-2-9">
+</g>
+<g id="lm-glyph-2-10">
+</g>
+<g id="lm-glyph-2-11">
+</g>
+<g id="lm-glyph-2-12">
+</g>
+<g id="lm-glyph-2-13">
+</g>
+<g id="lm-glyph-2-14">
+</g>
+<g id="lm-glyph-2-15">
+</g>
+<g id="lm-glyph-2-16">
+</g>
+<g id="lm-glyph-2-17">
+</g>
+<g id="lm-glyph-2-18">
+</g>
+<g id="lm-glyph-2-19">
+</g>
+<g id="lm-glyph-2-20">
+</g>
+<g id="lm-glyph-2-21">
+</g>
+<g id="lm-glyph-3-0">
+</g>
+<g id="lm-glyph-3-1">
+</g>
+<g id="lm-glyph-3-2">
+</g>
+<g id="lm-glyph-3-3">
+</g>
+<g id="lm-glyph-3-4">
+</g>
+<g id="lm-glyph-3-5">
+</g>
+<g id="lm-glyph-3-6">
+</g>
+<g id="lm-glyph-3-7">
+</g>
+<g id="lm-glyph-3-8">
+</g>
+<g id="lm-glyph-3-9">
+</g>
+<g id="lm-glyph-3-10">
+</g>
+<g id="lm-glyph-3-11">
+</g>
+<g id="lm-glyph-3-12">
+</g>
+<g id="lm-glyph-3-13">
+</g>
+<g id="lm-glyph-3-14">
+</g>
+<g id="lm-glyph-3-15">
+</g>
+<g id="lm-glyph-3-16">
+</g>
+<g id="lm-glyph-3-17">
+</g>
+<g id="lm-glyph-4-0">
+</g>
+<g id="lm-glyph-4-1">
+</g>
+<g id="lm-glyph-4-2">
+</g>
+<g id="lm-glyph-4-3">
+</g>
+<g id="lm-glyph-4-4">
+</g>
+<g id="lm-glyph-4-5">
+</g>
+<g id="lm-glyph-4-6">
+</g>
+<g id="lm-glyph-4-7">
+</g>
+<g id="lm-glyph-4-8">
+</g>
+<g id="lm-glyph-4-9">
+</g>
+<g id="lm-glyph-4-10">
+</g>
+<g id="lm-glyph-4-11">
+</g>
+<g id="lm-glyph-4-12">
+</g>
+<g id="lm-glyph-4-13">
+</g>
+<g id="lm-glyph-4-14">
+</g>
+<g id="lm-glyph-4-15">
+</g>
+<g id="lm-glyph-4-16">
+</g>
+<g id="lm-glyph-4-17">
+</g>
+<g id="lm-glyph-4-18">
+</g>
+<g id="lm-glyph-4-19">
+</g>
+</g>
+<clipPath id="lm-clip-0">
+<rect x="0" y="0" width="1920" height="1280"></rect>
+</clipPath>
+<g id="lm-source-7" clip-path="url(#lm-clip-0)">
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1466 858 L 1672 858 L 1672 977 L 1466 977 Z M 1466 858 "></path>
+</g>
+<mask id="lm-mask-0">
+<g filter="url(#lm-filter-remove-color)">
+<use xlink:href="#lm-source-7"></use>
+</g>
+</mask>
+<clipPath id="lm-clip-1">
+<rect x="0" y="0" width="1920" height="1280"></rect>
+</clipPath>
+<g id="lm-source-6" clip-path="url(#lm-clip-1)">
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1508.484375 922.996094 L 1475.855469 894.988281 C 1473.941406 893.363281 1471.699219 892.957031 1469.710938 893.875 C 1467.421875 894.925781 1466 897.503906 1466 900.59375 L 1466 969.816406 C 1466 973.777344 1469.046875 977 1472.789062 977 L 1504.226562 977 C 1507.96875 977 1511.015625 973.777344 1511.015625 969.816406 L 1511.015625 929.773438 C 1511.015625 927.851562 1510.230469 924.476562 1508.484375 922.996094 Z M 1508.058594 969.816406 C 1508.058594 972.148438 1506.339844 974.050781 1504.226562 974.050781 L 1472.789062 974.050781 C 1470.679688 974.050781 1468.960938 972.148438 1468.960938 969.816406 L 1468.960938 900.59375 C 1468.960938 898.695312 1469.742188 897.109375 1470.949219 896.550781 C 1471.242188 896.417969 1471.550781 896.351562 1471.867188 896.351562 C 1472.535156 896.351562 1473.246094 896.648438 1473.929688 897.230469 L 1506.558594 925.234375 C 1507.3125 925.878906 1508.058594 928.125 1508.058594 929.773438 Z M 1508.058594 969.816406 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1562.140625 887.601562 L 1529.515625 859.59375 C 1527.601562 857.96875 1525.359375 857.566406 1523.371094 858.480469 C 1521.082031 859.535156 1519.660156 862.109375 1519.660156 865.199219 L 1519.660156 969.816406 C 1519.660156 973.777344 1522.707031 977 1526.449219 977 L 1557.886719 977 C 1561.632812 977 1564.679688 973.777344 1564.679688 969.816406 L 1564.679688 894.378906 C 1564.679688 892.457031 1563.890625 889.082031 1562.140625 887.601562 Z M 1561.71875 969.816406 C 1561.71875 972.148438 1560 974.050781 1557.886719 974.050781 L 1526.449219 974.050781 C 1524.339844 974.050781 1522.621094 972.148438 1522.621094 969.816406 L 1522.621094 865.199219 C 1522.621094 863.300781 1523.402344 861.714844 1524.613281 861.160156 C 1524.90625 861.023438 1525.210938 860.957031 1525.527344 860.957031 C 1526.199219 860.957031 1526.90625 861.253906 1527.589844 861.835938 L 1560.21875 889.839844 C 1560.972656 890.484375 1561.71875 892.730469 1561.71875 894.378906 Z M 1561.71875 969.816406 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1668.289062 893.875 C 1666.300781 892.957031 1664.058594 893.363281 1662.136719 894.996094 L 1629.523438 922.988281 C 1627.769531 924.476562 1626.984375 927.851562 1626.984375 929.773438 L 1626.984375 969.816406 C 1626.984375 973.777344 1630.03125 977 1633.773438 977 L 1665.207031 977 C 1668.953125 977 1672 973.777344 1672 969.816406 L 1672 900.59375 C 1672 897.503906 1670.578125 894.925781 1668.289062 893.875 Z M 1669.039062 969.816406 C 1669.039062 972.148438 1667.320312 974.050781 1665.207031 974.050781 L 1633.773438 974.050781 C 1631.660156 974.050781 1629.941406 972.148438 1629.941406 969.816406 L 1629.941406 929.773438 C 1629.941406 928.125 1630.683594 925.878906 1631.449219 925.230469 L 1664.0625 897.234375 C 1664.753906 896.648438 1665.464844 896.351562 1666.132812 896.351562 C 1666.449219 896.351562 1666.757812 896.417969 1667.050781 896.550781 C 1668.257812 897.109375 1669.039062 898.695312 1669.039062 900.59375 Z M 1669.039062 969.816406 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1614.628906 858.480469 C 1612.640625 857.5625 1610.398438 857.96875 1608.476562 859.601562 L 1575.863281 887.59375 C 1574.109375 889.082031 1573.320312 892.457031 1573.320312 894.378906 L 1573.320312 969.816406 C 1573.320312 973.777344 1576.367188 977 1580.113281 977 L 1611.550781 977 C 1615.292969 977 1618.339844 973.777344 1618.339844 969.816406 L 1618.339844 865.199219 C 1618.339844 862.109375 1616.917969 859.535156 1614.628906 858.480469 Z M 1615.378906 969.816406 C 1615.378906 972.148438 1613.660156 974.050781 1611.550781 974.050781 L 1580.113281 974.050781 C 1578 974.050781 1576.28125 972.148438 1576.28125 969.816406 L 1576.28125 894.378906 C 1576.28125 892.730469 1577.023438 890.484375 1577.789062 889.835938 L 1610.402344 861.839844 C 1611.09375 861.257812 1611.800781 860.957031 1612.472656 860.957031 C 1612.789062 860.957031 1613.097656 861.023438 1613.386719 861.15625 C 1614.597656 861.714844 1615.378906 863.300781 1615.378906 865.199219 Z M 1615.378906 969.816406 "></path>
+</g>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</defs>
+<rect x="-192" y="-128" width="2304" height="1536" fill="none" fill-opacity="1"></rect>
+
+
+
+
+
+
+<path fill-rule="nonzero" fill="none" fill-opacity="1" d="M 559 160 L 1840.386719 160 L 1840.386719 1120 L 559 1120 Z M 559 160 "></path>
+<path fill-rule="nonzero" fill="none" fill-opacity="1" d="M 559 160 L 1840.386719 160 L 1840.386719 1120 L 559 1120 Z M 559 160 "></path>
+<g mask="url(#lm-mask-0)">
+<use xlink:href="#lm-source-6"></use>
+</g>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</svg></div>
+<div class="tg">Krtsanisi, Tbilisi</div>
+<div class="ct" id="ct">0</div>
+<div class="ln" id="pln"></div>
+</div>
+
+<header class="hd" id="hd">
+<div class="row">
+<a class="logo" href="#top" aria-label="King’s Garden Collection"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="755 365 480 80" aria-hidden="true">
+<defs>
+<filter id="lh-filter-remove-color" x="0%" y="0%" width="100%" height="100%">
+<feColorMatrix color-interpolation-filters="sRGB" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"></feColorMatrix>
+</filter>
+<g>
+<g id="lh-glyph-0-0">
+</g>
+<g id="lh-glyph-0-1">
+</g>
+<g id="lh-glyph-0-2">
+</g>
+<g id="lh-glyph-0-3">
+</g>
+<g id="lh-glyph-0-4">
+</g>
+<g id="lh-glyph-0-5">
+</g>
+<g id="lh-glyph-0-6">
+</g>
+<g id="lh-glyph-0-7">
+</g>
+<g id="lh-glyph-0-8">
+</g>
+<g id="lh-glyph-0-9">
+</g>
+<g id="lh-glyph-1-0">
+</g>
+<g id="lh-glyph-1-1">
+</g>
+<g id="lh-glyph-1-2">
+</g>
+<g id="lh-glyph-1-3">
+</g>
+<g id="lh-glyph-1-4">
+</g>
+<g id="lh-glyph-1-5">
+</g>
+<g id="lh-glyph-1-6">
+</g>
+<g id="lh-glyph-1-7">
+</g>
+<g id="lh-glyph-1-8">
+</g>
+<g id="lh-glyph-1-9">
+</g>
+<g id="lh-glyph-1-10">
+</g>
+<g id="lh-glyph-1-11">
+</g>
+<g id="lh-glyph-1-12">
+</g>
+<g id="lh-glyph-1-13">
+</g>
+<g id="lh-glyph-1-14">
+</g>
+<g id="lh-glyph-1-15">
+</g>
+<g id="lh-glyph-1-16">
+</g>
+<g id="lh-glyph-1-17">
+</g>
+<g id="lh-glyph-1-18">
+</g>
+<g id="lh-glyph-1-19">
+</g>
+<g id="lh-glyph-1-20">
+</g>
+<g id="lh-glyph-1-21">
+</g>
+<g id="lh-glyph-1-22">
+</g>
+<g id="lh-glyph-1-23">
+</g>
+<g id="lh-glyph-1-24">
+</g>
+<g id="lh-glyph-1-25">
+</g>
+<g id="lh-glyph-1-26">
+</g>
+<g id="lh-glyph-1-27">
+</g>
+<g id="lh-glyph-1-28">
+</g>
+<g id="lh-glyph-1-29">
+</g>
+<g id="lh-glyph-1-30">
+</g>
+<g id="lh-glyph-1-31">
+</g>
+<g id="lh-glyph-1-32">
+</g>
+<g id="lh-glyph-1-33">
+</g>
+<g id="lh-glyph-2-0">
+</g>
+<g id="lh-glyph-2-1">
+</g>
+<g id="lh-glyph-2-2">
+</g>
+<g id="lh-glyph-2-3">
+</g>
+<g id="lh-glyph-2-4">
+</g>
+<g id="lh-glyph-2-5">
+</g>
+<g id="lh-glyph-2-6">
+</g>
+<g id="lh-glyph-2-7">
+</g>
+<g id="lh-glyph-2-8">
+</g>
+<g id="lh-glyph-2-9">
+</g>
+<g id="lh-glyph-2-10">
+</g>
+<g id="lh-glyph-2-11">
+</g>
+<g id="lh-glyph-2-12">
+</g>
+<g id="lh-glyph-2-13">
+</g>
+<g id="lh-glyph-2-14">
+</g>
+<g id="lh-glyph-2-15">
+</g>
+<g id="lh-glyph-2-16">
+</g>
+<g id="lh-glyph-2-17">
+</g>
+<g id="lh-glyph-2-18">
+</g>
+<g id="lh-glyph-2-19">
+</g>
+<g id="lh-glyph-2-20">
+</g>
+<g id="lh-glyph-2-21">
+</g>
+<g id="lh-glyph-3-0">
+</g>
+<g id="lh-glyph-3-1">
+</g>
+<g id="lh-glyph-3-2">
+</g>
+<g id="lh-glyph-3-3">
+</g>
+<g id="lh-glyph-3-4">
+</g>
+<g id="lh-glyph-3-5">
+</g>
+<g id="lh-glyph-3-6">
+</g>
+<g id="lh-glyph-3-7">
+</g>
+<g id="lh-glyph-3-8">
+</g>
+<g id="lh-glyph-3-9">
+</g>
+<g id="lh-glyph-3-10">
+</g>
+<g id="lh-glyph-3-11">
+</g>
+<g id="lh-glyph-3-12">
+</g>
+<g id="lh-glyph-3-13">
+</g>
+<g id="lh-glyph-3-14">
+</g>
+<g id="lh-glyph-3-15">
+</g>
+<g id="lh-glyph-3-16">
+</g>
+<g id="lh-glyph-3-17">
+</g>
+<g id="lh-glyph-4-0">
+</g>
+<g id="lh-glyph-4-1">
+</g>
+<g id="lh-glyph-4-2">
+</g>
+<g id="lh-glyph-4-3">
+</g>
+<g id="lh-glyph-4-4">
+</g>
+<g id="lh-glyph-4-5">
+</g>
+<g id="lh-glyph-4-6">
+</g>
+<g id="lh-glyph-4-7">
+</g>
+<g id="lh-glyph-4-8">
+</g>
+<g id="lh-glyph-4-9">
+</g>
+<g id="lh-glyph-4-10">
+</g>
+<g id="lh-glyph-4-11">
+</g>
+<g id="lh-glyph-4-12">
+</g>
+<g id="lh-glyph-4-13">
+</g>
+<g id="lh-glyph-4-14">
+</g>
+<g id="lh-glyph-4-15">
+</g>
+<g id="lh-glyph-4-16">
+</g>
+<g id="lh-glyph-4-17">
+</g>
+<g id="lh-glyph-4-18">
+</g>
+<g id="lh-glyph-4-19">
+</g>
+</g>
+
+
+
+<clipPath id="lh-clip-1">
+<rect x="0" y="0" width="1920" height="1280"></rect>
+</clipPath>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<clipPath id="lh-clip-10">
+<rect x="0" y="0" width="1920" height="1280"></rect>
+</clipPath>
+<g id="lh-source-37" clip-path="url(#lh-clip-10)">
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 770 379 L 1219 379 L 1219 437 L 770 437 Z M 770 379 "></path>
+</g>
+<mask id="lh-mask-5">
+<g filter="url(#lh-filter-remove-color)">
+<use xlink:href="#lh-source-37"></use>
+</g>
+</mask>
+<clipPath id="lh-clip-11">
+<rect x="0" y="0" width="1920" height="1280"></rect>
+</clipPath>
+<g id="lh-source-36" clip-path="url(#lh-clip-11)">
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 790.75 410.679688 L 774.8125 397.027344 C 773.878906 396.234375 772.785156 396.039062 771.8125 396.484375 C 770.695312 396.996094 770 398.253906 770 399.761719 L 770 433.496094 C 770 435.425781 771.488281 437 773.316406 437 L 788.671875 437 C 790.5 437 791.988281 435.425781 791.988281 433.496094 L 791.988281 413.980469 C 791.988281 413.042969 791.601562 411.398438 790.75 410.679688 Z M 790.542969 433.496094 C 790.542969 434.636719 789.703125 435.5625 788.671875 435.5625 L 773.316406 435.5625 C 772.285156 435.5625 771.445312 434.636719 771.445312 433.496094 L 771.445312 399.761719 C 771.445312 398.835938 771.828125 398.0625 772.417969 397.789062 C 772.5625 397.722656 772.710938 397.691406 772.863281 397.691406 C 773.191406 397.691406 773.539062 397.835938 773.871094 398.121094 L 789.808594 411.769531 C 790.179688 412.082031 790.542969 413.175781 790.542969 413.980469 Z M 790.542969 433.496094 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 816.960938 393.425781 L 801.023438 379.777344 C 800.089844 378.984375 798.996094 378.789062 798.023438 379.234375 C 796.90625 379.746094 796.210938 381.003906 796.210938 382.507812 L 796.210938 433.496094 C 796.210938 435.425781 797.699219 437 799.527344 437 L 814.882812 437 C 816.710938 437 818.199219 435.425781 818.199219 433.496094 L 818.199219 396.730469 C 818.199219 395.792969 817.8125 394.148438 816.960938 393.425781 Z M 816.753906 433.496094 C 816.753906 434.636719 815.914062 435.5625 814.882812 435.5625 L 799.527344 435.5625 C 798.496094 435.5625 797.65625 434.636719 797.65625 433.496094 L 797.65625 382.507812 C 797.65625 381.585938 798.039062 380.808594 798.628906 380.539062 C 798.773438 380.472656 798.921875 380.441406 799.074219 380.441406 C 799.402344 380.441406 799.75 380.585938 800.082031 380.871094 L 816.019531 394.519531 C 816.390625 394.832031 816.753906 395.925781 816.753906 396.730469 Z M 816.753906 433.496094 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 868.808594 396.484375 C 867.835938 396.039062 866.742188 396.234375 865.804688 397.03125 L 849.871094 410.675781 C 849.019531 411.398438 848.628906 413.046875 848.628906 413.984375 L 848.628906 433.496094 C 848.628906 435.429688 850.117188 437 851.949219 437 L 867.300781 437 C 869.132812 437 870.621094 435.429688 870.621094 433.496094 L 870.621094 399.761719 C 870.621094 398.253906 869.925781 396.996094 868.808594 396.484375 Z M 869.175781 433.496094 C 869.175781 434.636719 868.332031 435.5625 867.300781 435.5625 L 851.949219 435.5625 C 850.914062 435.5625 850.078125 434.636719 850.078125 433.496094 L 850.078125 413.984375 C 850.078125 413.179688 850.441406 412.082031 850.8125 411.769531 L 866.742188 398.121094 C 867.082031 397.839844 867.425781 397.691406 867.753906 397.691406 C 867.910156 397.691406 868.058594 397.722656 868.203125 397.789062 C 868.792969 398.0625 869.175781 398.835938 869.175781 399.761719 Z M 869.175781 433.496094 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 842.597656 379.234375 C 841.625 378.789062 840.53125 378.984375 839.59375 379.78125 L 823.664062 393.425781 C 822.808594 394.148438 822.421875 395.792969 822.421875 396.730469 L 822.421875 433.496094 C 822.421875 435.425781 823.910156 437 825.738281 437 L 841.09375 437 C 842.921875 437 844.410156 435.425781 844.410156 433.496094 L 844.410156 382.507812 C 844.410156 381.003906 843.714844 379.746094 842.597656 379.234375 Z M 842.964844 433.496094 C 842.964844 434.636719 842.125 435.5625 841.09375 435.5625 L 825.738281 435.5625 C 824.707031 435.5625 823.867188 434.636719 823.867188 433.496094 L 823.867188 396.730469 C 823.867188 395.925781 824.230469 394.832031 824.601562 394.515625 L 840.53125 380.871094 C 840.871094 380.585938 841.214844 380.441406 841.546875 380.441406 C 841.699219 380.441406 841.847656 380.472656 841.992188 380.539062 C 842.582031 380.808594 842.964844 381.585938 842.964844 382.507812 Z M 842.964844 433.496094 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 907.253906 425.445312 C 907.253906 422.523438 909.59375 420.078125 912.535156 420.078125 C 914.136719 420.078125 915.523438 420.75 916.445312 421.832031 L 915.449219 422.671875 C 914.753906 421.863281 913.699219 421.335938 912.535156 421.335938 C 910.347656 421.335938 908.628906 423.226562 908.628906 425.445312 C 908.628906 427.664062 910.347656 429.511719 912.535156 429.511719 C 913.699219 429.511719 914.753906 428.988281 915.449219 428.175781 L 916.445312 429.015625 C 915.523438 430.097656 914.136719 430.773438 912.535156 430.773438 C 909.59375 430.773438 907.253906 428.375 907.253906 425.445312 Z M 907.253906 425.445312 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 927.351562 425.445312 C 927.351562 422.503906 929.644531 420.078125 932.601562 420.078125 C 935.558594 420.078125 937.882812 422.503906 937.882812 425.445312 C 937.882812 428.386719 935.574219 430.773438 932.601562 430.773438 C 929.628906 430.773438 927.351562 428.375 927.351562 425.445312 Z M 936.511719 425.445312 C 936.511719 423.226562 934.820312 421.335938 932.601562 421.335938 C 930.382812 421.335938 928.722656 423.226562 928.722656 425.445312 C 928.722656 427.664062 930.414062 429.511719 932.601562 429.511719 C 934.792969 429.511719 936.511719 427.652344 936.511719 425.445312 Z M 936.511719 425.445312 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 951.292969 429.332031 L 955.550781 429.332031 L 955.550781 430.59375 L 949.921875 430.59375 L 949.921875 420.253906 L 951.292969 420.253906 Z M 951.292969 429.332031 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 968.539062 429.332031 L 972.792969 429.332031 L 972.792969 430.59375 L 967.164062 430.59375 L 967.164062 420.253906 L 968.539062 420.253906 Z M 968.539062 429.332031 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 985.765625 429.332031 L 990.6875 429.332031 L 990.6875 430.59375 L 984.410156 430.59375 L 984.410156 420.253906 L 990.535156 420.253906 L 990.535156 421.515625 L 985.765625 421.515625 L 985.765625 424.875 L 989.933594 424.875 L 989.933594 426.152344 L 985.765625 426.152344 Z M 985.765625 429.332031 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1001.773438 425.445312 C 1001.773438 422.523438 1004.113281 420.078125 1007.054688 420.078125 C 1008.65625 420.078125 1010.042969 420.75 1010.964844 421.832031 L 1009.96875 422.671875 C 1009.273438 421.863281 1008.21875 421.335938 1007.054688 421.335938 C 1004.867188 421.335938 1003.148438 423.226562 1003.148438 425.445312 C 1003.148438 427.664062 1004.867188 429.511719 1007.054688 429.511719 C 1008.21875 429.511719 1009.273438 428.988281 1009.96875 428.175781 L 1010.964844 429.015625 C 1010.042969 430.097656 1008.65625 430.773438 1007.054688 430.773438 C 1004.113281 430.773438 1001.773438 428.375 1001.773438 425.445312 Z M 1001.773438 425.445312 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1029.308594 420.253906 L 1029.308594 421.515625 L 1026.140625 421.515625 L 1026.140625 430.59375 L 1024.765625 430.59375 L 1024.765625 421.515625 L 1021.597656 421.515625 L 1021.597656 420.253906 Z M 1029.308594 420.253906 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1040.910156 430.59375 L 1040.910156 420.253906 L 1042.285156 420.253906 L 1042.285156 430.59375 Z M 1040.910156 430.59375 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1054.292969 425.445312 C 1054.292969 422.503906 1056.585938 420.078125 1059.542969 420.078125 C 1062.496094 420.078125 1064.824219 422.503906 1064.824219 425.445312 C 1064.824219 428.386719 1062.515625 430.773438 1059.542969 430.773438 C 1056.566406 430.773438 1054.292969 428.375 1054.292969 425.445312 Z M 1063.449219 425.445312 C 1063.449219 423.226562 1061.761719 421.335938 1059.542969 421.335938 C 1057.320312 421.335938 1055.664062 423.226562 1055.664062 425.445312 C 1055.664062 427.664062 1057.355469 429.511719 1059.542969 429.511719 C 1061.730469 429.511719 1063.449219 427.652344 1063.449219 425.445312 Z M 1063.449219 425.445312 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1082.988281 420.253906 L 1084.359375 420.253906 L 1084.359375 430.59375 L 1083.035156 430.59375 L 1078.234375 422.714844 L 1078.234375 430.59375 L 1076.863281 430.59375 L 1076.863281 420.253906 L 1078.222656 420.253906 L 1082.988281 428.101562 Z M 1082.988281 420.253906 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1162.230469 402.800781 C 1160.132812 406.160156 1156.234375 407.863281 1152.460938 407.90625 L 1144.03125 407.886719 L 1143.96875 385.6875 L 1152.25 385.710938 C 1156.320312 385.703125 1160.410156 387.46875 1162.5 391.007812 C 1164.601562 394.566406 1164.511719 399.140625 1162.230469 402.800781 Z M 1159.96875 401.90625 C 1161.503906 398.90625 1161.582031 395.648438 1160.484375 392.664062 C 1159.144531 389.035156 1156.578125 387.484375 1153.578125 386.894531 C 1151.402344 386.46875 1146.632812 386.554688 1146.632812 386.554688 L 1146.632812 406.910156 L 1152.214844 406.898438 C 1155.480469 406.90625 1158.4375 404.90625 1159.96875 401.90625 Z M 1159.96875 401.90625 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1132.351562 407.898438 L 1124.964844 398.636719 L 1119.964844 398.636719 L 1119.964844 407.886719 L 1117.464844 407.886719 L 1117.464844 385.714844 L 1126.734375 385.714844 C 1129.53125 385.742188 1132.414062 387.65625 1133.078125 390.34375 C 1134.011719 394.113281 1131.390625 397.242188 1127.457031 398.054688 L 1135.683594 407.898438 Z M 1126.984375 397.714844 C 1129.820312 396.761719 1130.835938 393.980469 1130.5625 391.308594 C 1130.242188 388.214844 1128.070312 386.796875 1125.492188 386.554688 L 1119.964844 386.554688 L 1119.964844 397.714844 Z M 1126.984375 397.714844 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 971.003906 408.355469 L 950.769531 389.132812 L 950.769531 407.886719 L 949.515625 407.886719 L 949.515625 389.125 C 949.515625 387.90625 948.996094 385.714844 948.996094 385.714844 L 951.238281 385.714844 L 969.753906 403.65625 L 969.753906 385.714844 L 971.003906 385.714844 Z M 971.003906 408.355469 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1000.140625 405.464844 L 1000.140625 398.640625 C 1000.140625 398.382812 999.894531 397.863281 999.574219 397.285156 L 1002.738281 397.285156 L 1002.738281 405.316406 C 998.457031 408.386719 992.566406 409.464844 987.480469 407.574219 C 983.675781 406.160156 980.953125 402.964844 980.320312 399.128906 C 979.425781 393.660156 981.929688 388.78125 986.996094 386.496094 C 991.636719 384.40625 998 385.160156 1001.722656 387.582031 L 1001.589844 389.308594 C 998.988281 387.054688 995.96875 386.058594 992.496094 386.230469 C 987.378906 386.480469 983.488281 390.242188 983.050781 395.382812 C 982.746094 398.972656 983.539062 402.851562 986.492188 405.175781 C 990.390625 408.25 995.6875 408.09375 1000.140625 405.464844 Z M 1000.140625 405.464844 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1032.847656 407.144531 C 1028.496094 409.207031 1023.585938 408.652344 1019.398438 406.410156 L 1019.933594 404.796875 C 1023.085938 407.457031 1027.546875 408.355469 1031.28125 406.523438 C 1032.824219 405.761719 1033.792969 404.132812 1033.699219 402.542969 C 1033.613281 401.015625 1032.40625 399.445312 1030.722656 398.84375 L 1022.96875 396.074219 C 1020.992188 395.492188 1019.710938 393.3125 1019.597656 391.664062 C 1019.445312 389.488281 1020.503906 387.515625 1022.558594 386.476562 C 1026.109375 384.683594 1030.496094 384.859375 1034.140625 386.742188 L 1034.109375 388.941406 C 1031.339844 385.925781 1027.109375 385.363281 1023.664062 387.328125 C 1022.433594 388.027344 1021.894531 389.5625 1022.003906 390.9375 C 1022.101562 392.101562 1023.109375 393.59375 1024.515625 394.078125 L 1030.230469 396.035156 C 1032.054688 396.660156 1034.011719 397.5625 1035.1875 399.097656 C 1037.253906 401.792969 1036.066406 405.617188 1032.847656 407.144531 Z M 1032.847656 407.144531 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1102.753906 399.488281 L 1092 399.46875 L 1088.144531 407.878906 L 1086.777344 407.878906 L 1097.3125 385.777344 L 1099.164062 385.785156 L 1109.535156 407.878906 L 1106.746094 407.878906 Z M 1102.207031 398.410156 L 1097.324219 388.328125 L 1092.609375 398.460938 Z M 1102.207031 398.410156 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1176.238281 396.679688 L 1176.238281 406.910156 L 1187.058594 406.910156 C 1187.992188 406.898438 1188.738281 406.5625 1188.738281 406.5625 L 1188.734375 407.886719 L 1173.640625 407.886719 L 1173.640625 385.714844 L 1188.339844 385.714844 L 1188.378906 387.308594 C 1187.980469 386.851562 1187.3125 386.554688 1187.042969 386.554688 L 1176.238281 386.554688 L 1176.238281 395.703125 L 1186.171875 395.703125 L 1186.171875 396.679688 Z M 1176.238281 396.679688 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 938.003906 407.890625 L 935.273438 407.882812 L 935.273438 385.71875 L 937.972656 385.71875 Z M 938.003906 407.890625 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 927.035156 407.882812 L 923.425781 407.878906 L 911.652344 396 L 913.457031 394.507812 L 924.097656 385.714844 L 926.171875 385.714844 L 914.167969 395.441406 Z M 927.035156 407.882812 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 909.851562 407.886719 L 907.253906 407.886719 L 907.253906 385.714844 L 909.859375 385.714844 Z M 909.851562 407.886719 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1013.363281 387.054688 C 1013.363281 387.425781 1013.261719 387.765625 1013.09375 388.050781 C 1013.027344 389.460938 1012.160156 391.40625 1010.054688 392.140625 C 1011.210938 391.125 1011.613281 389.878906 1011.628906 388.796875 C 1010.875 388.683594 1010.292969 387.945312 1010.292969 387.054688 C 1010.292969 386.082031 1010.984375 385.289062 1011.828125 385.289062 C 1012.675781 385.289062 1013.363281 386.082031 1013.363281 387.054688 Z M 1013.363281 387.054688 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1219 408.34375 L 1198.761719 389.121094 L 1198.761719 407.875 L 1197.507812 407.875 L 1197.507812 389.113281 C 1197.511719 387.898438 1196.988281 385.707031 1196.988281 385.707031 L 1199.234375 385.707031 L 1217.746094 403.648438 L 1217.746094 385.707031 L 1219 385.707031 Z M 1219 408.34375 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1076.515625 405.460938 L 1076.515625 398.636719 C 1076.515625 398.378906 1076.269531 397.863281 1075.949219 397.285156 L 1079.113281 397.285156 L 1079.113281 405.316406 C 1074.832031 408.382812 1068.945312 409.460938 1063.855469 407.570312 C 1060.054688 406.160156 1057.328125 402.964844 1056.699219 399.128906 C 1055.800781 393.65625 1058.304688 388.777344 1063.371094 386.496094 C 1068.011719 384.402344 1074.378906 385.15625 1078.101562 387.578125 L 1077.96875 389.304688 C 1075.367188 387.054688 1072.34375 386.054688 1068.871094 386.226562 C 1063.753906 386.476562 1059.867188 390.242188 1059.425781 395.378906 C 1059.121094 398.972656 1059.914062 402.847656 1062.867188 405.175781 C 1066.765625 408.246094 1072.0625 408.089844 1076.515625 405.460938 Z M 1076.515625 405.460938 "></path>
+</g>
+</defs>
+<rect x="-192" y="-128" width="2304" height="1536" fill="none" fill-opacity="1"></rect>
+
+
+
+
+
+
+<path fill-rule="nonzero" fill="none" fill-opacity="1" d="M 559 160 L 1840.386719 160 L 1840.386719 1120 L 559 1120 Z M 559 160 "></path>
+<path fill-rule="nonzero" fill="none" fill-opacity="1" d="M 559 160 L 1840.386719 160 L 1840.386719 1120 L 559 1120 Z M 559 160 "></path>
+
+
+
+
+
+<g mask="url(#lh-mask-5)">
+<use xlink:href="#lh-source-36"></use>
+</g>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</svg></a>
+<nav class="nav" aria-label="Main">
+<a href="#concept" data-i="nav1">Concept</a>
+<a href="#masterplan" data-i="nav6">Masterplan</a>
+<a href="#residences" data-i="nav2">Residences</a>
+<a href="#lifestyle" data-i="nav3">Lifestyle</a>
+<a href="#architecture" data-i="nav4">Architecture</a>
+<a href="#location" data-i="nav5">Location</a>
+</nav>
+<div class="langs" role="group" aria-label="Language"><button type="button" data-l="ka" aria-pressed="false">GE</button><button type="button" data-l="en" aria-pressed="true">EN</button><button type="button" data-l="ru" aria-pressed="false">RU</button></div>
+<a class="btn" href="#register"><span data-i="cta">Register interest</span></a>
+<button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+</div>
+</header>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu">
+<div class="top"><svg width="44" height="28" style="color:var(--spring)"><use href="#mini"/></svg><button class="close" id="mclose" type="button" aria-label="Close">×</button></div>
+<nav>
+<a href="#concept" data-i="nav1">Concept</a>
+<a href="#masterplan" data-i="nav6">Masterplan</a>
+<a href="#residences" data-i="nav2">Residences</a>
+<a href="#lifestyle" data-i="nav3">Lifestyle</a>
+<a href="#architecture" data-i="nav4">Architecture</a>
+<a href="#location" data-i="nav5">Location</a>
+<a href="#register" data-i="cta">Register interest</a>
+</nav>
+<div class="langs" role="group" aria-label="Language"><button type="button" data-l="ka" aria-pressed="false">GE</button><button type="button" data-l="en" aria-pressed="true">EN</button><button type="button" data-l="ru" aria-pressed="false">RU</button></div>
+<div class="ph">+995 575 77 88 77</div>
+</div>
+
+<main id="top">
+<section class="hv" id="hero">
+<div class="wrap">
+<div class="hv-ph"><img src="img/villa.jpg" alt="Contemporary villa among trees at dusk"></div>
+<div class="hv-b split">
+<div class="copy">
+<span class="label"><svg><use href="#mini"/></svg><span data-i="h_lab">Krtsanisi hills, Tbilisi</span></span>
+<h1 data-i="h1">A Neighborhood
+Designed Around Life.</h1>
+</div>
+<div class="side">
+<p class="lead" data-i="h_p">Discover a new residential destination in Tbilisi, bringing together contemporary low-rise residences, private villas, natural surroundings and an integrated commercial and lifestyle center.</p>
+<a class="btn" href="#register"><span data-i="h_c2">Register your interest</span><svg class="ar"><use href="#arr"/></svg></a>
+</div>
+</div>
+</div>
+</section>
+
+<div class="marq" aria-hidden="true"><div class="tr" id="mq"></div></div>
+
+<section class="sec intro" id="concept">
+<div class="wrap">
+<div class="split ia">
+<div><span class="label rv" data-i="i_lab">A new perspective on living</span><h2 class="rv d1" style="margin-top:18px" data-i="i_h">More Space for Life.</h2></div>
+<p class="stmt" id="stmt" data-i="i_s">King’s Garden Collection introduces a new vision for residential living in Tbilisi. Conceived as an integrated neighborhood, it brings together contemporary architecture, nature, recreation and everyday infrastructure within one thoughtfully planned environment.</p>
+</div>
+<div class="split ib">
+<div class="nums">
+<div class="rv"><b data-n="2">02</b><span data-i="k1">Residential typologies</span></div>
+<div class="rv d1"><b data-n="1">01</b><span data-i="k2">Commercial &amp; lifestyle center</span></div>
+<div class="rv d2"><b data-n="4">04</b><span data-i="k3">Wellness &amp; recreation directions</span></div>
+</div>
+<div class="in2">
+<div class="pic ph rv"><img src="img/garden.jpg" alt="Landscaped garden with cypress trees"></div>
+<div class="tx"><p class="rv" data-i="i_p">With an emphasis on quality of life, the Collection offers a different perspective on modern urban living: more space, closer connections to nature and everyday conveniences within easy reach.</p><small class="rv d1" data-i="i_k">Krtsanisi · Tbilisi · Georgia</small></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="scale" id="scale" aria-label="Nature. Architecture. Everyday Life.">
+<div class="stk">
+<div class="im"><img src="img/garden.jpg" alt="Landscaped garden with a pool and cypress trees"></div>
+<div class="cap"><h2 data-i="sc">Nature. Architecture.
+Everyday Life.</h2></div>
+</div>
+</section>
+
+<section class="views" id="views" data-lenis-prevent-touch>
+<div class="vs">
+<div class="vhm wrap"><span class="label" data-i="vw_lab">Views</span><h2 data-i="vw_h">A Closer Connection to Nature.</h2><p class="lead" data-i="vw_p">Open landscapes. Expansive views. Room to enjoy the outdoors.</p></div>
+<div class="vt" id="vt" data-lenis-prevent>
+<div class="vh"><span class="label" data-i="vw_lab">Views</span><h2 data-i="vw_h">A Closer Connection to Nature.</h2><p class="lead" data-i="vw_p">Open landscapes. Expansive views. Room to enjoy the outdoors.</p></div>
+<figure class="vi" style="margin:0"><div class="ph"><img src="img/tbilisi.jpg" alt="Tbilisi skyline at sunset"></div><figcaption class="cap"><b data-i="vw1">Toward the city</b><span data-i="vw1s">Tbilisi</span></figcaption></figure>
+<figure class="vi" style="margin:0"><div class="ph"><img src="img/mountains.jpg" alt="Mountains above the clouds"></div><figcaption class="cap"><b data-i="vw2">Toward the mountains</b><span data-i="vw2s">Panoramic outlook</span></figcaption></figure>
+<figure class="vi" style="margin:0"><div class="ph"><img src="img/field.jpg" alt="Open meadow at sunset"></div><figcaption class="cap"><b data-i="vw3">Open landscapes</b><span data-i="vw3s">Krtsanisi hills</span></figcaption></figure>
+<figure class="vi" style="margin:0"><div class="ph"><img src="img/forest.jpg" alt="Forest path"></div><figcaption class="cap"><b data-i="vw4">Natural surroundings</b><span data-i="vw4s">Room to breathe</span></figcaption></figure>
+</div>
+</div>
+</section>
+
+<section class="loc" id="location">
+<div class="pano"><img src="img/tbilisi.jpg" alt="Panorama of Tbilisi">
+<div class="ttl"><div class="wrap split" style="align-items:end"><h2 class="rv" data-i="l_h">A Different Side of Tbilisi.</h2><div class="side"><p class="rv d1" data-i="l_p1">Located in the green hills of Krtsanisi, King’s Garden Collection benefits from an elevated natural environment, open landscapes and expansive panoramic views.</p><a class="btn light rv d2" href="#register"><span data-i="l_c">Explore the Location</span><svg class="ar"><use href="#arr"/></svg></a></div></div></div>
+</div>
+<div class="wrap split body">
+<div class="txt"><span class="label rv" data-i="l_lab">The location</span><p class="lead rv d1" data-i="l_p2">The location offers an alternative to the density and pace of central urban neighborhoods, while remaining connected to the city and its opportunities.</p></div>
+<div class="pts">
+<div class="rv"><h3 data-i="l1h">Elevated
+Landscapes</h3><p data-i="l1p">An expansive natural setting in the hills of Krtsanisi.</p></div>
+<div class="rv d1"><h3 data-i="l2h">Space
+to Breathe</h3><p data-i="l2p">An alternative to dense central neighborhoods.</p></div>
+<div class="rv d2"><h3 data-i="l3h">Connected
+to the City</h3><p data-i="l3p">A distinctive residential setting with access to Tbilisi.</p></div>
+</div>
+</div>
+</section>
+
+<section class="sec neigh" id="lifestyle">
+<div class="wrap">
+<div class="top split">
+<div><span class="label rv" data-i="n_lab">The neighborhood</span><h2 class="rv d1" style="margin-top:18px" data-i="n_h">Everything Connected.</h2></div>
+<div class="txt"><p class="lead rv" data-i="n_p1">A great neighborhood is defined not only
+by its homes, but by everything that surrounds them.</p><p class="rv d1" data-i="n_p2">The result is a vision for a neighborhood where the essentials of daily life are brought closer together, allowing residents to spend less time moving between places and more time enjoying them.</p></div>
+</div>
+<ul class="places" id="places">
+<li class="rv"><a class="split" href="#residences" data-img="0"><span class="th"><img src="img/villa.jpg" alt=""></span><h3 data-i="p1h">Places to Live</h3><p data-i="p1p">Contemporary residential spaces for different lifestyles.</p><span class="ic"><svg><use href="#arr"/></svg></span></a></li>
+<li class="rv"><a class="split" href="#values" data-img="1"><span class="th"><img src="img/field.jpg" alt=""></span><h3 data-i="p2h">Places to Connect</h3><p data-i="p2p">Shared environments for everyday encounters and community activities.</p><span class="ic"><svg><use href="#arr"/></svg></span></a></li>
+<li class="rv"><a class="split" href="#center" data-img="2"><span class="th"><img src="img/cafe.jpg" alt=""></span><h3 data-i="p3h">Places to Discover</h3><p data-i="p3p">A planned commercial and lifestyle center.</p><span class="ic"><svg><use href="#arr"/></svg></span></a></li>
+<li class="rv"><a class="split" href="#wellness" data-img="3"><span class="th"><img src="img/spa.jpg" alt=""></span><h3 data-i="p4h">Places to Recharge</h3><p data-i="p4p">Proposed wellness, fitness and recreational infrastructure.</p><span class="ic"><svg><use href="#arr"/></svg></span></a></li>
+</ul>
+<div class="split"><div></div><div><a class="btn ghost cta rv" href="#masterplan"><span data-i="n_c">Explore the Concept</span><svg class="ar"><use href="#arr"/></svg></a></div></div>
+</div>
+</section>
+<div class="float gls" id="float" aria-hidden="true"><img src="img/villa.jpg" alt=""><img src="img/field.jpg" alt=""><img src="img/cafe.jpg" alt=""><img src="img/spa.jpg" alt=""></div>
+
+<section class="sec res" id="residences">
+<div class="wrap">
+<div class="top split">
+<div><span class="label rv" data-i="r_lab">The residences</span></div>
+<div><h2 class="pl rv d1" data-i="r_h">Contemporary Homes.
+Considered Living.</h2>
+<div class="txt"><p class="lead rv d2" data-i="r_p">King’s Garden Collection brings together different residential experiences within one connected neighborhood, with a focus on contemporary design, natural light and the surrounding landscape.</p></div></div>
+</div>
+<div class="rs split rv" id="rs">
+<div class="panel">
+<div class="tabs" role="tablist">
+<button class="tab" type="button" role="tab" aria-selected="true"><span data-i="c1h">Low-Rise Residences</span><small data-i="c1k">Apartments</small></button>
+<button class="tab" type="button" role="tab" aria-selected="false"><span data-i="c2h">Private Villas</span><small data-i="c2k">Houses</small></button>
+</div>
+<div class="desc">
+<div class="on"><p data-i="c1p">A collection of contemporary low-rise residential buildings conceived around comfort, functionality and a more human scale of architecture, with access to landscaped surroundings and community spaces.</p><ul><li data-i="c1a">Human scale</li><li data-i="c1b">Landscaped surroundings</li><li data-i="c1c">Community spaces</li></ul></div>
+<div><p data-i="c2p">For those seeking a more individual residential experience: a greater sense of personal space, privacy and connection to nature, within the same integrated neighborhood and its shared destinations.</p><ul><li data-i="c2a">Personal space</li><li data-i="c2b">Privacy</li><li data-i="c2c">Connection to nature</li></ul></div>
+</div>
+<a class="btn" href="#register"><span data-i="r_c">Discover the Residences</span><svg class="ar"><use href="#arr"/></svg></a>
+</div>
+<div class="stage" id="stage">
+<div class="slide on"><img src="img/apartments.jpg" alt="Contemporary low-rise residential building"></div>
+<div class="slide"><img src="img/villa.jpg" alt="Private villa with garden at dusk"></div>
+<div class="cnt"><span id="rsn">1 / 2</span><span class="bar"><i id="rsb"></i></span><button class="pv" type="button" id="rsp" aria-label="Previous"><svg><use href="#arr"/></svg></button><button type="button" id="rsx" aria-label="Next"><svg><use href="#arr"/></svg></button></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="mp" id="masterplan">
+<div class="map rv" id="map">
+<div class="mwrap"><svg id="msvg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Indicative masterplan map"><path class="mline draw" pathLength="1" d="M1104 910 L759 910"/><path class="mline draw" pathLength="1" d="M23 910 L1610 38"/><path class="mline draw" pathLength="1" d="M-10 408 L242 910"/><path class="mline draw" pathLength="1" d="M119 -10 L762 910"/><path class="mline draw" pathLength="1" d="M1610 406 L775 910"/><path class="mline draw" pathLength="1" d="M1589 910 L510 910"/><path class="mline draw" pathLength="1" d="M-10 299 L1610 157"/><path class="mline draw" pathLength="1" d="M1093 910 L-10 865"/><path class="mline draw" pathLength="1" d="M601 910 L899 -10"/><path class="mline draw" pathLength="1" d="M1610 261 L631 910"/><path class="mline draw" pathLength="1" d="M1610 227 L-10 754"/><path class="mline draw" pathLength="1" d="M-10 523 L1610 649"/><path class="mline draw" pathLength="1" d="M1526 910 L935 910"/><path class="mline draw" pathLength="1" d="M1610 23 L-10 107"/><path class="mline draw" pathLength="1" d="M519 910 L291 -10"/><path class="mline draw" pathLength="1" d="M966 -10 L1383 910"/><path class="mline draw" pathLength="1" d="M1610 38 L1610 736"/><path class="mline draw" pathLength="1" d="M-10 541 L496 910"/><path class="mline draw" pathLength="1" d="M-10 879 L1610 587"/><path class="mline draw" pathLength="1" d="M1610 635 L828 -10"/><path class="mline draw" pathLength="1" d="M1463 910 L-10 801"/><path class="mline draw" pathLength="1" d="M1610 849 L-10 150"/><path class="mline draw" pathLength="1" d="M595 -10 L407 910"/><path class="mline draw" pathLength="1" d="M381 619 L286 737"/><path class="mline draw" pathLength="1" d="M628 362 L659 613"/><path class="mline draw" pathLength="1" d="M1071 601 L1019 731"/><path class="mline draw" pathLength="1" d="M1560 194 L1671 413"/><path class="mline draw" pathLength="1" d="M1396 331 L1625 386"/><path class="mline draw" pathLength="1" d="M637 397 L687 711"/><path class="mline draw" pathLength="1" d="M1506 133 L1349 147"/><path class="mline draw" pathLength="1" d="M593 3 L796 119"/><path class="mline draw" pathLength="1" d="M1459 389 L1300 476"/><path class="mline draw" pathLength="1" d="M667 794 L837 957"/><path class="mline draw" pathLength="1" d="M1318 526 L1346 803"/><path class="mline draw" pathLength="1" d="M1054 66 L1111 346"/><path class="mline draw" pathLength="1" d="M1583 592 L1777 693"/><path class="mline draw" pathLength="1" d="M842 482 L849 738"/><polygon class="mblk fz" points="206,635 184,680 96,716 81,669 39,609 99,591 155,600"/><polygon class="mblk fz" points="338,753 285,787 239,799 208,766 204,714 287,724"/><polygon class="mblk fz" points="364,556 350,593 297,574 294,536 337,518"/><polygon class="mblk fz" points="1411,344 1371,385 1260,350 1267,278 1354,265"/><polygon class="mblk fz" points="1488,185 1493,211 1431,225 1408,191 1405,153 1450,147 1499,156"/><polygon class="mblk fz" points="1331,186 1290,201 1252,204 1210,179 1249,159 1281,148"/><polygon class="mblk fz" points="1526,709 1479,746 1436,747 1364,731 1392,689 1431,651 1480,663"/><polygon class="mblk fz" points="288,183 258,215 201,200 195,156 242,131"/><polygon class="mblk fz" points="456,119 446,135 419,142 384,143 392,105 419,92 452,92"/><polygon class="mblk fz" points="1340,565 1330,576 1283,586 1266,572 1262,545 1294,524 1328,542"/><polygon class="mblk fz" points="164,334 159,359 98,354 68,322 99,311 157,298"/><path class="mroad draw" pathLength="1" d="M-20 840 C300 800 560 735 794 717 S1300 620 1620 560"/><path class="mroad draw" pathLength="1" d="M-20 480 C200 480 360 520 486 556" stroke-opacity=".25"/><g transform="translate(20 40) scale(.9)"><path class="mroad draw" pathLength="1" d="M860 752 V712"/><path class="msite fz" style="stroke-dasharray:none" d="M560 250 L760 205 L980 212 L1140 288 L1162 470 L1100 650 L930 712 L700 712 L560 620 L518 430 Z"/><path class="mz fz" data-z="0" d="M585 300 L725 262 L768 410 L752 520 L640 520 L568 450 Z"/><path class="mz fz" data-z="1" d="M985 240 L1125 300 L1138 440 L1010 418 L958 322 Z"/><path class="mz fz" data-z="2" d="M760 560 L930 548 L955 660 L800 690 Z"/><path class="mz fz" data-z="3" d="M792 236 L945 232 L952 330 L800 342 Z"/><path class="mz fz" data-z="4" d="M790 372 L980 358 L996 512 L784 528 Z"/><path class="mz fz" data-z="5" d="M985 470 L1125 482 L1092 628 L972 646 Z"/><path class="route" id="route" d=""/><g class="mpin fz" data-z="0" transform="translate(668 392)"><circle r="17"/><path d="M-6 1 L0 -5 L6 1 V6 H-6 Z"/><text text-anchor="middle" y="36" data-i="z1"></text></g><g class="mpin fz" data-z="1" transform="translate(1050 350)"><circle r="17"/><path d="M-5 -6 H5 V6 H-5 Z M-2 -3 H-1 M1 -3 H2 M-2 0 H-1 M1 0 H2 M-2 3 H-1 M1 3 H2"/><text text-anchor="middle" y="36" data-i="z2"></text></g><g class="mpin fz" data-z="2" transform="translate(858 600)"><circle r="17"/><path d="M-5 -1 H5 L4 6 H-4 Z M-2 -1 V-3 A2 2 0 0 1 2 -3 V-1"/><text text-anchor="middle" y="-28" data-i="z3"></text></g><g class="mpin fz" data-z="3" transform="translate(872 286)"><circle r="17"/><path d="M-5 5 C-5 -3 2 -6 6 -6 C6 2 0 6 -5 5 Z M-5 5 L1 -1"/><text text-anchor="middle" y="36" data-i="z4"></text></g><g class="mpin fz" data-z="4" transform="translate(888 445)"><circle r="17"/><path d="M0 -7 A5 5 0 1 1 -0.1 -7 Z M0 3 V7"/><text text-anchor="middle" y="36" data-i="z5"></text></g><g class="mpin fz" data-z="5" transform="translate(1045 558)"><circle r="17"/><path d="M0 -6 A6 6 0 1 1 -0.1 -6 Z M-6 0 H6 M0 -6 V6"/><text text-anchor="middle" y="36" data-i="z6"></text></g><text class="mlab fz" transform="translate(120 455) rotate(4)" data-i="mp_c">To Tbilisi center</text><text class="mlab fz" x="1180" y="770" transform="rotate(-14 1180 770)" data-i="mp_k">Krtsanisi hills</text><text class="mlab fz" x="878" y="778" data-i="mp_in">Entrance</text></g></svg><div class="mcard" id="mcard"><div class="top"><b></b></div><h4></h4><p></p></div></div>
+<aside class="zp"><span data-i="mp_z">Zones</span><ul id="zl">
+<li><button type="button" data-z="0"><span data-i="z1">Private villas</span><em>01</em></button></li>
+<li><button type="button" data-z="1"><span data-i="z2">Low-rise residences</span><em>02</em></button></li>
+<li><button type="button" data-z="2"><span data-i="z3">Commercial &amp; lifestyle center</span><em>03</em></button></li>
+<li><button type="button" data-z="3"><span data-i="z4">Wellness &amp; spa</span><em>04</em></button></li>
+<li><button type="button" data-z="4"><span data-i="z5">Landscaped parks</span><em>05</em></button></li>
+<li><button type="button" data-z="5"><span data-i="z6">Recreation &amp; sports</span><em>06</em></button></li>
+</ul></aside>
+<div hidden><span data-i="d1">Individual residential homes offering greater privacy and space.</span><span data-i="d2">Modern apartment buildings designed around everyday functionality, comfort and the surrounding landscape.</span><span data-i="d3">Retail, restaurants, cafés, everyday services and spaces for social interaction.</span><span data-i="d4">Fitness and spa facilities as part of the wider neighborhood experience.</span><span data-i="d5">Landscaped shared spaces and room to enjoy the outdoors.</span><span data-i="d6">Outdoor recreation and sports infrastructure.</span></div>
+</div>
+</section>
+
+<section class="sec center" id="center">
+<div class="wrap split">
+<div class="txt">
+<span class="label rv" data-i="m_lab">Commercial &amp; lifestyle center</span>
+<h2 class="rv d1" data-i="m_h">Everyday Convenience. A New Destination.</h2>
+<p class="lead rv d2" data-i="m_p1">At the heart of the King’s Garden Collection vision is a major commercial and lifestyle center, planned to bring together retail, dining, services and spaces for social interaction.</p>
+<p class="rv d2" data-i="m_p2">More than a place to shop, it is intended to become an active part of neighborhood life: a place to meet friends, spend time with family, enjoy a meal or access the services that make everyday living easier.</p>
+<div class="tags rv d3"><span data-i="t1">Retail</span><span data-i="t2">Dining</span><span data-i="t3">Services</span><span data-i="t4">Social spaces</span></div>
+</div>
+<div class="pair"><div class="a ph rv"><img src="img/cafe.jpg" alt="Café with terrace seating"></div><div class="b ph rv d2"><img src="img/dining.jpg" alt="Restaurant interior"></div></div>
+</div>
+</section>
+
+<section class="sec well" id="wellness">
+<div class="wrap">
+<div class="top split">
+<div><span class="label rv" data-i="w_lab">Wellness &amp; recreation</span><h2 class="rv d1" style="margin-top:18px" data-i="w_h">Wellbeing, Part of Everyday Life.</h2></div>
+<div class="txt"><p class="lead rv" data-i="w_p1">A healthier lifestyle begins with the environment around us.</p><p class="rv d1" data-i="w_p2">The preliminary concept explores a range of wellness and leisure facilities, including fitness, spa, outdoor sports and recreational spaces, encouraging an active and balanced way of life.</p></div>
+</div>
+<div class="xp rv" id="xp">
+<button class="p on" type="button"><img src="img/fitness.jpg" alt="Fitness studio"><svg class="no"><use href="#mini"/></svg><span class="in"><h3 data-i="w1h">Fitness</h3><p data-i="w1p">Movement as part of the daily rhythm.</p></span></button>
+<button class="p" type="button"><img src="img/spa.jpg" alt="Spa details"><svg class="no"><use href="#mini"/></svg><span class="in"><h3 data-i="w2h">Spa</h3><p data-i="w2p">Space to unwind and restore.</p></span></button>
+<button class="p" type="button"><img src="img/field.jpg" alt="Open meadow at sunset"><svg class="no"><use href="#mini"/></svg><span class="in"><h3 data-i="w3h">Outdoor sports</h3><p data-i="w3p">Active time in the open air.</p></span></button>
+<button class="p" type="button"><img src="img/forest.jpg" alt="Forest path"><svg class="no"><use href="#mini"/></svg><span class="in"><h3 data-i="w4h">Recreation</h3><p data-i="w4p">Landscaped shared spaces for every generation.</p></span></button>
+</div>
+<p class="note" data-i="w_note">Preliminary concept. Facilities will be defined as the masterplan progresses.</p>
+</div>
+</section>
+
+<section class="vp" id="values">
+<img src="img/forest.jpg" alt="">
+<div class="wrap">
+<div class="lab rv"><span data-i="v1k">Nature &amp; sustainability</span><span data-i="v2k">Community &amp; privacy</span></div>
+<h2 class="lead2" id="vph"><span class="l2" data-i="vp_a">More Than</span><span class="l2" data-i="vp_b">a Place to Live.</span></h2>
+<div class="two">
+<div class="v rv"><span class="vk" data-i="v1k">Nature &amp; sustainability</span><h3 data-i="v1h">Designed With
+Nature in Mind.</h3><p data-i="v1p">Nature is central to the identity of King’s Garden Collection. The project aims to pursue a thoughtful approach to land use, landscape design, material selection and long-term environmental responsibility as planning progresses.</p></div>
+<div class="v rv d1"><span class="vk" data-i="v2k">Community &amp; privacy</span><h3 data-i="v2h">Connected
+by Choice.</h3><p data-i="v2p">A well-designed neighborhood makes room for both shared experiences and individual space. A place to connect, spend time together and enjoy the freedom of having space for yourself.</p></div>
+</div>
+</div>
+</section>
+
+<section class="sec steps" id="how">
+<div class="wrap">
+<div class="top split">
+<div><span class="label rv" data-i="st_lab">How to buy</span><h2 class="rv d1" style="margin-top:18px" data-i="st_h">Discover a Different Way to Live.</h2></div>
+<div class="txt"><p class="lead rv" data-i="st_p">Register your interest to receive further information about the development, upcoming residential offerings and future sales opportunities.</p><a class="btn rv d1" href="#register"><span data-i="st_c">Request a Private Consultation</span><svg class="ar"><use href="#arr"/></svg></a></div>
+</div>
+<div class="row4">
+<div class="st rv"><span class="n">1</span><h3 data-i="s1h">Register your interest</h3><p data-i="s1p">Leave your details in a short form or message us on WhatsApp.</p></div>
+<div class="st rv d1"><span class="n">2</span><h3 data-i="s2h">Private consultation</h3><p data-i="s2p">Meet our team online or at the sales office to discuss the concept and your plans.</p></div>
+<div class="st rv d2"><span class="n">3</span><h3 data-i="s3h">Project presentation</h3><p data-i="s3p">Receive the presentation and updates as the architectural concept and masterplan progress.</p></div>
+<div class="st rv d3"><span class="n">4</span><h3 data-i="s4h">Visit the site</h3><p data-i="s4p">Arrange a visit to the sales office and the hills of Krtsanisi.</p></div>
+</div>
+</div>
+</section>
+
+<section class="sec ag" id="architecture">
+<div class="wrap">
+<div class="split a1">
+<span class="label rv" data-i="a_lab">Architectural vision</span>
+<div><h2 class="two rv d1"><span data-i="a_h1">International Design.</span> <span class="m" data-i="a_h2">Inspired by Place.</span></h2><span class="sub rv d2" data-i="a_sub">In collaboration with Studio Marco Piva</span></div>
+</div>
+<div class="split a2">
+<div class="ths"><div class="th rv"><img src="img/drawing.jpg" alt="Architect working on drawings"></div><div class="th rv d1"><img src="img/mountains.jpg" alt="Mountain landscape"></div><small class="rv d2" data-i="a_k">Studio Marco Piva · Milan</small></div>
+<div class="tx"><p class="lead rv" data-i="a_p1">The architectural and masterplanning vision is being developed in collaboration with Studio Marco Piva, the Milan-based international architecture and design practice.</p><p class="rv d1" data-i="a_p2">The early design studies explore the relationship between the natural terrain, residential buildings, shared spaces and the wider neighborhood, to create a contemporary environment connected to its landscape.</p><a class="btn rv d2" href="#register"><span data-i="a_c">Explore the Architectural Vision</span><svg class="ar"><use href="#arr"/></svg></a></div>
+</div>
+</div>
+</section>
+
+<section class="sec jr" id="journal">
+<div class="wrap">
+<div class="top"><div><span class="label rv" data-i="j_lab">Journal</span><h2 class="rv d1" data-i="j_h">Follow the Evolution of the Vision.</h2></div><a class="btn ghost rv" href="#journal"><span data-i="j_all">All articles</span><svg class="ar"><use href="#arr"/></svg></a></div>
+<div class="split">
+<div class="jl">
+<a class="jc rv" href="#journal"><div class="ph"><img src="img/mountains.jpg" alt=""></div><span class="cat" data-i="j2c">Masterplan</span><h3 data-i="j2h">Every Great Neighborhood Begins With a Vision.</h3><p data-i="j2p">Before a neighborhood takes shape, its spaces, connections and relationship with the surrounding environment need to be considered.</p></a>
+<a class="jc rv d1" href="#journal"><div class="ph"><img src="img/field.jpg" alt=""></div><span class="cat" data-i="j3c">News</span><h3 data-i="j3h">Introducing a New Perspective on Living.</h3><p data-i="j3p">Discover the vision behind King’s Garden Collection, a new residential destination in Tbilisi.</p></a>
+</div>
+<a class="jc big rv d1" href="#journal"><div class="ph"><img src="img/drawing.jpg" alt=""></div><span class="cat" data-i="j1c">Architecture</span><h3 data-i="j1h">Designed With Perspective.</h3><p data-i="j1p">International experience meets a distinctive local landscape. The partnership with Studio Marco Piva brings an international design perspective to a new residential neighborhood in Tbilisi.</p><span class="more"><span data-i="j_more">Read article</span><svg><use href="#arr"/></svg></span></a>
+</div>
+</div>
+</section>
+
+<section class="sec faq" id="faq">
+<div class="wrap split">
+<div class="l"><span class="label rv" data-i="q_lab">FAQ</span><h2 class="rv d1" data-i="q_h">Questions &amp; Answers.</h2><p class="lead pl rv d2" data-i="q_p">Can’t find the answer you need?
+Message our team on WhatsApp.</p></div>
+<div class="rv">
+<div class="qa open"><button class="qh" type="button" aria-expanded="true"><span data-i="q1">Where is King’s Garden Collection located?</span><i></i></button><div class="qb"><div><p data-i="a1">In the green hills of Krtsanisi, Tbilisi: an elevated natural setting with panoramic views, while remaining connected to the city.</p></div></div></div>
+<div class="qa"><button class="qh" type="button" aria-expanded="false"><span data-i="q2">What types of homes will be available?</span><i></i></button><div class="qb"><div><p data-i="a2">The residential offering is envisioned around two typologies: contemporary low-rise residences and private villas.</p></div></div></div>
+<div class="qa"><button class="qh" type="button" aria-expanded="false"><span data-i="q3">What will the neighborhood include?</span><i></i></button><div class="qb"><div><p data-i="a3">Alongside the homes, the vision includes a major commercial and lifestyle center, wellness and recreational infrastructure, and landscaped shared spaces.</p></div></div></div>
+<div class="qa"><button class="qh" type="button" aria-expanded="false"><span data-i="q4">Who is designing the project?</span><i></i></button><div class="qb"><div><p data-i="a4">The architectural and masterplanning pre-concept is being explored in collaboration with Studio Marco Piva, the Milan-based architecture and design practice.</p></div></div></div>
+<div class="qa"><button class="qh" type="button" aria-expanded="false"><span data-i="q5">When will sales begin?</span><i></i></button><div class="qb"><div><p data-i="a5">The project is at an early planning stage. Register your interest to receive information about upcoming residential offerings and future sales opportunities first.</p></div></div></div>
+<div class="qa"><button class="qh" type="button" aria-expanded="false"><span data-i="q6">Can I meet the team or visit?</span><i></i></button><div class="qb"><div><p data-i="a6">Yes. Arrange an online consultation or a visit to our sales office by phone, WhatsApp or the form below.</p></div></div></div>
+</div>
+</div>
+</section>
+
+<section class="sec dark close" id="register">
+<div class="wrap split">
+<div class="txt">
+<h2 class="rv" data-i="z_h">A More Complete Way of Living.</h2>
+<p class="line rv d1" data-i="z_line">Low-rise residences. Private villas.
+Nature. Wellness. Everyday destinations.</p>
+<p class="lead rv d2" data-i="z_p">Discover a neighborhood designed around what matters most. Register your interest to receive further information about the development and upcoming residential offerings.</p>
+<div class="call rv d3"><span data-i="z_call">Or call us</span><b>+995 575 77 88 77</b></div>
+</div>
+<form id="form" class="fm rv d1" novalidate>
+<div class="hdr"><b data-i="f_h">Request a Private Consultation</b><span data-i="f_hs">Our team will contact you at a convenient time.</span></div>
+<div class="f"><input id="fn" name="name" autocomplete="name" placeholder=" " required><label for="fn"><span data-i="f_n">Name</span> <span class="req">*</span></label></div>
+<div class="f"><input id="fp" name="phone" type="tel" autocomplete="tel" placeholder=" " required><label for="fp"><span data-i="f_p">Phone</span> <span class="req">*</span></label></div>
+<fieldset class="ch"><legend data-i="f_m">Preferred messenger</legend><div class="opts">
+<label><input type="radio" name="m" value="WhatsApp" checked><span>WhatsApp</span></label>
+<label><input type="radio" name="m" value="Telegram"><span>Telegram</span></label>
+<label><input type="radio" name="m" value="Viber"><span>Viber</span></label>
+<label><input type="radio" name="m" value="Call"><span data-i="f_call">Phone call</span></label>
+</div></fieldset>
+<fieldset class="ch"><legend data-i="f_i">I am interested in</legend><div class="opts">
+<label><input type="radio" name="i" value="low-rise" checked><span data-i="o1">Low-rise residences</span></label>
+<label><input type="radio" name="i" value="villas"><span data-i="o2">Private villas</span></label>
+<label><input type="radio" name="i" value="both"><span data-i="o3">Both</span></label>
+</div></fieldset>
+<div class="f full"><input id="fe" name="email" type="email" autocomplete="email" placeholder=" "><label for="fe" data-i="f_e">Email (optional)</label></div>
+<div class="f full"><textarea id="fc" name="message" placeholder=" "></textarea><label for="fc" data-i="f_c">Message (optional)</label></div>
+<button class="btn" type="submit"><span data-i="f_s">Register Your Interest</span><svg class="ar"><use href="#arr"/></svg></button>
+<p class="fine" data-i="f_f">Leave your details and our team will contact you with further information about the development.</p>
+<div class="thanks"><svg><use href="#mini"/></svg><b data-i="f_t">Thank you. Your request has been received.</b><span data-i="f_t2">Our team will be in touch shortly.</span></div>
+</form>
+</div>
+</section>
+</main>
+
+<a class="wa" href="https://wa.me/995575778877" target="_blank" rel="noopener" aria-label="WhatsApp +995 575 77 88 77"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg></a>
+
+<footer class="ft">
+<div class="wrap">
+<div class="split">
+<div><div class="lg"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="755 835 385 165" aria-hidden="true">
+<defs>
+<filter id="lv-filter-remove-color" x="0%" y="0%" width="100%" height="100%">
+<feColorMatrix color-interpolation-filters="sRGB" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"></feColorMatrix>
+</filter>
+<g>
+<g id="lv-glyph-0-0">
+</g>
+<g id="lv-glyph-0-1">
+</g>
+<g id="lv-glyph-0-2">
+</g>
+<g id="lv-glyph-0-3">
+</g>
+<g id="lv-glyph-0-4">
+</g>
+<g id="lv-glyph-0-5">
+</g>
+<g id="lv-glyph-0-6">
+</g>
+<g id="lv-glyph-0-7">
+</g>
+<g id="lv-glyph-0-8">
+</g>
+<g id="lv-glyph-0-9">
+</g>
+<g id="lv-glyph-1-0">
+</g>
+<g id="lv-glyph-1-1">
+</g>
+<g id="lv-glyph-1-2">
+</g>
+<g id="lv-glyph-1-3">
+</g>
+<g id="lv-glyph-1-4">
+</g>
+<g id="lv-glyph-1-5">
+</g>
+<g id="lv-glyph-1-6">
+</g>
+<g id="lv-glyph-1-7">
+</g>
+<g id="lv-glyph-1-8">
+</g>
+<g id="lv-glyph-1-9">
+</g>
+<g id="lv-glyph-1-10">
+</g>
+<g id="lv-glyph-1-11">
+</g>
+<g id="lv-glyph-1-12">
+</g>
+<g id="lv-glyph-1-13">
+</g>
+<g id="lv-glyph-1-14">
+</g>
+<g id="lv-glyph-1-15">
+</g>
+<g id="lv-glyph-1-16">
+</g>
+<g id="lv-glyph-1-17">
+</g>
+<g id="lv-glyph-1-18">
+</g>
+<g id="lv-glyph-1-19">
+</g>
+<g id="lv-glyph-1-20">
+</g>
+<g id="lv-glyph-1-21">
+</g>
+<g id="lv-glyph-1-22">
+</g>
+<g id="lv-glyph-1-23">
+</g>
+<g id="lv-glyph-1-24">
+</g>
+<g id="lv-glyph-1-25">
+</g>
+<g id="lv-glyph-1-26">
+</g>
+<g id="lv-glyph-1-27">
+</g>
+<g id="lv-glyph-1-28">
+</g>
+<g id="lv-glyph-1-29">
+</g>
+<g id="lv-glyph-1-30">
+</g>
+<g id="lv-glyph-1-31">
+</g>
+<g id="lv-glyph-1-32">
+</g>
+<g id="lv-glyph-1-33">
+</g>
+<g id="lv-glyph-2-0">
+</g>
+<g id="lv-glyph-2-1">
+</g>
+<g id="lv-glyph-2-2">
+</g>
+<g id="lv-glyph-2-3">
+</g>
+<g id="lv-glyph-2-4">
+</g>
+<g id="lv-glyph-2-5">
+</g>
+<g id="lv-glyph-2-6">
+</g>
+<g id="lv-glyph-2-7">
+</g>
+<g id="lv-glyph-2-8">
+</g>
+<g id="lv-glyph-2-9">
+</g>
+<g id="lv-glyph-2-10">
+</g>
+<g id="lv-glyph-2-11">
+</g>
+<g id="lv-glyph-2-12">
+</g>
+<g id="lv-glyph-2-13">
+</g>
+<g id="lv-glyph-2-14">
+</g>
+<g id="lv-glyph-2-15">
+</g>
+<g id="lv-glyph-2-16">
+</g>
+<g id="lv-glyph-2-17">
+</g>
+<g id="lv-glyph-2-18">
+</g>
+<g id="lv-glyph-2-19">
+</g>
+<g id="lv-glyph-2-20">
+</g>
+<g id="lv-glyph-2-21">
+</g>
+<g id="lv-glyph-3-0">
+</g>
+<g id="lv-glyph-3-1">
+</g>
+<g id="lv-glyph-3-2">
+</g>
+<g id="lv-glyph-3-3">
+</g>
+<g id="lv-glyph-3-4">
+</g>
+<g id="lv-glyph-3-5">
+</g>
+<g id="lv-glyph-3-6">
+</g>
+<g id="lv-glyph-3-7">
+</g>
+<g id="lv-glyph-3-8">
+</g>
+<g id="lv-glyph-3-9">
+</g>
+<g id="lv-glyph-3-10">
+</g>
+<g id="lv-glyph-3-11">
+</g>
+<g id="lv-glyph-3-12">
+</g>
+<g id="lv-glyph-3-13">
+</g>
+<g id="lv-glyph-3-14">
+</g>
+<g id="lv-glyph-3-15">
+</g>
+<g id="lv-glyph-3-16">
+</g>
+<g id="lv-glyph-3-17">
+</g>
+<g id="lv-glyph-4-0">
+</g>
+<g id="lv-glyph-4-1">
+</g>
+<g id="lv-glyph-4-2">
+</g>
+<g id="lv-glyph-4-3">
+</g>
+<g id="lv-glyph-4-4">
+</g>
+<g id="lv-glyph-4-5">
+</g>
+<g id="lv-glyph-4-6">
+</g>
+<g id="lv-glyph-4-7">
+</g>
+<g id="lv-glyph-4-8">
+</g>
+<g id="lv-glyph-4-9">
+</g>
+<g id="lv-glyph-4-10">
+</g>
+<g id="lv-glyph-4-11">
+</g>
+<g id="lv-glyph-4-12">
+</g>
+<g id="lv-glyph-4-13">
+</g>
+<g id="lv-glyph-4-14">
+</g>
+<g id="lv-glyph-4-15">
+</g>
+<g id="lv-glyph-4-16">
+</g>
+<g id="lv-glyph-4-17">
+</g>
+<g id="lv-glyph-4-18">
+</g>
+<g id="lv-glyph-4-19">
+</g>
+</g>
+
+
+
+
+
+<clipPath id="lv-clip-2">
+<rect x="0" y="0" width="1920" height="1280"></rect>
+</clipPath>
+<g id="lv-source-13" clip-path="url(#lv-clip-2)">
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 770 845 L 1123 845 L 1123 990 L 770 990 Z M 770 845 "></path>
+</g>
+<mask id="lv-mask-1">
+<g filter="url(#lv-filter-remove-color)">
+<use xlink:href="#lv-source-13"></use>
+</g>
+</mask>
+<clipPath id="lv-clip-3">
+<rect x="0" y="0" width="1920" height="1280"></rect>
+</clipPath>
+<g id="lv-source-12" clip-path="url(#lv-clip-3)">
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1058.714844 958.101562 C 1056.34375 961.929688 1051.925781 963.875 1047.65625 963.921875 L 1038.109375 963.898438 L 1038.039062 938.585938 L 1047.417969 938.613281 C 1052.023438 938.605469 1056.65625 940.613281 1059.023438 944.652344 C 1061.40625 948.707031 1061.300781 953.929688 1058.714844 958.101562 Z M 1056.15625 957.082031 C 1057.894531 953.660156 1057.984375 949.945312 1056.738281 946.542969 C 1055.222656 942.402344 1052.316406 940.632812 1048.921875 939.964844 C 1046.457031 939.476562 1041.050781 939.574219 1041.050781 939.574219 L 1041.050781 962.785156 L 1047.375 962.773438 C 1051.074219 962.78125 1054.421875 960.503906 1056.15625 957.082031 Z M 1056.15625 957.082031 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1024.882812 963.914062 L 1016.515625 953.351562 L 1010.859375 953.351562 L 1010.859375 963.898438 L 1008.027344 963.898438 L 1008.027344 938.617188 L 1018.523438 938.617188 C 1021.691406 938.644531 1024.953125 940.832031 1025.707031 943.894531 C 1026.761719 948.191406 1023.792969 951.757812 1019.34375 952.6875 L 1028.65625 963.914062 Z M 1018.804688 952.300781 C 1022.015625 951.214844 1023.167969 948.039062 1022.859375 944.996094 C 1022.5 941.464844 1020.035156 939.851562 1017.117188 939.574219 L 1010.859375 939.574219 L 1010.859375 952.300781 Z M 1018.804688 952.300781 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 842.1875 964.433594 L 819.269531 942.511719 L 819.269531 963.898438 L 817.851562 963.898438 L 817.851562 942.503906 C 817.855469 941.117188 817.261719 938.617188 817.261719 938.617188 L 819.804688 938.617188 L 840.765625 959.078125 L 840.765625 938.617188 L 842.1875 938.617188 Z M 842.1875 964.433594 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 875.175781 961.136719 L 875.175781 953.351562 C 875.175781 953.0625 874.898438 952.472656 874.53125 951.808594 L 878.117188 951.808594 L 878.117188 960.972656 C 873.269531 964.46875 866.601562 965.695312 860.839844 963.542969 C 856.535156 961.933594 853.449219 958.289062 852.734375 953.914062 C 851.722656 947.675781 854.554688 942.113281 860.292969 939.507812 C 865.546875 937.121094 872.753906 937.984375 876.972656 940.746094 L 876.820312 942.710938 C 873.875 940.144531 870.453125 939.007812 866.519531 939.203125 C 860.726562 939.488281 856.324219 943.777344 855.828125 949.640625 C 855.480469 953.738281 856.378906 958.15625 859.722656 960.808594 C 864.132812 964.3125 870.132812 964.136719 875.175781 961.136719 Z M 875.175781 961.136719 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 912.214844 963.054688 C 907.285156 965.40625 901.726562 964.773438 896.984375 962.210938 L 897.589844 960.378906 C 901.160156 963.410156 906.207031 964.4375 910.4375 962.34375 C 912.1875 961.476562 913.28125 959.621094 913.179688 957.804688 C 913.082031 956.066406 911.707031 954.273438 909.804688 953.589844 L 901.027344 950.429688 C 898.789062 949.765625 897.335938 947.28125 897.207031 945.402344 C 897.039062 942.921875 898.234375 940.671875 900.5625 939.484375 C 904.582031 937.441406 909.546875 937.640625 913.679688 939.789062 L 913.640625 942.296875 C 910.503906 938.859375 905.714844 938.214844 901.8125 940.457031 C 900.421875 941.257812 899.808594 943.003906 899.933594 944.570312 C 900.042969 945.898438 901.1875 947.601562 902.777344 948.152344 L 909.25 950.386719 C 911.3125 951.097656 913.527344 952.128906 914.863281 953.878906 C 917.203125 956.949219 915.859375 961.3125 912.214844 963.054688 Z M 912.214844 963.054688 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 991.367188 954.324219 L 979.191406 954.300781 L 974.828125 963.894531 L 973.28125 963.894531 L 985.207031 938.6875 L 987.304688 938.699219 L 999.046875 963.894531 L 995.890625 963.894531 Z M 990.753906 953.089844 L 985.222656 941.597656 L 979.882812 953.148438 Z M 990.753906 953.089844 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1074.578125 951.117188 L 1074.578125 962.785156 L 1086.828125 962.785156 C 1087.886719 962.773438 1088.734375 962.390625 1088.734375 962.390625 L 1088.726562 963.898438 L 1071.636719 963.898438 L 1071.636719 938.617188 L 1088.28125 938.617188 L 1088.324219 940.433594 C 1087.875 939.914062 1087.117188 939.574219 1086.8125 939.574219 L 1074.578125 939.574219 L 1074.578125 950.007812 L 1085.824219 950.007812 L 1085.824219 951.117188 Z M 1074.578125 951.117188 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 804.816406 963.902344 L 801.726562 963.894531 L 801.726562 938.621094 L 804.785156 938.621094 Z M 804.816406 963.902344 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 792.402344 963.894531 L 788.3125 963.894531 L 774.980469 950.347656 L 777.023438 948.644531 L 789.074219 938.617188 L 791.421875 938.617188 L 777.828125 949.707031 Z M 792.402344 963.894531 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 772.941406 963.898438 L 770 963.898438 L 770 938.617188 L 772.949219 938.617188 Z M 772.941406 963.898438 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 845.273438 983.925781 C 845.273438 980.589844 847.921875 977.800781 851.253906 977.800781 C 853.066406 977.800781 854.636719 978.570312 855.679688 979.800781 L 854.554688 980.761719 C 853.765625 979.835938 852.570312 979.238281 851.253906 979.238281 C 848.777344 979.238281 846.828125 981.394531 846.828125 983.925781 C 846.828125 986.457031 848.777344 988.5625 851.253906 988.5625 C 852.570312 988.5625 853.765625 987.964844 854.554688 987.039062 L 855.679688 987.996094 C 854.636719 989.230469 853.066406 990 851.253906 990 C 847.921875 990 845.273438 987.261719 845.273438 983.925781 Z M 845.273438 983.925781 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 868.027344 983.925781 C 868.027344 980.574219 870.625 977.800781 873.976562 977.800781 C 877.324219 977.800781 879.957031 980.574219 879.957031 983.925781 C 879.957031 987.277344 877.339844 990 873.976562 990 C 870.609375 990 868.027344 987.261719 868.027344 983.925781 Z M 878.402344 983.925781 C 878.402344 981.394531 876.488281 979.238281 873.976562 979.238281 C 871.464844 979.238281 869.585938 981.394531 869.585938 983.925781 C 869.585938 986.457031 871.496094 988.5625 873.976562 988.5625 C 876.453125 988.5625 878.402344 986.441406 878.402344 983.925781 Z M 878.402344 983.925781 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 895.140625 988.355469 L 899.960938 988.355469 L 899.960938 989.796875 L 893.585938 989.796875 L 893.585938 978.003906 L 895.140625 978.003906 Z M 895.140625 988.355469 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 914.667969 988.355469 L 919.484375 988.355469 L 919.484375 989.796875 L 913.113281 989.796875 L 913.113281 978.003906 L 914.667969 978.003906 Z M 914.667969 988.355469 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 934.175781 988.355469 L 939.746094 988.355469 L 939.746094 989.796875 L 932.640625 989.796875 L 932.640625 978.003906 L 939.574219 978.003906 L 939.574219 979.445312 L 934.175781 979.445312 L 934.175781 983.277344 L 938.890625 983.277344 L 938.890625 984.730469 L 934.175781 984.730469 Z M 934.175781 988.355469 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 952.300781 983.925781 C 952.300781 980.589844 954.949219 977.800781 958.28125 977.800781 C 960.09375 977.800781 961.664062 978.570312 962.707031 979.800781 L 961.582031 980.761719 C 960.792969 979.835938 959.597656 979.238281 958.28125 979.238281 C 955.804688 979.238281 953.855469 981.394531 953.855469 983.925781 C 953.855469 986.457031 955.804688 988.5625 958.28125 988.5625 C 959.597656 988.5625 960.792969 987.964844 961.582031 987.039062 L 962.707031 987.996094 C 961.664062 989.230469 960.09375 990 958.28125 990 C 954.949219 990 952.300781 987.261719 952.300781 983.925781 Z M 952.300781 983.925781 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 983.480469 978.003906 L 983.480469 979.445312 L 979.890625 979.445312 L 979.890625 989.796875 L 978.335938 989.796875 L 978.335938 979.445312 L 974.75 979.445312 L 974.75 978.003906 Z M 983.480469 978.003906 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 996.617188 989.796875 L 996.617188 978.003906 L 998.171875 978.003906 L 998.171875 989.796875 Z M 996.617188 989.796875 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1011.769531 983.925781 C 1011.769531 980.574219 1014.367188 977.800781 1017.714844 977.800781 C 1021.0625 977.800781 1023.695312 980.574219 1023.695312 983.925781 C 1023.695312 987.277344 1021.082031 990 1017.714844 990 C 1014.347656 990 1011.769531 987.261719 1011.769531 983.925781 Z M 1022.140625 983.925781 C 1022.140625 981.394531 1020.226562 979.238281 1017.714844 979.238281 C 1015.203125 979.238281 1013.324219 981.394531 1013.324219 983.925781 C 1013.324219 986.457031 1015.238281 988.5625 1017.714844 988.5625 C 1020.191406 988.5625 1022.140625 986.441406 1022.140625 983.925781 Z M 1022.140625 983.925781 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1044.261719 978.003906 L 1045.816406 978.003906 L 1045.816406 989.796875 L 1044.3125 989.796875 L 1038.882812 980.8125 L 1038.882812 989.796875 L 1037.324219 989.796875 L 1037.324219 978.003906 L 1038.863281 978.003906 L 1044.261719 986.953125 Z M 1044.261719 978.003906 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 890.148438 940.144531 C 890.148438 940.566406 890.035156 940.953125 889.84375 941.28125 C 889.769531 942.886719 888.789062 945.105469 886.40625 945.941406 C 887.710938 944.785156 888.167969 943.367188 888.183594 942.132812 C 887.332031 942.003906 886.675781 941.160156 886.675781 940.144531 C 886.675781 939.035156 887.453125 938.132812 888.414062 938.132812 C 889.371094 938.132812 890.148438 939.035156 890.148438 940.144531 Z M 890.148438 940.144531 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1123 964.421875 L 1100.082031 942.5 L 1100.082031 963.886719 L 1098.664062 963.886719 L 1098.664062 942.492188 C 1098.667969 941.105469 1098.074219 938.605469 1098.074219 938.605469 L 1100.617188 938.605469 L 1121.578125 959.066406 L 1121.578125 938.605469 L 1123 938.605469 Z M 1123 964.421875 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 961.660156 961.132812 L 961.660156 953.351562 C 961.660156 953.058594 961.378906 952.46875 961.015625 951.808594 L 964.601562 951.808594 L 964.601562 960.96875 C 959.753906 964.46875 953.085938 965.695312 947.324219 963.542969 C 943.015625 961.929688 939.933594 958.289062 939.21875 953.910156 C 938.203125 947.671875 941.035156 942.109375 946.777344 939.507812 C 952.03125 937.121094 959.238281 937.980469 963.453125 940.742188 L 963.304688 942.710938 C 960.359375 940.144531 956.9375 939.003906 953.003906 939.199219 C 947.207031 939.488281 942.808594 943.777344 942.308594 949.640625 C 941.960938 953.734375 942.859375 958.15625 946.207031 960.808594 C 950.617188 964.3125 956.617188 964.136719 961.660156 961.132812 Z M 961.660156 961.132812 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 913.445312 880.675781 L 895.625 865.300781 C 894.578125 864.410156 893.355469 864.1875 892.269531 864.691406 C 891.019531 865.269531 890.242188 866.683594 890.242188 868.378906 L 890.242188 906.371094 C 890.242188 908.546875 891.90625 910.316406 893.953125 910.316406 L 911.121094 910.316406 C 913.167969 910.316406 914.832031 908.546875 914.832031 906.371094 L 914.832031 884.394531 C 914.832031 883.339844 914.402344 881.488281 913.445312 880.675781 Z M 913.214844 906.371094 C 913.214844 907.652344 912.277344 908.699219 911.121094 908.699219 L 893.953125 908.699219 C 892.796875 908.699219 891.859375 907.652344 891.859375 906.371094 L 891.859375 868.378906 C 891.859375 867.335938 892.285156 866.464844 892.949219 866.160156 C 893.105469 866.085938 893.277344 866.050781 893.449219 866.050781 C 893.8125 866.050781 894.199219 866.214844 894.574219 866.53125 L 912.394531 881.902344 C 912.808594 882.257812 913.214844 883.488281 913.214844 884.394531 Z M 913.214844 906.371094 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 942.753906 861.25 L 924.933594 845.875 C 923.886719 844.984375 922.664062 844.761719 921.578125 845.265625 C 920.328125 845.84375 919.550781 847.253906 919.550781 848.953125 L 919.550781 906.371094 C 919.550781 908.546875 921.214844 910.316406 923.261719 910.316406 L 940.429688 910.316406 C 942.476562 910.316406 944.140625 908.546875 944.140625 906.371094 L 944.140625 864.96875 C 944.140625 863.914062 943.710938 862.058594 942.753906 861.25 Z M 942.523438 906.371094 C 942.523438 907.652344 941.585938 908.699219 940.429688 908.699219 L 923.261719 908.699219 C 922.105469 908.699219 921.167969 907.652344 921.167969 906.371094 L 921.167969 848.953125 C 921.167969 847.910156 921.59375 847.039062 922.257812 846.734375 C 922.414062 846.660156 922.585938 846.621094 922.757812 846.621094 C 923.121094 846.621094 923.507812 846.785156 923.882812 847.105469 L 941.703125 862.476562 C 942.117188 862.828125 942.523438 864.0625 942.523438 864.96875 Z M 942.523438 906.371094 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 1000.730469 864.691406 C 999.644531 864.1875 998.417969 864.410156 997.371094 865.304688 L 979.558594 880.671875 C 978.601562 881.488281 978.167969 883.339844 978.167969 884.394531 L 978.167969 906.371094 C 978.167969 908.546875 979.832031 910.316406 981.875 910.316406 L 999.046875 910.316406 C 1001.09375 910.316406 1002.757812 908.546875 1002.757812 906.371094 L 1002.757812 868.378906 C 1002.757812 866.683594 1001.980469 865.269531 1000.730469 864.691406 Z M 1001.140625 906.371094 C 1001.140625 907.652344 1000.199219 908.699219 999.046875 908.699219 L 981.875 908.699219 C 980.722656 908.699219 979.785156 907.652344 979.785156 906.371094 L 979.785156 884.394531 C 979.785156 883.488281 980.191406 882.257812 980.609375 881.902344 L 998.421875 866.535156 C 998.796875 866.214844 999.1875 866.050781 999.550781 866.050781 C 999.722656 866.050781 999.894531 866.085938 1000.050781 866.160156 C 1000.710938 866.464844 1001.140625 867.335938 1001.140625 868.378906 Z M 1001.140625 906.371094 "></path>
+<path fill-rule="nonzero" fill="currentColor" fill-opacity="1" d="M 971.421875 845.265625 C 970.335938 844.761719 969.113281 844.984375 968.0625 845.878906 L 950.25 861.246094 C 949.292969 862.058594 948.859375 863.914062 948.859375 864.96875 L 948.859375 906.371094 C 948.859375 908.546875 950.523438 910.316406 952.570312 910.316406 L 969.738281 910.316406 C 971.785156 910.316406 973.449219 908.546875 973.449219 906.371094 L 973.449219 848.953125 C 973.449219 847.253906 972.671875 845.84375 971.421875 845.265625 Z M 971.832031 906.371094 C 971.832031 907.652344 970.890625 908.699219 969.738281 908.699219 L 952.570312 908.699219 C 951.414062 908.699219 950.476562 907.652344 950.476562 906.371094 L 950.476562 864.96875 C 950.476562 864.0625 950.882812 862.828125 951.300781 862.472656 L 969.113281 847.109375 C 969.488281 846.789062 969.878906 846.621094 970.242188 846.621094 C 970.414062 846.621094 970.585938 846.660156 970.742188 846.734375 C 971.402344 847.039062 971.832031 847.910156 971.832031 848.953125 Z M 971.832031 906.371094 "></path>
+</g>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</defs>
+<rect x="-192" y="-128" width="2304" height="1536" fill="none" fill-opacity="1"></rect>
+
+
+
+
+
+
+<path fill-rule="nonzero" fill="none" fill-opacity="1" d="M 559 160 L 1840.386719 160 L 1840.386719 1120 L 559 1120 Z M 559 160 "></path>
+<path fill-rule="nonzero" fill="none" fill-opacity="1" d="M 559 160 L 1840.386719 160 L 1840.386719 1120 L 559 1120 Z M 559 160 "></path>
+
+<g mask="url(#lv-mask-1)">
+<use xlink:href="#lv-source-12"></use>
+</g>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</svg></div><p class="tag" data-i="ft_t">A Neighborhood Designed Around Life.</p><p style="margin-top:8px" data-i="ft_c">Tbilisi, Georgia</p></div>
+<div class="cols">
+<div><h4 data-i="fh1">Project</h4><ul><li><a href="#concept" data-i="nav1">Concept</a></li><li><a href="#location" data-i="nav5">Location</a></li><li><a href="#center" data-i="fl1">Infrastructure</a></li><li><a href="#architecture" data-i="fl2">Developer</a></li><li><a href="#journal" data-i="fl3">Journal</a></li></ul></div>
+<div><h4 data-i="fh2">Residences</h4><ul><li><a href="#masterplan" data-i="nav6">Masterplan</a></li><li><a href="#residences" data-i="fl4">Catalogue</a></li><li><a href="#how" data-i="fl5">How to buy</a></li><li><a href="#faq" data-i="fl6">International buyers</a></li><li><a href="#register" data-i="fl7">Investors</a></li><li><a href="#faq" data-i="fl8">FAQ</a></li></ul></div>
+<div><h4 data-i="ft_h2">Contact</h4><ul><li><a href="#register" data-i="cta">Register interest</a></li><li>+995 575 77 88 77</li><li><a href="https://wa.me/995575778877" target="_blank" rel="noopener">WhatsApp</a></li><li data-i="ft_c2">Krtsanisi, Tbilisi</li></ul></div>
+</div>
+</div>
+<div class="bt"><span data-i="ft_r">© 2026 King’s Garden Collection. All rights reserved.</span><a href="#top" data-i="fl9">Privacy Policy</a></div>
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+{
+const T={"ru": {"nav1": "Концепция", "nav2": "Резиденции", "nav3": "Образ жизни", "nav4": "Архитектура", "nav5": "Локация", "cta": "Оставить заявку", "h_lab": "Холмы Крцаниси, Тбилиси", "h1": "Район, созданный\nвокруг жизни.", "h_p": "Новое жилое направление в Тбилиси: современные малоэтажные резиденции, частные виллы, природное окружение и интегрированный торговый и lifestyle-центр в одном районе.", "h_c1": "Открыть коллекцию", "h_c2": "Оставить заявку", "i_lab": "Новый взгляд на жизнь", "i_h": "Больше пространства для жизни.", "i_s": "King’s Garden Collection предлагает новое видение жилой среды в Тбилиси. Задуманный как цельный район, проект объединяет современную архитектуру, природу, отдых и повседневную инфраструктуру в одном продуманном пространстве.", "i_p": "С акцентом на качество жизни Collection предлагает другой взгляд на современную городскую жизнь: больше пространства, ближе к природе и всё необходимое в шаговой доступности.", "sc": "Природа. Архитектура.\nПовседневная жизнь.", "n_lab": "Район", "n_h": "Всё рядом.", "n_p1": "Хороший район определяют не только дома,\nно и всё, что их окружает.", "n_p2": "Мы видим район, где главное для повседневной жизни находится рядом: меньше времени на дорогу между местами и больше времени, чтобы ими наслаждаться.", "p1h": "Места для жизни", "p1p": "Современные жилые пространства для разного образа жизни.", "p2h": "Места для встреч", "p2p": "Общие пространства для повседневного общения и жизни сообщества.", "p3h": "Места для открытий", "p3p": "Запланированный торговый и lifestyle-центр.", "p4h": "Места для восстановления", "p4p": "Запланированная инфраструктура для велнеса, фитнеса и отдыха.", "n_c": "Узнать о концепции", "r_lab": "Резиденции", "r_h": "Современные дома.\nПродуманная жизнь.", "r_p": "King’s Garden Collection объединяет разные форматы жилья в одном связанном районе, с акцентом на современный дизайн, естественный свет и окружающий ландшафт.", "r_c": "Открыть резиденции", "c1h": "Малоэтажные резиденции", "c1p": "Современные малоэтажные жилые дома, задуманные вокруг комфорта, функциональности и человеческого масштаба архитектуры, с доступом к озеленённым пространствам и общим зонам.", "c2h": "Частные виллы", "c2p": "Для тех, кто ищет более индивидуальный формат жизни: больше личного пространства, приватности и связи с природой в том же районе и с доступом ко всей его инфраструктуре.", "m_lab": "Торговый и lifestyle-центр", "m_h": "Всё необходимое рядом. Новое место притяжения.", "m_p1": "В сердце концепции King’s Garden Collection находится крупный торговый и lifestyle-центр, объединяющий магазины, рестораны, сервисы и пространства для общения.", "m_p2": "Это не просто место для покупок, а живая часть района: здесь можно встретиться с друзьями, провести время с семьёй, пообедать или воспользоваться сервисами, которые упрощают повседневную жизнь.", "t1": "Магазины", "t2": "Рестораны", "t3": "Сервисы", "t4": "Общие пространства", "w_lab": "Велнес и отдых", "w_h": "Благополучие как часть повседневной жизни.", "w_p1": "Здоровый образ жизни начинается с окружающей среды.", "w_p2": "Предварительная концепция включает разные пространства для велнеса и досуга: фитнес, спа, открытые спортивные площадки и зоны отдыха, которые поддерживают активный и сбалансированный образ жизни.", "w1h": "Фитнес", "w1p": "Движение как часть ежедневного ритма.", "w2h": "Спа", "w2p": "Пространство, чтобы отдохнуть и восстановиться.", "w3h": "Спорт на открытом воздухе", "w3p": "Активное время на свежем воздухе.", "w4h": "Зоны отдыха", "w4p": "Озеленённые общие пространства для всех поколений.", "w_note": "Предварительная концепция. Состав объектов будет определён по мере разработки генплана.", "a_lab": "Архитектурное видение", "a_h": "Международный дизайн. Вдохновлено местом.", "a_sub": "В сотрудничестве со Studio Marco Piva", "a_p1": "Архитектурная концепция и генплан разрабатываются в сотрудничестве со Studio Marco Piva, международным бюро архитектуры и дизайна из Милана.", "a_p2": "Первые проектные исследования изучают связь между естественным рельефом, жилыми зданиями, общими пространствами и районом в целом, чтобы создать современную среду, связанную со своим ландшафтом.", "a_c": "Узнать об архитектуре", "l_h": "Другой Тбилиси.", "l_c": "Узнать о локации", "l_lab": "Локация", "l_p1": "King’s Garden Collection расположен на зелёных холмах Крцаниси: возвышенность, открытые ландшафты и широкие панорамные виды.", "l_p2": "Это альтернатива плотности и темпу центральных районов города, при этом с сохранением связи с городом и его возможностями.", "l1h": "Возвышенные\nландшафты", "l1p": "Просторное природное окружение на холмах Крцаниси.", "l2h": "Пространство,\nчтобы дышать", "l2p": "Альтернатива плотным центральным районам.", "l3h": "Связь\nс городом", "l3p": "Особая жилая среда с удобным доступом к Тбилиси.", "v1h": "Создано с заботой\nо природе.", "v1p": "Природа находится в центре идентичности King’s Garden Collection. Проект стремится к продуманному подходу к использованию земли, ландшафтному дизайну, выбору материалов и долгосрочной ответственности перед окружающей средой.", "v2h": "Вместе\nпо желанию.", "v2p": "В хорошо спланированном районе есть место и для общих впечатлений, и для личного пространства. Место, где можно проводить время вместе и наслаждаться свободой собственного пространства.", "z_h": "Более цельный образ жизни.", "z_line": "Малоэтажные резиденции. Частные виллы.\nПрирода. Велнес. Всё необходимое рядом.", "z_p": "Откройте район, созданный вокруг самого важного. Оставьте заявку, чтобы получить подробную информацию о проекте и будущих предложениях.", "z_call": "Или позвоните нам", "f_n": "Имя", "f_p": "Телефон", "f_m": "Удобный мессенджер", "f_call": "Звонок", "f_e": "Email (необязательно)", "f_i": "Меня интересуют", "o1": "Малоэтажные резиденции", "o2": "Частные виллы", "o3": "Оба формата", "f_c": "Сообщение (необязательно)", "f_s": "Оставить заявку", "f_f": "Оставьте контакты, и наша команда свяжется с вами и расскажет подробнее о проекте.", "f_t": "Спасибо. Ваша заявка получена.", "ft_t": "Район, созданный вокруг жизни.", "ft_c": "Тбилиси, Грузия", "ft_h1": "Разделы", "ft_h2": "Контакты", "ft_c2": "Крцаниси, Тбилиси", "ft_r": "© 2026 King’s Garden Collection. Все права защищены.", "ft_n": "Проект находится на стадии концепции. Изображения иллюстративные.", "c1k": "Квартиры", "c2k": "Дома", "c1a": "Человеческий масштаб", "c1b": "Озеленённая территория", "c1c": "Общие пространства", "c2a": "Личное пространство", "c2b": "Приватность", "c2c": "Связь с природой", "f_h": "Запросить личную консультацию", "f_hs": "Наша команда свяжется с вами в удобное время.", "f_t2": "Мы скоро с вами свяжемся.", "vp_h": "Больше, чем\nместо для жизни.", "v1k": "Природа и устойчивость", "v2k": "Сообщество и приватность", "nav6": "Генплан", "mp_lab": "Генплан", "mp_h": "Каждый хороший район начинается с идеи.", "mp_p1": "Первые исследования генплана изучают, как жилые зоны, общие места притяжения, ландшафт и движение могут образовать одну цельную среду.", "mp_p2": "Цель — создать гармоничную связь между застройкой и её природным окружением.", "z1": "Частные виллы", "z2": "Малоэтажные резиденции", "z3": "Торговый и lifestyle-центр", "z4": "Велнес и спа", "z5": "Ландшафтные парки", "z6": "Отдых и спорт", "zs": "Концепция", "mp_n": "Ориентировочное зонирование на стадии предконцепции. Генплан в разработке и будет уточняться.", "vw_lab": "Виды", "vw_h": "Ближе к природе.", "vw_p": "Открытые ландшафты. Широкие виды. Пространство для жизни на свежем воздухе.", "vw1": "На город", "vw1s": "Тбилиси", "vw2": "На горы", "vw2s": "Панорамный вид", "vw3": "Открытые ландшафты", "vw3s": "Холмы Крцаниси", "vw4": "Природное окружение", "vw4s": "Пространство, чтобы дышать", "vs_lab": "Видение проекта", "vs_h": "Создано надолго.", "vs_p1": "King’s Garden Collection стремится создать долговечное жилое место, основанное на продуманном планировании, качестве архитектуры и ежедневном благополучии.", "vs_p2": "Долгосрочная цель — район с узнаваемым характером, сильным ощущением места и ценностью для жителей на многие годы.", "vs_h3": "Более цельный опыт жизни.", "pl1": "Современная жилая архитектура", "pl2": "Жизнь в связи с природой", "pl3": "Магазины, рестораны и всё необходимое рядом", "pl4": "Возможности для велнеса и отдыха", "pl5": "Пространства для общения и сообщества", "pl6": "Приватность и личный комфорт", "pl7": "Связь с городом", "st_lab": "Как купить", "st_h": "Откройте другой образ жизни.", "st_p": "Оставьте заявку, чтобы получать информацию о проекте, будущих жилых предложениях и старте продаж.", "st_c": "Запросить личную консультацию", "s1h": "Оставьте заявку", "s1p": "Заполните короткую форму или напишите нам в WhatsApp.", "s2h": "Личная консультация", "s2p": "Встретьтесь с командой онлайн или в офисе продаж, чтобы обсудить концепцию и ваши планы.", "s3h": "Презентация проекта", "s3p": "Получайте презентацию и новости по мере развития архитектурной концепции и генплана.", "s4h": "Визит на участок", "s4p": "Запишитесь на визит в офис продаж и на холмы Крцаниси.", "j_lab": "Журнал", "j_h": "Следите за развитием проекта.", "j_all": "Все статьи", "j_more": "Читать статью", "j1c": "Архитектура", "j1h": "Дизайн с перспективой.", "j1p": "Международный опыт встречается с особым местным ландшафтом. Сотрудничество со Studio Marco Piva привносит международный взгляд в создание нового жилого района в Тбилиси.", "j2c": "Генплан", "j2h": "Каждый хороший район начинается с идеи.", "j2p": "Прежде чем район обретёт форму, нужно продумать его пространства, связи и отношения с окружающей средой.", "j3c": "Новости", "j3h": "Новый взгляд на жизнь.", "j3p": "Узнайте об идее King’s Garden Collection — нового жилого направления в Тбилиси.", "q_lab": "FAQ", "q_h": "Вопросы и ответы.", "q_p": "Не нашли ответ?\nНапишите нашей команде в WhatsApp.", "q1": "Где находится King’s Garden Collection?", "a1": "На зелёных холмах Крцаниси в Тбилиси: возвышенность и природное окружение с панорамными видами и связью с городом.", "q2": "Какие форматы жилья будут доступны?", "a2": "Жилое предложение строится вокруг двух форматов: современные малоэтажные резиденции и частные виллы.", "q3": "Что будет в районе?", "a3": "Помимо домов, концепция включает крупный торговый и lifestyle-центр, инфраструктуру для велнеса и отдыха и озеленённые общие пространства.", "q4": "Кто проектирует проект?", "a4": "Архитектурная и градостроительная предконцепция разрабатывается в сотрудничестве со Studio Marco Piva, бюро архитектуры и дизайна из Милана.", "q5": "Когда начнутся продажи?", "a5": "Проект на ранней стадии планирования. Оставьте заявку, чтобы первыми получить информацию о будущих предложениях и старте продаж.", "q6": "Можно встретиться с командой или приехать?", "a6": "Да. Запишитесь на онлайн-консультацию или визит в офис продаж по телефону, в WhatsApp или через форму ниже.", "mp_in": "ВЪЕЗД", "mp_tip": "Стадия концепции · зонирование ориентировочное", "tz3": "Lifestyle-центр", "tz5": "Парки", "mp_z": "Зоны", "mp_c": "К центру Тбилиси", "mp_k": "Холмы Крцаниси", "d1": "Индивидуальные дома с большей приватностью и пространством.", "d2": "Современные жилые дома, созданные вокруг функциональности, комфорта и окружающего ландшафта.", "d3": "Магазины, рестораны, кафе, повседневные сервисы и пространства для общения.", "d4": "Фитнес и спа как часть жизни всего района.", "d5": "Озеленённые общие пространства и место для отдыха на природе.", "d6": "Инфраструктура для отдыха и спорта на открытом воздухе.", "k1": "Формата жилья", "k2": "Торговый и lifestyle-центр", "k3": "Направления велнеса и отдыха", "i_k": "Крцаниси · Тбилиси · Грузия", "n_cap": "Дома, общие пространства, всё необходимое рядом и благополучие — в одном районе.", "a_h1": "Международный дизайн.", "a_h2": "Вдохновлено местом.", "a_k": "Studio Marco Piva · Милан", "fh1": "Проект", "fh2": "Резиденции", "fl1": "Инфраструктура", "fl2": "Девелопер", "fl3": "Журнал", "fl4": "Каталог", "fl5": "Как купить", "fl6": "Иностранным покупателям", "fl7": "Инвесторам", "fl8": "FAQ", "fl9": "Политика конфиденциальности", "vp_a": "Больше, чем", "vp_b": "место для жизни."}, "ka": {"nav1": "კონცეფცია", "nav2": "რეზიდენციები", "nav3": "ცხოვრების სტილი", "nav4": "არქიტექტურა", "nav5": "მდებარეობა", "cta": "ინტერესის რეგისტრაცია", "h_lab": "კრწანისის ბორცვები, თბილისი", "h1": "უბანი, შექმნილი\nცხოვრების გარშემო.", "h_p": "ახალი საცხოვრებელი მიმართულება თბილისში: თანამედროვე დაბალსართულიანი რეზიდენციები, კერძო ვილები, ბუნებრივი გარემო და ინტეგრირებული კომერციული და ლაიფსთაილ ცენტრი ერთ უბანში.", "h_c1": "აღმოაჩინეთ კოლექცია", "h_c2": "დაარეგისტრირეთ ინტერესი", "i_lab": "ცხოვრების ახალი ხედვა", "i_h": "მეტი სივრცე ცხოვრებისთვის.", "i_s": "King’s Garden Collection თბილისში საცხოვრებელი გარემოს ახალ ხედვას გთავაზობთ. ინტეგრირებულ უბნად ჩაფიქრებული პროექტი ერთ გააზრებულად დაგეგმილ სივრცეში აერთიანებს თანამედროვე არქიტექტურას, ბუნებას, დასვენებასა და ყოველდღიურ ინფრასტრუქტურას.", "i_p": "ცხოვრების ხარისხზე აქცენტით, კოლექცია თანამედროვე ქალაქურ ცხოვრებას ახლებურად გვანახებს: მეტი სივრცე, ბუნებასთან უფრო ახლო კავშირი და ყოველდღიური კომფორტი ახლოს.", "sc": "ბუნება. არქიტექტურა.\nყოველდღიური ცხოვრება.", "n_lab": "უბანი", "n_h": "ყველაფერი დაკავშირებულია.", "n_p1": "კარგ უბანს მხოლოდ სახლები არ განსაზღვრავს,\nარამედ ყველაფერი, რაც მათ გარს აკრავს.", "n_p2": "ჩვენი ხედვაა უბანი, სადაც ყოველდღიური ცხოვრებისთვის მთავარი ადგილები ერთმანეთთან ახლოსაა: ნაკლები დრო გზაში და მეტი დრო მათით ტკბობისთვის.", "p1h": "ადგილები ცხოვრებისთვის", "p1p": "თანამედროვე საცხოვრებელი სივრცეები ცხოვრების სხვადასხვა წესისთვის.", "p2h": "ადგილები შეხვედრისთვის", "p2p": "საერთო სივრცეები ყოველდღიური შეხვედრებისა და სათემო აქტივობებისთვის.", "p3h": "ადგილები აღმოჩენისთვის", "p3p": "დაგეგმილი კომერციული და ლაიფსთაილ ცენტრი.", "p4h": "ადგილები ენერგიის აღსადგენად", "p4p": "დაგეგმილი ველნესის, ფიტნესისა და დასვენების ინფრასტრუქტურა.", "n_c": "გაეცანით კონცეფციას", "r_lab": "რეზიდენციები", "r_h": "თანამედროვე სახლები.\nგააზრებული ცხოვრება.", "r_p": "King’s Garden Collection ერთ დაკავშირებულ უბანში აერთიანებს საცხოვრებლის სხვადასხვა ფორმატს, თანამედროვე დიზაინზე, ბუნებრივ სინათლესა და გარემომცველ ლანდშაფტზე აქცენტით.", "r_c": "აღმოაჩინეთ რეზიდენციები", "c1h": "დაბალსართულიანი რეზიდენციები", "c1p": "თანამედროვე დაბალსართულიანი საცხოვრებელი შენობები, ჩაფიქრებული კომფორტის, ფუნქციურობისა და ადამიანური მასშტაბის არქიტექტურის გარშემო, გამწვანებულ და საერთო სივრცეებთან წვდომით.", "c2h": "კერძო ვილები", "c2p": "მათთვის, ვინც უფრო ინდივიდუალურ საცხოვრებელ გამოცდილებას ეძებს: მეტი პირადი სივრცე, პრივატულობა და კავშირი ბუნებასთან იმავე უბანში და მისი ყველა საერთო ადგილით.", "m_lab": "კომერციული და ლაიფსთაილ ცენტრი", "m_h": "ყოველდღიური კომფორტი. ახალი მიმართულება.", "m_p1": "King’s Garden Collection-ის ხედვის გულში მსხვილი კომერციული და ლაიფსთაილ ცენტრია, რომელიც აერთიანებს მაღაზიებს, რესტორნებს, სერვისებსა და სოციალურ სივრცეებს.", "m_p2": "ეს მხოლოდ საყიდლების ადგილი არ არის, არამედ უბნის ცოცხალი ნაწილი: აქ შეგიძლიათ მეგობრებს შეხვდეთ, ოჯახთან ერთად გაატაროთ დრო, ისადილოთ ან ისარგებლოთ სერვისებით, რომლებიც ყოველდღიურობას ამარტივებს.", "t1": "მაღაზიები", "t2": "რესტორნები", "t3": "სერვისები", "t4": "საერთო სივრცეები", "w_lab": "ველნესი და დასვენება", "w_h": "კეთილდღეობა, ყოველდღიური ცხოვრების ნაწილი.", "w_p1": "ჯანსაღი ცხოვრების წესი იწყება გარემოთი, რომელიც გვაკრავს.", "w_p2": "წინასწარი კონცეფცია ითვალისწინებს ველნესისა და დასვენების სხვადასხვა სივრცეს: ფიტნესს, სპას, ღია სპორტულ მოედნებსა და რეკრეაციულ ზონებს აქტიური და დაბალანსებული ცხოვრებისთვის.", "w1h": "ფიტნესი", "w1p": "მოძრაობა, როგორც ყოველდღიური რიტმის ნაწილი.", "w2h": "სპა", "w2p": "სივრცე დასვენებისა და აღდგენისთვის.", "w3h": "ღია სპორტი", "w3p": "აქტიური დრო სუფთა ჰაერზე.", "w4h": "რეკრეაცია", "w4p": "გამწვანებული საერთო სივრცეები ყველა თაობისთვის.", "w_note": "წინასწარი კონცეფცია. ობიექტები განისაზღვრება გენგეგმის შემუშავების კვალდაკვალ.", "a_lab": "არქიტექტურული ხედვა", "a_h": "საერთაშორისო დიზაინი. ადგილით შთაგონებული.", "a_sub": "Studio Marco Piva-სთან თანამშრომლობით", "a_p1": "არქიტექტურული ხედვა და გენგეგმა მუშავდება Studio Marco Piva-სთან, მილანში დაფუძნებულ საერთაშორისო არქიტექტურისა და დიზაინის სტუდიასთან თანამშრომლობით.", "a_p2": "პირველი საპროექტო კვლევები სწავლობს კავშირს ბუნებრივ რელიეფს, საცხოვრებელ შენობებს, საერთო სივრცეებსა და მთლიან უბანს შორის, რათა შეიქმნას თანამედროვე გარემო, რომელიც თავის ლანდშაფტთანაა დაკავშირებული.", "a_c": "გაეცანით არქიტექტურას", "l_h": "თბილისის სხვა მხარე.", "l_c": "გაეცანით მდებარეობას", "l_lab": "მდებარეობა", "l_p1": "King’s Garden Collection კრწანისის მწვანე ბორცვებზე მდებარეობს: მაღლობი, ღია ლანდშაფტები და ფართო პანორამული ხედები.", "l_p2": "ეს ცენტრალური უბნების სიმჭიდროვისა და რიტმის ალტერნატივაა, ქალაქთან და მის შესაძლებლობებთან კავშირის შენარჩუნებით.", "l1h": "მაღლობის\nლანდშაფტები", "l1p": "ფართო ბუნებრივი გარემო კრწანისის ბორცვებზე.", "l2h": "სივრცე\nსუნთქვისთვის", "l2p": "ცენტრალური უბნების სიმჭიდროვის ალტერნატივა.", "l3h": "კავშირი\nქალაქთან", "l3p": "გამორჩეული საცხოვრებელი გარემო თბილისთან კავშირით.", "v1h": "შექმნილია\nბუნებაზე ზრუნვით.", "v1p": "ბუნება King’s Garden Collection-ის იდენტობის ცენტრშია. პროექტი მიზნად ისახავს გააზრებულ მიდგომას მიწის გამოყენების, ლანდშაფტის დიზაინის, მასალების შერჩევისა და გარემოზე გრძელვადიანი პასუხისმგებლობის მიმართ.", "v2h": "ერთად,\nსაკუთარი არჩევანით.", "v2p": "კარგად დაგეგმილ უბანში ადგილი აქვს როგორც საერთო გამოცდილებას, ისე პირად სივრცეს. ადგილი, სადაც შეგიძლიათ ერთად გაატაროთ დრო და ისიამოვნოთ საკუთარი სივრცის თავისუფლებით.", "z_h": "ცხოვრების უფრო სრულყოფილი წესი.", "z_line": "დაბალსართულიანი რეზიდენციები. კერძო ვილები.\nბუნება. ველნესი. ყოველდღიური ადგილები.", "z_p": "აღმოაჩინეთ უბანი, შექმნილი იმის გარშემო, რაც ყველაზე მნიშვნელოვანია. დაარეგისტრირეთ ინტერესი, რათა მიიღოთ დამატებითი ინფორმაცია პროექტისა და მომავალი შეთავაზებების შესახებ.", "z_call": "ან დაგვირეკეთ", "f_n": "სახელი", "f_p": "ტელეფონი", "f_m": "სასურველი მესენჯერი", "f_call": "ზარი", "f_e": "ელფოსტა (არასავალდებულო)", "f_i": "მაინტერესებს", "o1": "დაბალსართულიანი რეზიდენციები", "o2": "კერძო ვილები", "o3": "ორივე ფორმატი", "f_c": "შეტყობინება (არასავალდებულო)", "f_s": "ინტერესის რეგისტრაცია", "f_f": "დატოვეთ თქვენი მონაცემები და ჩვენი გუნდი დაგიკავშირდებათ პროექტის შესახებ დამატებითი ინფორმაციით.", "f_t": "გმადლობთ. თქვენი მოთხოვნა მიღებულია.", "ft_t": "უბანი, შექმნილი ცხოვრების გარშემო.", "ft_c": "თბილისი, საქართველო", "ft_h1": "განყოფილებები", "ft_h2": "კონტაქტი", "ft_c2": "კრწანისი, თბილისი", "ft_r": "© 2026 King’s Garden Collection. ყველა უფლება დაცულია.", "ft_n": "პროექტი კონცეფციის ეტაპზეა. სურათები საილუსტრაციოა.", "c1k": "ბინები", "c2k": "სახლები", "c1a": "ადამიანური მასშტაბი", "c1b": "გამწვანებული გარემო", "c1c": "საერთო სივრცეები", "c2a": "პირადი სივრცე", "c2b": "პრივატულობა", "c2c": "კავშირი ბუნებასთან", "f_h": "მოითხოვეთ პირადი კონსულტაცია", "f_hs": "ჩვენი გუნდი დაგიკავშირდებათ თქვენთვის სასურველ დროს.", "f_t2": "მალე დაგიკავშირდებით.", "vp_h": "მეტი, ვიდრე\nსაცხოვრებელი ადგილი.", "v1k": "ბუნება და მდგრადობა", "v2k": "საზოგადოება და პრივატულობა", "nav6": "გენგეგმა", "mp_lab": "გენგეგმა", "mp_h": "ყოველი კარგი უბანი ხედვით იწყება.", "mp_p1": "გენგეგმის პირველი კვლევები სწავლობს, როგორ შეიძლება საცხოვრებელმა ზონებმა, საერთო ადგილებმა, ლანდშაფტმა და მოძრაობამ ერთი ინტეგრირებული გარემო შექმნან.", "mp_p2": "მიზანია ჰარმონიული კავშირი აშენებულ გარემოსა და მის ბუნებრივ გარემოცვას შორის.", "z1": "კერძო ვილები", "z2": "დაბალსართულიანი რეზიდენციები", "z3": "კომერციული და ლაიფსთაილ ცენტრი", "z4": "ველნესი და სპა", "z5": "ლანდშაფტური პარკები", "z6": "დასვენება და სპორტი", "zs": "კონცეფცია", "mp_n": "ზონირება საორიენტაციოა, წინასწარი კონცეფციის ეტაპზე. გენგეგმა მუშავდება და დაზუსტდება.", "vw_lab": "ხედები", "vw_h": "ბუნებასთან უფრო ახლოს.", "vw_p": "ღია ლანდშაფტები. ფართო ხედები. სივრცე ღია ცის ქვეშ ცხოვრებისთვის.", "vw1": "ქალაქის ხედი", "vw1s": "თბილისი", "vw2": "მთების ხედი", "vw2s": "პანორამული ხედი", "vw3": "ღია ლანდშაფტები", "vw3s": "კრწანისის ბორცვები", "vw4": "ბუნებრივი გარემო", "vw4s": "სივრცე სუნთქვისთვის", "vs_lab": "პროექტის ხედვა", "vs_h": "შექმნილია გრძელვადიანად.", "vs_p1": "King’s Garden Collection მიზნად ისახავს შექმნას მდგრადი საცხოვრებელი ადგილი, დაფუძნებული გააზრებულ დაგეგმარებაზე, არქიტექტურულ ხარისხსა და ყოველდღიურ კეთილდღეობაზე.", "vs_p2": "გრძელვადიანი ხედვაა უბანი ცნობადი იდენტობით, ადგილის ძლიერი შეგრძნებითა და მაცხოვრებლებისთვის ხანგრძლივი ღირებულებით.", "vs_h3": "ცხოვრების უფრო სრულყოფილი გამოცდილება.", "pl1": "თანამედროვე საცხოვრებელი არქიტექტურა", "pl2": "ბუნებასთან დაკავშირებული ცხოვრება", "pl3": "მაღაზიები, რესტორნები და ყოველდღიური კომფორტი", "pl4": "ველნესისა და დასვენების შესაძლებლობები", "pl5": "სივრცეები საზოგადოებისა და ურთიერთობისთვის", "pl6": "პრივატულობა და პირადი კომფორტი", "pl7": "კავშირი ქალაქთან", "st_lab": "როგორ შევიძინოთ", "st_h": "აღმოაჩინეთ ცხოვრების სხვა წესი.", "st_p": "დაარეგისტრირეთ ინტერესი, რათა მიიღოთ ინფორმაცია პროექტის, მომავალი საცხოვრებელი შეთავაზებებისა და გაყიდვების დაწყების შესახებ.", "st_c": "მოითხოვეთ პირადი კონსულტაცია", "s1h": "დაარეგისტრირეთ ინტერესი", "s1p": "შეავსეთ მოკლე ფორმა ან მოგვწერეთ WhatsApp-ში.", "s2h": "პირადი კონსულტაცია", "s2p": "შეხვდით ჩვენს გუნდს ონლაინ ან გაყიდვების ოფისში კონცეფციისა და თქვენი გეგმების განსახილველად.", "s3h": "პროექტის პრეზენტაცია", "s3p": "მიიღეთ პრეზენტაცია და სიახლეები არქიტექტურული კონცეფციისა და გენგეგმის განვითარების კვალდაკვალ.", "s4h": "ადგილის მონახულება", "s4p": "დაჯავშნეთ ვიზიტი გაყიდვების ოფისსა და კრწანისის ბორცვებზე.", "j_lab": "ჟურნალი", "j_h": "თვალი ადევნეთ ხედვის განვითარებას.", "j_all": "ყველა სტატია", "j_more": "სტატიის წაკითხვა", "j1c": "არქიტექტურა", "j1h": "დიზაინი პერსპექტივით.", "j1p": "საერთაშორისო გამოცდილება ხვდება გამორჩეულ ადგილობრივ ლანდშაფტს. Studio Marco Piva-სთან თანამშრომლობა საერთაშორისო ხედვას მატებს ახალი საცხოვრებელი უბნის შექმნას თბილისში.", "j2c": "გენგეგმა", "j2h": "ყოველი კარგი უბანი ხედვით იწყება.", "j2p": "სანამ უბანი ფორმას მიიღებს, საჭიროა მისი სივრცეების, კავშირებისა და გარემოსთან ურთიერთობის გააზრება.", "j3c": "სიახლეები", "j3h": "ცხოვრების ახალი ხედვა.", "j3p": "გაეცანით King’s Garden Collection-ის ხედვას, ახალ საცხოვრებელ მიმართულებას თბილისში.", "q_lab": "FAQ", "q_h": "კითხვები და პასუხები.", "q_p": "ვერ იპოვეთ პასუხი?\nმოგვწერეთ WhatsApp-ში.", "q1": "სად მდებარეობს King’s Garden Collection?", "a1": "თბილისში, კრწანისის მწვანე ბორცვებზე: მაღლობი და ბუნებრივი გარემო პანორამული ხედებით და ქალაქთან კავშირით.", "q2": "საცხოვრებლის რა ტიპები იქნება?", "a2": "საცხოვრებელი შეთავაზება ორ ფორმატს ეფუძნება: თანამედროვე დაბალსართულიანი რეზიდენციები და კერძო ვილები.", "q3": "რას მოიცავს უბანი?", "a3": "სახლების გარდა, ხედვა მოიცავს მსხვილ კომერციულ და ლაიფსთაილ ცენტრს, ველნესისა და დასვენების ინფრასტრუქტურას და გამწვანებულ საერთო სივრცეებს.", "q4": "ვინ აპროექტებს პროექტს?", "a4": "არქიტექტურული და გენგეგმის წინასწარი კონცეფცია მუშავდება Studio Marco Piva-სთან, მილანის არქიტექტურისა და დიზაინის სტუდიასთან თანამშრომლობით.", "q5": "როდის დაიწყება გაყიდვები?", "a5": "პროექტი დაგეგმარების ადრეულ ეტაპზეა. დაარეგისტრირეთ ინტერესი, რათა პირველებმა მიიღოთ ინფორმაცია მომავალი შეთავაზებებისა და გაყიდვების შესახებ.", "q6": "შემიძლია გუნდს შევხვდე ან ადგილს ვესტუმრო?", "a6": "დიახ. დაჯავშნეთ ონლაინ კონსულტაცია ან ვიზიტი გაყიდვების ოფისში ტელეფონით, WhatsApp-ით ან ქვემოთ მოცემული ფორმით.", "mp_in": "შესასვლელი", "mp_tip": "კონცეფციის ეტაპი · საორიენტაციო ზონირება", "tz3": "ლაიფსთაილ ცენტრი", "tz5": "პარკები", "mp_z": "ზონები", "mp_c": "თბილისის ცენტრისკენ", "mp_k": "კრწანისის ბორცვები", "d1": "ინდივიდუალური სახლები მეტი პრივატულობითა და სივრცით.", "d2": "თანამედროვე საცხოვრებელი შენობები, შექმნილი ფუნქციურობის, კომფორტისა და ლანდშაფტის გარშემო.", "d3": "მაღაზიები, რესტორნები, კაფეები, ყოველდღიური სერვისები და სოციალური სივრცეები.", "d4": "ფიტნესი და სპა, როგორც მთელი უბნის ცხოვრების ნაწილი.", "d5": "გამწვანებული საერთო სივრცეები და ადგილი ბუნებაში დასასვენებლად.", "d6": "ღია ცის ქვეშ დასვენებისა და სპორტის ინფრასტრუქტურა.", "k1": "საცხოვრებლის ფორმატი", "k2": "კომერციული და ლაიფსთაილ ცენტრი", "k3": "ველნესისა და დასვენების მიმართულება", "i_k": "კრწანისი · თბილისი · საქართველო", "n_cap": "სახლები, საერთო სივრცეები, ყოველდღიური ადგილები და კეთილდღეობა ერთ უბანში.", "a_h1": "საერთაშორისო დიზაინი.", "a_h2": "ადგილით შთაგონებული.", "a_k": "Studio Marco Piva · მილანი", "fh1": "პროექტი", "fh2": "რეზიდენციები", "fl1": "ინფრასტრუქტურა", "fl2": "დეველოპერი", "fl3": "ჟურნალი", "fl4": "კატალოგი", "fl5": "როგორ შევიძინოთ", "fl6": "უცხოელ მყიდველებს", "fl7": "ინვესტორებს", "fl8": "FAQ", "fl9": "კონფიდენციალურობის პოლიტიკა", "vp_a": "მეტი, ვიდრე", "vp_b": "საცხოვრებელი ადგილი."}};
+const root=document.documentElement;
+
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const EN={};
+$$('[data-i]').forEach(e=>{const k=e.dataset.i;if(!EN[k])EN[k]=e.textContent});
+$$('[data-i]').forEach(e=>{if(!e.textContent)e.textContent=EN[e.dataset.i]||''});
+T.en=EN;
+const mqItems={en:['A Neighborhood Designed Around Life','More Space for Life','Everything Connected','A Different Side of Tbilisi','More Than a Place to Live'],ru:['Район, созданный вокруг жизни','Больше пространства для жизни','Всё рядом','Другой Тбилиси','Больше, чем место для жизни'],ka:['უბანი, შექმნილი ცხოვრების გარშემო','მეტი სივრცე ცხოვრებისთვის','ყველაფერი დაკავშირებულია','თბილისის სხვა მხარე','მეტი, ვიდრე საცხოვრებელი ადგილი']};
+const mq=$('#mq');
+const fillMq=l=>{const one=mqItems[l].map(t=>`<span>${t}<svg><use href="#mini"/></svg></span>`).join('');mq.innerHTML=one+one+one+one};
+const stmt=$('#stmt');
+const splitStmt=()=>{const t=stmt.textContent.trim();stmt.innerHTML=t.split(/\s+/).map(w=>`<span class="w">${w}</span>`).join(' ')};
+const menu=$('#menu'),burger=$('#burger'),hd=$('#hd');
+let lastY=0;
+const sc=$('#scale'),im=sc.querySelector('.stk');
+const par=$$('.win img,.pair img,.in2 .pic img,.loc .pano img,.vp>img,.hv-ph img');
+const onScroll=()=>{
+ const y=scrollY,vh=innerHeight;
+ hd.classList.toggle('solid',y>40);
+ hd.classList.toggle('hide',y>lastY&&y>600&&!menu.classList.contains('open'));lastY=y;
+ if(!reduce){
+  const r=sc.getBoundingClientRect();const p=Math.min(1,Math.max(0,-r.top/(r.height-vh)));
+  im.style.setProperty('--k',Math.max(0,1-p/.7).toFixed(4));im.style.setProperty('--o',Math.max(0,Math.min(1,(p-.55)/.3)).toFixed(3));
+  par.forEach(i=>{const b=i.parentElement.getBoundingClientRect();if(b.bottom<0||b.top>vh)return;const c=(b.top+b.height/2-vh/2)/vh;i.style.setProperty('--py',(c*-6).toFixed(2)+'%')});
+ }
+ const sr=stmt.getBoundingClientRect(),ws=stmt.querySelectorAll('.w');
+ const sp=Math.min(1,Math.max(0,(vh*.85-sr.top)/(sr.height+vh*.35)));const n=Math.round(sp*ws.length*1.1);
+ ws.forEach((w,i)=>w.classList.toggle('on',reduce||i<n));
+};
+const setLang=l=>{
+ if(!T[l])return;
+ $$('[data-i]').forEach(e=>{const v=T[l][e.dataset.i];if(v!=null)e.textContent=v});
+ root.lang=l;
+ $$('.langs button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===l));
+ fillMq(l);splitStmt();onScroll();sizeViews();onViews();pick(zi);
+addEventListener('load',()=>{sizeViews();onViews()});document.fonts&&document.fonts.ready.then(()=>{sizeViews();onViews();placeCard()});
+ try{localStorage.setItem('kgc-lang',l)}catch(e){}
+};
+$$('.langs button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l)));
+const toggleMenu=o=>{menu.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''};
+burger.addEventListener('click',()=>toggleMenu(true));
+$('#mclose').addEventListener('click',()=>toggleMenu(false));
+menu.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
+addEventListener('keydown',e=>{if(e.key==='Escape')toggleMenu(false)});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+$$('.rv').forEach(e=>io.observe(e));
+io.observe($('#values'));
+const qas=$$('.qa');qas.forEach(q=>q.querySelector('.qh').addEventListener('click',()=>{const o=!q.classList.contains('open');qas.forEach(x=>{x.classList.remove('open');x.querySelector('.qh').setAttribute('aria-expanded','false')});if(o){q.classList.add('open');q.querySelector('.qh').setAttribute('aria-expanded','true')}}));
+const cnt=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cnt.unobserve(e.target);const n=+e.target.dataset.n,b=e.target;if(reduce)return;const t0=performance.now();const f=t=>{const p=Math.min(1,(t-t0)/1400);b.textContent=String(Math.round(n*(1-Math.pow(1-p,3)))).padStart(2,'0');if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)}),{threshold:.6});
+$$('.nums b').forEach(b=>cnt.observe(b));
+const fl=$('#float'),fimgs=fl.querySelectorAll('img');
+let fx=0,fy=0,tx=0,ty=0;
+$$('#places a').forEach(a=>{
+ a.addEventListener('mouseenter',()=>{fl.classList.add('on');fimgs.forEach((x,i)=>x.classList.toggle('on',i==a.dataset.img))});
+ a.addEventListener('mouseleave',()=>fl.classList.remove('on'));
+});
+addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY});
+const tick=()=>{fx+=(tx-fx)*.1;fy+=(ty-fy)*.1;fl.style.left=fx+'px';fl.style.top=fy+'px';requestAnimationFrame(tick)};
+tick();
+{const vt=$('#vt');let dn=false,sx=0,sl=0;vt.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||innerWidth>900)return;dn=true;sx=e.clientX;sl=vt.scrollLeft;vt.setPointerCapture(e.pointerId)});vt.addEventListener('pointermove',e=>{if(dn)vt.scrollLeft=sl-(e.clientX-sx)});vt.addEventListener('pointerup',()=>dn=false);}
+{const ul=$('#zl');const zo=new IntersectionObserver(es=>{if(innerWidth>900)return;es.forEach(e=>{if(e.isIntersecting)pick(e.target.querySelector('button').dataset.z)})},{root:ul,threshold:.75});$$('#zl li').forEach(l=>zo.observe(l));}
+const xps=$$('#xp .p');
+const xpOn=p=>xps.forEach(x=>x.classList.toggle('on',x===p));
+xps.forEach(p=>{p.addEventListener('click',()=>xpOn(p));p.addEventListener('mouseenter',()=>{if(matchMedia('(hover:hover) and (min-width:901px)').matches)xpOn(p)})});
+const form=$('#form');
+form.addEventListener('submit',e=>{e.preventDefault();let ok=true;['fn','fp'].forEach(id=>{const f=$('#'+id);const bad=!f.value.trim();f.parentElement.classList.toggle('bad',bad);if(bad)ok=false});if(ok)form.classList.add('sent');else $('.f.bad input').focus()});
+['fn','fp'].forEach(id=>$('#'+id).addEventListener('input',e=>e.target.parentElement.classList.remove('bad')));
+const slides=$$('#stage .slide'),tabs=$$('#rs .tab'),descs=$$('#rs .desc>div');
+let cur=0;
+const go=n=>{n=(n+slides.length)%slides.length;if(n===cur)return;slides.forEach((x,i)=>x.classList.toggle('on',i===n));
+ tabs.forEach((b,i)=>b.setAttribute('aria-selected',i===n));descs.forEach((d,i)=>d.classList.toggle('on',i===n));
+ cur=n;$('#rsn').textContent=(n+1)+' / '+slides.length;$('#rsb').style.setProperty('--p',(n+1)/slides.length)};
+tabs.forEach((b,i)=>b.addEventListener('click',()=>go(i)));
+$('#rsp').addEventListener('click',()=>go(cur-1));$('#rsx').addEventListener('click',()=>go(cur+1));
+let sx=null;
+$('#stage').addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;sx=e.clientX});
+addEventListener('pointerup',e=>{if(sx==null)return;const dx=e.clientX-sx;sx=null;if(Math.abs(dx)>40)go(cur+(dx<0?1:-1))});
+const map=$('#map'),msvg=$('#msvg'),zbs=$$('#zl button'),mzs=$$('#msvg .mz'),mps=$$('#msvg .mpin'),route=$('#route'),mcard=$('#mcard');
+const ANC=[[668, 392], [1050, 350], [858, 600], [872, 286], [888, 445], [1045, 558]],HUB=[860,712];let zi=2;
+const placeCard=()=>{const r=map.getBoundingClientRect(),pb=mps[zi].querySelector('circle').getBoundingClientRect(),s={x:pb.left+pb.width/2,y:pb.top+pb.height/2};
+ if(innerWidth<=900)return;const cw=mcard.offsetWidth,ch=mcard.offsetHeight,x=s.x-r.left,y=s.y-r.top;let L=x-cw-110;if(L<24)L=x+50;const zp=$('.zp').getBoundingClientRect();if(L+cw>zp.left-r.left-24)L=x-cw-110;mcard.style.left=Math.max(24,L)+'px';mcard.style.top=Math.min(Math.max(24,y-ch/2),r.height-ch-24)+'px'};
+const pick=i=>{zi=+i;mzs.forEach(z=>z.classList.toggle('on',z.dataset.z==zi));mps.forEach(z=>z.classList.toggle('on',z.dataset.z==zi));zbs.forEach(b=>b.classList.toggle('on',b.dataset.z==zi));
+ const a=ANC[zi];route.setAttribute('d',`M${HUB[0]} ${HUB[1]+38} L${HUB[0]} ${(HUB[1]+a[1])/2+20} L${a[0]} ${(HUB[1]+a[1])/2-10} L${a[0]} ${a[1]+18}`);
+ mcard.querySelector('b').textContent=String(zi+1).padStart(2,'0');mcard.querySelector('h4').textContent=zbs[zi].querySelector('span').textContent;mcard.querySelector('p').textContent=EN&&(T[root.lang]||T.en)['d'+(zi+1)]||'';mcard.classList.remove('on');void mcard.offsetWidth;placeCard();mcard.classList.add('on')};
+zbs.forEach(b=>b.addEventListener('click',()=>pick(b.dataset.z)));
+[...mzs,...mps].forEach(z=>z.addEventListener('click',()=>pick(z.dataset.z)));
+addEventListener('resize',placeCard);
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){pick(zi);o.disconnect()}}),{threshold:.3}).observe(map);
+const vw=$('#views'),vt=$('#vt'),vimgs=$$('#vt .vi img');
+const pinOn=()=>!reduce&&innerWidth>900;
+const sizeViews=()=>{vw.style.height=pinOn()?(vt.scrollWidth-innerWidth+innerHeight)+'px':''};
+const onViews=()=>{if(!pinOn())return;const r=vw.getBoundingClientRect(),max=vt.scrollWidth-innerWidth;const p=Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)));vt.style.transform=`translate3d(${(-p*max).toFixed(1)}px,0,0)`;vimgs.forEach(i=>{const b=i.parentElement.getBoundingClientRect();i.style.setProperty('--vx',(((b.left+b.width/2)/innerWidth-.5)*-5).toFixed(2)+'%')})};
+addEventListener('resize',()=>{sizeViews();onViews()});addEventListener('scroll',onViews,{passive:true});
+sizeViews();onViews();
+let lenis=null;
+if(false&&matchMedia('(hover:hover) and (pointer:fine)').matches){lenis=new Lenis({duration:1.3,smoothWheel:true});const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf);
+ $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=a.getAttribute('href');if(t.length>1&&$(t)){e.preventDefault();lenis.scrollTo(t,{offset:-70,duration:1.8})}}))}
+addEventListener('scroll',()=>{if(scrollX)scrollTo(0,scrollY);onScroll()},{passive:true});addEventListener('resize',onScroll);
+let saved='en';try{saved=localStorage.getItem('kgc-lang')||'en'}catch(e){}
+fillMq('en');splitStmt();
+if(saved!=='en')setLang(saved);
+onScroll();
+const pre=$('#pre'),ct=$('#ct'),pln=$('#pln'),hero=$('#hero');
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const start=performance.now(),dur=reduce?10:2400;
+let fin=false;
+const finish=()=>{if(fin)return;fin=true;pre.classList.add('done');setTimeout(()=>hero.classList.add('loaded'),reduce?0:900);setTimeout(()=>pre.style.display='none',2400)};
+requestAnimationFrame(()=>pre.classList.add('go'));
+const count=t=>{const p=ease(Math.min(1,(t-start)/dur));ct.textContent=Math.round(p*100);pln.style.setProperty('--p',p);if(p<1)requestAnimationFrame(count);else setTimeout(finish,300)};
+requestAnimationFrame(count);
+setTimeout(finish,5000);
+}
+</script>
+</body>
+</html>

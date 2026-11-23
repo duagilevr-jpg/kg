@@ -349,6 +349,7 @@ p{margin:0;max-width:60ch}
 .views{position:relative}
 .vs{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center}
 .vt{display:flex;gap:var(--gut);padding-inline:var(--pad);will-change:transform;align-items:flex-end}
+.vhm{display:none}
 .vt .vh{flex:none;width:min(440px,80vw);display:flex;flex-direction:column;gap:20px;align-self:center}
 .vi{flex:none;width:min(58vw,1000px);display:flex;flex-direction:column;gap:14px}
 .vi .ph{height:min(66svh,680px);overflow:hidden;position:relative}
@@ -501,7 +502,7 @@ p{margin:0;max-width:60ch}
 @media(max-width:900px){.split{grid-template-columns:minmax(0,1fr)}.c2{grid-column:auto}.hero{align-items:start;padding-top:108px}.wins{height:min(64vw,540px)}.xp{height:auto;flex-direction:column}.xp .p{flex:none;height:110px;transition:height 1.1s var(--io)}.xp .p.on{height:380px;flex:none}.vp .two{grid-template-columns:minmax(0,1fr)}.ft .cols{grid-template-columns:repeat(2,minmax(0,1fr))}.panel{height:auto}.rs .stage{order:-1}}
 @media(max-width:600px){.hd .row{height:66px;gap:12px}.hd .logo{width:148px}.hd .langs button{min-width:34px;height:32px;font-size:12px}.hero{padding-top:92px;gap:28px}.wins{height:80vw}.ctas .btn{flex:1 1 100%;justify-content:center}.places a{grid-template-columns:72px minmax(0,1fr);gap:4px 16px}.places .th{display:block;width:72px;height:88px;overflow:hidden;grid-row:span 2}.places .th img{width:100%;height:100%;object-fit:cover}.places .ic{display:none}.places p{font-size:14px;padding-right:0}.stage{aspect-ratio:4/4.4}.pair{height:110vw}.pts{grid-template-columns:minmax(0,1fr)}.fm{grid-template-columns:minmax(0,1fr);gap:26px}.fm::before{display:none}.ft .cols{grid-template-columns:minmax(0,1fr)}.scale{height:200vh}.scale .im{clip-path:inset(calc(var(--k,1)*22%) calc(var(--k,1)*14%) calc(var(--k,1)*22%) calc(var(--k,1)*14%) round calc(var(--k,1)*18px))}.hb-in .side .btn{flex:1 1 100%;justify-content:center}.hb-in .ctas{width:100%}.wa{width:54px;height:54px}.xp .p.on{height:340px}}
 @media(max-width:600px){.hb-bg::after{background:linear-gradient(to top,rgba(16,24,18,.88) 0%,rgba(16,24,18,.6) 55%,rgba(16,24,18,.4) 100%)}}
-@media(max-width:900px){.views{height:auto!important}.vs{position:static;height:auto;display:block;padding-block:var(--sec)}.vt{transform:none!important;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}.vt .vh{width:82vw;align-self:flex-start;scroll-snap-align:start}.vi{width:82vw;scroll-snap-align:start}.vi .ph,.vi:nth-child(odd) .ph{height:62vw}.vision .l{position:static}.row4{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}}
+@media(max-width:900px){.views{height:auto!important}.views{height:812px!important;max-height:none}.vs{position:static;height:100%;display:flex;flex-direction:column;align-items:stretch;padding-block:64px 40px;box-sizing:border-box}.vt{flex:1;min-height:0;align-items:stretch}.vi{height:100%}.vt{transform:none!important;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}.vt .vh{display:none}.vhm{display:flex!important;flex-direction:column;gap:14px;margin:0 0 28px;width:100%;max-width:none}.vt{scroll-padding-inline:var(--pad)}.vi{width:84vw;scroll-snap-align:start}.vi .ph,.vi:nth-child(odd) .ph{height:auto;aspect-ratio:auto;flex:1;min-height:0}.vi .ph img{transform:none!important}.vision .l{position:static}.row4{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}}
 @media(max-width:600px){.row4{grid-template-columns:minmax(0,1fr)}.pills li{padding:12px 18px}.faq details p{padding-right:0}.zl small{display:none}}
 @media(max-width:900px){:root{--sec:96px}}
 @media(max-width:600px){:root{--sec:72px}}
@@ -2348,6 +2349,7 @@ Everyday Life.</h2></div>
 
 <section class="views" id="views" data-lenis-prevent-touch>
 <div class="vs">
+<div class="vhm wrap"><span class="label" data-i="vw_lab">Views</span><h2 data-i="vw_h">A Closer Connection to Nature.</h2><p class="lead" data-i="vw_p">Open landscapes. Expansive views. Room to enjoy the outdoors.</p></div>
 <div class="vt" id="vt" data-lenis-prevent>
 <div class="vh"><span class="label" data-i="vw_lab">Views</span><h2 data-i="vw_h">A Closer Connection to Nature.</h2><p class="lead" data-i="vw_p">Open landscapes. Expansive views. Room to enjoy the outdoors.</p></div>
 <figure class="vi" style="margin:0"><div class="ph"><img src="img/tbilisi.jpg" alt="Tbilisi skyline at sunset"></div><figcaption class="cap"><b data-i="vw1">Toward the city</b><span data-i="vw1s">Tbilisi</span></figcaption></figure>

@@ -243,6 +243,7 @@ p{margin:0;max-width:60ch}
 .vp .v{display:flex;flex-direction:column;gap:16px;padding:clamp(24px,2.6vw,40px);border-radius:var(--r);background:rgba(20,28,22,.42);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .vp .v p{color:#e3e7d8;max-width:52ch}
 .vp .v span{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--spring)}
+.vp .vk{display:none}
 .vp .v h3{white-space:pre-line;font-size:clamp(26px,2.3vw,38px)}
 .close .split{align-items:stretch}
 .close .txt{display:flex;flex-direction:column;gap:22px}
@@ -507,7 +508,7 @@ p{margin:0;max-width:60ch}
 @media(max-width:900px){:root{--sec:96px}}
 @media(max-width:600px){:root{--sec:72px}}
 @media(max-width:900px){.map{height:812px;display:flex;flex-direction:column}.mwrap{position:relative;inset:auto;flex:1;min-height:0;height:auto}.mcard{display:none}.zp{position:absolute;left:0;right:0;bottom:20px;min-width:0;margin-top:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0;border-radius:0}.zp>span{display:none}.zp ul{flex-direction:row;overflow-x:auto;gap:12px;margin:0;padding:0 var(--pad) 4px;scroll-snap-type:x mandatory;scrollbar-width:none}.zp li{flex:none;width:72vw;scroll-snap-align:center}.zp button{width:100%;height:180px;display:flex;flex-direction:column;justify-content:space-between;white-space:normal;padding:20px 22px;border-radius:var(--r);background:rgba(34,38,35,.94);font-size:15px;font-weight:600;color:rgba(255,255,255,.6)}.zp button.on{background:#2b312d;color:#fff}.zp em{display:block;font-style:normal;font-weight:300;font-size:56px;line-height:1;color:#fff}.mn{position:static;padding:18px var(--pad) 28px;max-width:none}}
-@media(max-width:600px){.vp .lab{flex-direction:column;gap:6px}.vp .two{grid-template-columns:minmax(0,1fr);gap:14px;margin-top:48px}.intro .ib{row-gap:56px}.in2{gap:28px}.in2 .tx{gap:20px}.nums{row-gap:36px}.ft .cols{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:36px}.ft .cols>div:last-child{grid-column:1/-1}.pts{gap:0}.pts div{padding-block:22px;border-top:1px solid var(--line)}.pts div:first-child{border-top:0;padding-top:0}.pts h3{white-space:normal}.vp .v h3{white-space:normal}}
+@media(max-width:600px){.vp{min-height:0;height:812px;background:#1f2b23}.vp>img{inset:-15% 0;height:130%}.vp .wrap{padding-block:56px 20px}.vp .lab{display:none}.vp .lead2{margin:0;font-size:44px;line-height:.95;text-align:left}.vp .two{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(-1*var(--pad));padding-inline:var(--pad);scroll-padding-inline:var(--pad);scrollbar-width:none}.vp .two::-webkit-scrollbar{display:none}.vp .v{flex:none;width:84vw;scroll-snap-align:start;padding:22px;gap:10px;background:rgba(20,28,22,.55)}.vp .vk{display:block}.vp .v h3{white-space:pre-line;font-size:26px}.vp .v p{font-size:14px;line-height:1.5}.js .vp .v.rv{opacity:1;transform:none}.intro .ib{row-gap:56px}.in2{gap:28px}.in2 .tx{gap:20px}.nums{row-gap:36px}.ft .cols{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:36px}.ft .cols>div:last-child{grid-column:1/-1}.pts{gap:0}.pts div{padding-block:22px;border-top:1px solid var(--line)}.pts div:first-child{border-top:0;padding-top:0}.pts h3{white-space:normal}.vp .v h3{white-space:normal}}
 .vt{touch-action:pan-x pan-y;cursor:grab}
 @media(max-width:900px){.loc .pano{height:812px}}
 @media(hover:none){.float{display:none}}
@@ -2476,9 +2477,9 @@ Considered Living.</h2>
 <div class="lab rv"><span data-i="v1k">Nature &amp; sustainability</span><span data-i="v2k">Community &amp; privacy</span></div>
 <h2 class="lead2" id="vph"><span class="l2" data-i="vp_a">More Than</span><span class="l2" data-i="vp_b">a Place to Live.</span></h2>
 <div class="two">
-<div class="v rv"><h3 data-i="v1h">Designed With
+<div class="v rv"><span class="vk" data-i="v1k">Nature &amp; sustainability</span><h3 data-i="v1h">Designed With
 Nature in Mind.</h3><p data-i="v1p">Nature is central to the identity of King’s Garden Collection. The project aims to pursue a thoughtful approach to land use, landscape design, material selection and long-term environmental responsibility as planning progresses.</p></div>
-<div class="v rv d1"><h3 data-i="v2h">Connected
+<div class="v rv d1"><span class="vk" data-i="v2k">Community &amp; privacy</span><h3 data-i="v2h">Connected
 by Choice.</h3><p data-i="v2p">A well-designed neighborhood makes room for both shared experiences and individual space. A place to connect, spend time together and enjoy the freedom of having space for yourself.</p></div>
 </div>
 </div>
